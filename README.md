@@ -1,4 +1,4 @@
-# Hack The Box: Sense machine write-up
+# Hack The Box: write-ups
 
 ---
 
