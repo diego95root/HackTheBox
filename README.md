@@ -8,7 +8,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 
 * [Celestial](https://github.com/diego95root/HackTheBox/tree/master/Celestial) (Not retired yet)
 * [Sense](https://github.com/diego95root/HackTheBox/tree/master/Sense)
-* [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed) (Not retired yet)
+* [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed)
 * [Stratosphere](https://github.com/diego95root/HackTheBox/tree/master/Stratosphere) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
