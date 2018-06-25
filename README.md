@@ -10,6 +10,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Sense](https://github.com/diego95root/HackTheBox/tree/master/Sense)
 * [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed) (Not retired yet)
 * [Stratosphere](https://github.com/diego95root/HackTheBox/tree/master/Stratosphere) (Not retired yet)
+* [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
