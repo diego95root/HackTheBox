@@ -11,7 +11,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed)
 * [Stratosphere](https://github.com/diego95root/HackTheBox/tree/master/Stratosphere) (Not retired yet)
 * [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison) (Not retired yet)
-* [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles) (Not retired yet)
+* [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 
 
 I hope you find them useful. In case of advice, feel free to contact me.
