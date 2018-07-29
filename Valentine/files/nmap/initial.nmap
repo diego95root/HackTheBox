@@ -1,0 +1,25 @@
+# Nmap 7.01 scan initiated Fri Jul  6 18:48:57 2018 as: nmap -sC -sV -oA nmap/initial 10.10.10.79
+Nmap scan report for 10.10.10.79
+Host is up (0.054s latency).
+Not shown: 991 closed ports
+PORT      STATE    SERVICE       VERSION
+22/tcp    open     tcpwrapped
+80/tcp    open     http          Apache httpd 2.2.22 ((Ubuntu))
+|_http-server-header: Apache/2.2.22 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+443/tcp   open     ssl/http      Apache httpd 2.2.22 ((Ubuntu))
+|_http-server-header: Apache/2.2.22 (Ubuntu)
+|_http-title: Site doesn't have a title (text/html).
+| ssl-cert: Subject: commonName=valentine.htb/organizationName=valentine.htb/stateOrProvinceName=FL/countryName=US
+| Not valid before: 2018-02-06T00:45:25
+|_Not valid after:  2019-02-06T00:45:25
+|_ssl-date: 2018-07-06T16:49:27+00:00; 0s from scanner time.
+1594/tcp  filtered sixtrak
+3268/tcp  filtered globalcatLDAP
+5440/tcp  filtered unknown
+9877/tcp  filtered unknown
+49155/tcp filtered unknown
+49156/tcp filtered unknown
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Jul  6 18:49:33 2018 -- 1 IP address (1 host up) scanned in 35.44 seconds

@@ -1,0 +1,38 @@
+DirBuster 1.0-RC1 - Report
+http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
+Report produced on Fri Jul 06 14:58:12 PDT 2018
+--------------------------------
+
+http://10.10.10.79:80
+--------------------------------
+Directories found during testing:
+
+Dirs found with a 200 response:
+
+/index/
+/
+/dev/
+/encode/
+/decode/
+
+Dirs found with a 403 response:
+
+/cgi-bin/
+/icons/
+/doc/
+/icons/small/
+
+
+--------------------------------
+Files found during testing:
+
+Files found with a 200 responce:
+
+/index.php
+/dev/hype_key
+/dev/notes.txt
+/encode.php
+/decode.php
+
+
+--------------------------------

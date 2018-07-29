@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Fri Jul  6 18:48:57 2018 as: nmap -sC -sV -oA nmap/initial 10.10.10.79
+Host: 10.10.10.79 ()	Status: Up
+Host: 10.10.10.79 ()	Ports: 22/open/tcp//tcpwrapped///, 80/open/tcp//http//Apache httpd 2.2.22 ((Ubuntu))/, 443/open/tcp//ssl|http//Apache httpd 2.2.22 ((Ubuntu))/, 1594/filtered/tcp//sixtrak///, 3268/filtered/tcp//globalcatLDAP///, 5440/filtered/tcp//unknown///, 9877/filtered/tcp//unknown///, 49155/filtered/tcp//unknown///, 49156/filtered/tcp//unknown///	Ignored State: closed (991)
+# Nmap done at Fri Jul  6 18:49:33 2018 -- 1 IP address (1 host up) scanned in 35.44 seconds
