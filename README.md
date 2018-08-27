@@ -4,7 +4,7 @@
 
 ![Img](https://i.ytimg.com/vi/CxtMMgqfXY8/maxresdefault.jpg)
 
-Write-ups for different challenges I did in this [platform](https://www.hackthebox.eu). I'll upload more as soon as they retire the machines. For the moment I have:
+Write-ups for different challenges I did in this [platform](https://www.hackthebox.eu). I'll upload more as soon as they retire the machines. For the moment I have the following:
 
 * [Celestial](https://github.com/diego95root/HackTheBox/tree/master/Celestial)
 * [Sense](https://github.com/diego95root/HackTheBox/tree/master/Sense)
