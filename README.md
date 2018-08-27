@@ -6,13 +6,14 @@
 
 Write-ups for different challenges I did in this [platform](https://www.hackthebox.eu). I'll upload more as soon as they retire the machines. For the moment I have:
 
-* [Celestial](https://github.com/diego95root/HackTheBox/tree/master/Celestial) (Not retired yet)
+* [Celestial](https://github.com/diego95root/HackTheBox/tree/master/Celestial)
 * [Sense](https://github.com/diego95root/HackTheBox/tree/master/Sense)
 * [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed)
 * [Stratosphere](https://github.com/diego95root/HackTheBox/tree/master/Stratosphere) (Not retired yet)
 * [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison) (Not retired yet)
 * [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
+* [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
