@@ -13,6 +13,7 @@ $ nmap -sV -sC 10.10.10.85
 After a minute or less, I got that the only port open was 3000 with a Node.js Express Framework. Hence, I know where the vulnerability is.
 
 *Result of nmap scan*
+
 ![Img](images/nmap.png "Img")
 
 #### Vulnerability
@@ -20,25 +21,30 @@ After a minute or less, I got that the only port open was 3000 with a Node.js Ex
 After accessing the machine with the port (10.10.10.85:3000) on Firefox, I am greeted with the following:
 
 *Welcome message*
+
 ![Img](images/1.png "Img")
 
 By inspecting the request with Burp Suite, I find a weird cookie named profile. It is encoded first with url-encoding and then with base64, so I decode the value and obtain a json:
 
 *Burp intercept of the request*
+
 ![Img](images/2.png "Img")
 
 *Decoding of cookie*
+
 ![Img](images/3.png "Img")
 
 The first interesting thing here to notice is that by modifying the last parameter we can change the welcome message.
 
 *Modification of the json results in other message*
+
 ![Img](images/4.png "Img")
 
 Therefore, the code must decode the cookie, read the last value and then use it as an argument to print the message. However, if we try something that is not an integer, we get an error.
 
 *Error message*
-![Img](images/error.png "Img")
+
+![Img](images/Error.png "Img")
 
 This was a really important clue, as it told me that a deserialization from the node-serialize module was taking place. It could be the vulnerability, so I started reading up on node deserialization.
 
@@ -57,6 +63,7 @@ _$$ND_FUNC$$_function (){}()
 Afterwards, I replace the "2" in the json by the function expression and encode it all back again. Then, after intercepting the request with Burp and changing the cookie, I get "Hey Dummy, Undefined + Undefined is NaN". we succeeded in the exploit, as listening with netcat opens up a shell:
 
 *Netcat opens with reverse shell*
+
 ![Img](images/5.png "Img")
 
 Then we just have to find the hash inside Documents/user.txt:
@@ -70,6 +77,7 @@ To escalate privileges and get from normal user to root I used the dirty cow exp
 However, as I couldn't use wget to download the cowroot.c script when I was logged in to the machine (dunno why), I set up a SimpleHTTPServer with python and wget'ed my local machine. Then I compiled the cowroot.c script in gcc and launched the executable. Now I am root and can see the hash inside /root.
 
 *Escalation of privileges and hash*
+
 ![Img](images/6.png "Img")
 
 
