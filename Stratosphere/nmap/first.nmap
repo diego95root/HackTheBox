@@ -1,0 +1,109 @@
+# Nmap 7.01 scan initiated Tue May 22 17:40:55 2018 as: nmap -sC -sV -oA first 10.10.10.64
+Nmap scan report for 10.10.10.64
+Host is up (0.054s latency).
+Not shown: 997 filtered ports
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 7.4p1 Debian 10+deb9u2 (protocol 2.0)
+| ssh-hostkey: 
+|   2048 5b:16:37:d4:3c:18:04:15:c4:02:01:0d:db:07:ac:2d (RSA)
+|_  256 e3:77:7b:2c:23:b0:8d:df:38:35:6c:40:ab:f6:81:50 (ECDSA)
+80/tcp   open  http
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+|_http-title: Stratosphere
+8080/tcp open  http-proxy
+| http-methods: 
+|_  Potentially risky methods: PUT DELETE
+|_http-title: Stratosphere
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.01%I=7%D=5/22%Time=5B043A24%P=x86_64-pc-linux-gnu%r(GetR
+SF:equest,786,"HTTP/1\.1\x20200\x20\r\nAccept-Ranges:\x20bytes\r\nETag:\x2
+SF:0W/\"1708-1519762495000\"\r\nLast-Modified:\x20Tue,\x2027\x20Feb\x20201
+SF:8\x2020:14:55\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x
+SF:201708\r\nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:24\x20GMT\r\nConn
+SF:ection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<html>\n<head>\n\x20\x20\x2
+SF:0\x20<meta\x20charset=\"utf-8\"/>\n\x20\x20\x20\x20<title>Stratosphere<
+SF:/title>\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20type=\"text/css
+SF:\"\x20href=\"main\.css\">\n</head>\n\n<body>\n<div\x20id=\"background\"
+SF:></div>\n<header\x20id=\"main-header\"\x20class=\"hidden\">\n\x20\x20<d
+SF:iv\x20class=\"container\">\n\x20\x20\x20\x20<div\x20class=\"content-wra
+SF:p\">\n\x20\x20\x20\x20\x20\x20<p><i\x20class=\"fa\x20fa-diamond\"></i><
+SF:/p>\n\x20\x20\x20\x20\x20\x20<nav>\n\x20\x20\x20\x20\x20\x20\x20\x20<a\
+SF:x20class=\"btn\"\x20href=\"GettingStarted\.html\">Get\x20started</a>\n\
+SF:x20\x20\x20\x20\x20\x20</nav>\n\x20\x20\x20\x20</div>\n\x20\x20</div>\n
+SF:</header>\n\n<section\x20id=\"greeting\">\n\x20\x20<div\x20class=\"cont
+SF:ainer\">\n\x20\x20\x20\x20<div\x20class=\"content-wrap\">\n\x20\x20\x20
+SF:\x20\x20\x20<h1>Stratosphere<br>We\x20protect\x20your\x20credit\.</h1>\
+SF:n\x20\x20\x20\x20\x20\x20<a\x20class=\"btn\"\x20href=\"GettingStarted\.
+SF:html\">Get\x20started\x20now</a>\n\x20\x20\x20\x20\x20\x20<p><i\x20clas
+SF:s=\"ar")%r(HTTPOptions,8A,"HTTP/1\.1\x20200\x20\r\nAllow:\x20GET,\x20HE
+SF:AD,\x20POST,\x20PUT,\x20DELETE,\x20OPTIONS\r\nContent-Length:\x200\r\nD
+SF:ate:\x20Tue,\x2022\x20May\x202018\x2015:41:25\x20GMT\r\nConnection:\x20
+SF:close\r\n\r\n")%r(RTSPRequest,6A,"HTTP/1\.1\x20400\x20\r\nTransfer-Enco
+SF:ding:\x20chunked\r\nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:25\x20G
+SF:MT\r\nConnection:\x20close\r\n\r\n0\r\n\r\n")%r(X11Probe,6A,"HTTP/1\.1\
+SF:x20400\x20\r\nTransfer-Encoding:\x20chunked\r\nDate:\x20Tue,\x2022\x20M
+SF:ay\x202018\x2015:41:25\x20GMT\r\nConnection:\x20close\r\n\r\n0\r\n\r\n"
+SF:)%r(FourOhFourRequest,4F6,"HTTP/1\.1\x20404\x20\r\nContent-Type:\x20tex
+SF:t/html;charset=utf-8\r\nContent-Language:\x20en\r\nContent-Length:\x201
+SF:114\r\nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:25\x20GMT\r\nConnect
+SF:ion:\x20close\r\n\r\n<!doctype\x20html><html\x20lang=\"en\"><head><titl
+SF:e>HTTP\x20Status\x20404\x20\xe2\x80\x93\x20Not\x20Found</title><style\x
+SF:20type=\"text/css\">h1\x20{font-family:Tahoma,Arial,sans-serif;color:wh
+SF:ite;background-color:#525D76;font-size:22px;}\x20h2\x20{font-family:Tah
+SF:oma,Arial,sans-serif;color:white;background-color:#525D76;font-size:16p
+SF:x;}\x20h3\x20{font-family:Tahoma,Arial,sans-serif;color:white;backgroun
+SF:d-color:#525D76;font-size:14px;}\x20body\x20{font-family:Tahoma,Arial,s
+SF:ans-serif;color:black;background-color:white;}\x20b\x20{font-family:Tah
+SF:oma,Arial,sans-serif;color:white;background-color:#525D76;}\x20p\x20{fo
+SF:nt-family:Tahoma,Arial,sans-serif;background:white;color:black;font-siz
+SF:e:12px;}\x20a\x20{color:black;}\x20a\.name\x20{color:black;}\x20\.line\
+SF:x20{height:1px;background-color:#525D76;border:none;}</style></head><bo
+SF:dy>");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port8080-TCP:V=7.01%I=7%D=5/22%Time=5B043A24%P=x86_64-pc-linux-gnu%r(Ge
+SF:tRequest,786,"HTTP/1\.1\x20200\x20\r\nAccept-Ranges:\x20bytes\r\nETag:\
+SF:x20W/\"1708-1519762495000\"\r\nLast-Modified:\x20Tue,\x2027\x20Feb\x202
+SF:018\x2020:14:55\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:
+SF:\x201708\r\nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:24\x20GMT\r\nCo
+SF:nnection:\x20close\r\n\r\n<!DOCTYPE\x20html>\n<html>\n<head>\n\x20\x20\
+SF:x20\x20<meta\x20charset=\"utf-8\"/>\n\x20\x20\x20\x20<title>Stratospher
+SF:e</title>\n\x20\x20\x20\x20<link\x20rel=\"stylesheet\"\x20type=\"text/c
+SF:ss\"\x20href=\"main\.css\">\n</head>\n\n<body>\n<div\x20id=\"background
+SF:\"></div>\n<header\x20id=\"main-header\"\x20class=\"hidden\">\n\x20\x20
+SF:<div\x20class=\"container\">\n\x20\x20\x20\x20<div\x20class=\"content-w
+SF:rap\">\n\x20\x20\x20\x20\x20\x20<p><i\x20class=\"fa\x20fa-diamond\"></i
+SF:></p>\n\x20\x20\x20\x20\x20\x20<nav>\n\x20\x20\x20\x20\x20\x20\x20\x20<
+SF:a\x20class=\"btn\"\x20href=\"GettingStarted\.html\">Get\x20started</a>\
+SF:n\x20\x20\x20\x20\x20\x20</nav>\n\x20\x20\x20\x20</div>\n\x20\x20</div>
+SF:\n</header>\n\n<section\x20id=\"greeting\">\n\x20\x20<div\x20class=\"co
+SF:ntainer\">\n\x20\x20\x20\x20<div\x20class=\"content-wrap\">\n\x20\x20\x
+SF:20\x20\x20\x20<h1>Stratosphere<br>We\x20protect\x20your\x20credit\.</h1
+SF:>\n\x20\x20\x20\x20\x20\x20<a\x20class=\"btn\"\x20href=\"GettingStarted
+SF:\.html\">Get\x20started\x20now</a>\n\x20\x20\x20\x20\x20\x20<p><i\x20cl
+SF:ass=\"ar")%r(HTTPOptions,8A,"HTTP/1\.1\x20200\x20\r\nAllow:\x20GET,\x20
+SF:HEAD,\x20POST,\x20PUT,\x20DELETE,\x20OPTIONS\r\nContent-Length:\x200\r\
+SF:nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:25\x20GMT\r\nConnection:\x
+SF:20close\r\n\r\n")%r(RTSPRequest,6A,"HTTP/1\.1\x20400\x20\r\nTransfer-En
+SF:coding:\x20chunked\r\nDate:\x20Tue,\x2022\x20May\x202018\x2015:41:25\x2
+SF:0GMT\r\nConnection:\x20close\r\n\r\n0\r\n\r\n")%r(FourOhFourRequest,4F6
+SF:,"HTTP/1\.1\x20404\x20\r\nContent-Type:\x20text/html;charset=utf-8\r\nC
+SF:ontent-Language:\x20en\r\nContent-Length:\x201114\r\nDate:\x20Tue,\x202
+SF:2\x20May\x202018\x2015:41:25\x20GMT\r\nConnection:\x20close\r\n\r\n<!do
+SF:ctype\x20html><html\x20lang=\"en\"><head><title>HTTP\x20Status\x20404\x
+SF:20\xe2\x80\x93\x20Not\x20Found</title><style\x20type=\"text/css\">h1\x2
+SF:0{font-family:Tahoma,Arial,sans-serif;color:white;background-color:#525
+SF:D76;font-size:22px;}\x20h2\x20{font-family:Tahoma,Arial,sans-serif;colo
+SF:r:white;background-color:#525D76;font-size:16px;}\x20h3\x20{font-family
+SF::Tahoma,Arial,sans-serif;color:white;background-color:#525D76;font-size
+SF::14px;}\x20body\x20{font-family:Tahoma,Arial,sans-serif;color:black;bac
+SF:kground-color:white;}\x20b\x20{font-family:Tahoma,Arial,sans-serif;colo
+SF:r:white;background-color:#525D76;}\x20p\x20{font-family:Tahoma,Arial,sa
+SF:ns-serif;background:white;color:black;font-size:12px;}\x20a\x20{color:b
+SF:lack;}\x20a\.name\x20{color:black;}\x20\.line\x20{height:1px;background
+SF:-color:#525D76;border:none;}</style></head><body>");
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Tue May 22 17:41:35 2018 -- 1 IP address (1 host up) scanned in 40.39 seconds

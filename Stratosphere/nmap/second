@@ -1,0 +1,7 @@
+
+Starting Nmap 7.01 ( https://nmap.org ) at 2018-05-22 17:38 CEST
+Nmap scan report for 10.10.10.64
+Host is up (0.046s latency).
+All 1000 scanned ports on 10.10.10.64 are open|filtered
+
+Nmap done: 1 IP address (1 host up) scanned in 60.57 seconds
