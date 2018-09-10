@@ -1,0 +1,781 @@
+arix@Poison:/tmp % ./privssec.sh standard
+Assuming the OS is: bsd
+Starting unix-privesc-check v1.6-svn- ( http://pentestmonkey.net/tools/unix-privesc-check )
+
+This script checks file permissions and other settings that could allow
+local users to escalate privileges.
+
+Use of this script is only permitted on systems which you have been granted
+legal permission to perform a security assessment of.  Apart from this 
+condition the GPL v2 applies.
+
+Search the output below for the word 'WARNING'.  If you don't see it then
+this script didn't find any problems.
+
+
+############################################
+Recording hostname
+############################################
+Poison
+
+############################################
+Recording uname
+############################################
+FreeBSD Poison 11.1-RELEASE FreeBSD 11.1-RELEASE #0 r321309: Fri Jul 21 02:08:28 UTC 2017     root@releng2.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC  amd64
+
+############################################
+Recording Interface IP addresses
+############################################
+le0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+	options=8<VLAN_MTU>
+	ether 00:50:56:b9:ba:8c
+	hwaddr 00:50:56:b9:ba:8c
+	inet 10.10.10.84 netmask 0xffffff00 broadcast 10.10.10.255 
+	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+	media: Ethernet autoselect
+	status: active
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> metric 0 mtu 16384
+	options=600003<RXCSUM,TXCSUM,RXCSUM_IPV6,TXCSUM_IPV6>
+	inet6 ::1 prefixlen 128 
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x2 
+	inet 127.0.0.1 netmask 0xff000000 
+	nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
+	groups: lo 
+
+############################################
+Checking if external authentication is allowed in /etc/passwd
+############################################
+No +:... line found in /etc/passwd
+
+############################################
+Checking nsswitch.conf/netsvc.conf for addition authentication methods
+############################################
+[UPC011] WARNING: NIS is used for authentication on this system
+
+############################################
+Checking for writable config files
+############################################
+    Checking if anyone except root can change /etc/passwd
+    Checking if anyone except root can change /etc/group
+    Checking if anyone except root can change /etc/master.passwd
+    Checking if anyone except root can change /etc/inetd.conf
+    Checking if anyone except root can change /etc/crontab
+    Checking if anyone except root can change /etc/fstab
+    Checking if anyone except root can change /etc/profile
+    Checking if anyone except root can change /etc/hosts.equiv
+    Checking if anyone except root can change /etc/master.passwd
+
+############################################
+Checking if /etc/master.passwd is readable
+############################################
+    Checking if anyone except root can read file /etc/master.passwd
+
+############################################
+Checking if /etc/master.passwd is writable
+############################################
+    Checking if anyone except root can change /etc/master.passwd
+
+############################################
+Checking if /etc/passwd is writable
+############################################
+    Checking if anyone except root can change /etc/passwd
+
+############################################
+Checking for password hashes in /etc/passwd
+############################################
+No password hashes found in /etc/passwd
+
+############################################
+Checking account settings
+############################################
+File /etc/master.passwd isn't readable.  Skipping some checks.
+
+############################################
+Checking library directories from /etc/ld.so.conf
+############################################
+File /etc/ld.so.conf not present.  Skipping checks.
+
+############################################
+Checking sudo configuration
+############################################
+File /etc/sudoers not present.  Skipping checks.
+
+############################################
+Checking permissions on swap file(s)
+############################################
+usage: swapon [-F fstab] -aLq | file ...
+
+############################################
+Checking programs run from inittab
+############################################
+File /etc/inittab not present.  Skipping checks.
+
+############################################
+Checking postgres trust relationships
+############################################
+No postgres trusts detected
+
+############################################
+Checking permissions on device files for mounted partitions
+############################################
+Checking device /dev/da0s1a
+    Checking if anyone except root can change /dev/da0s1a
+
+############################################
+Checking cron job programs aren't writable (/etc/crontab)
+############################################
+Crontab path is /etc:/bin:/sbin:/usr/bin:/usr/sbin
+Processing crontab entry: */5	*	*	*	*	root	/usr/libexec/atrun
+    Checking if anyone except root can change /usr/libexec/atrun
+Processing crontab entry: */11	*	*	*	*	operator /usr/libexec/save-entropy
+    Checking if anyone except operator can change /usr/libexec/save-entropy
+Processing crontab entry: 0	*	*	*	*	root	newsyslog
+    Checking if anyone except root can change /usr/sbin/newsyslog
+Processing crontab entry: 1	3	*	*	*	root	periodic daily
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 15	4	*	*	6	root	periodic weekly
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 30	5	1	*	*	root	periodic monthly
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 1,31	0-5	*	*	*	root	adjkerntz -a
+    Checking if anyone except root can change /sbin/adjkerntz
+
+############################################
+Checking cron job programs aren't writable (/var/spool/cron/crontabs)
+############################################
+Directory /var/spool/cron/crontabs is not present.  Skipping checks.
+
+############################################
+Checking cron job programs aren't writable (/var/spool/cron/tabs)
+############################################
+Directory /var/spool/cron/tabs is not present.  Skipping checks.
+
+############################################
+Checking inetd programs aren't writable
+############################################
+
+############################################
+Checking xinetd programs aren't writeable
+############################################
+Directory /etc/xinetd.d not present.  Skipping checks.
+
+############################################
+Checking home directories aren't writable
+############################################
+Processing /etc/passwd line: root:*:0:0:Charlie &:/root:/bin/csh
+    Checking if anyone except root can change /root
+Processing /etc/passwd line: toor:*:0:0:Bourne-again Superuser:/root:
+    Checking if anyone except toor can change /root
+Processing /etc/passwd line: daemon:*:1:1:Owner of many system processes:/root:/usr/sbin/nologin
+    Checking if anyone except daemon can change /root
+Processing /etc/passwd line: operator:*:2:5:System &:/:/usr/sbin/nologin
+    Checking if anyone except operator can change /
+Processing /etc/passwd line: bin:*:3:7:Binaries Commands and Source:/:/usr/sbin/nologin
+    Checking if anyone except bin can change /
+Processing /etc/passwd line: tty:*:4:65533:Tty Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except tty can change /
+Processing /etc/passwd line: kmem:*:5:65533:KMem Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except kmem can change /
+Processing /etc/passwd line: games:*:7:13:Games pseudo-user:/:/usr/sbin/nologin
+    Checking if anyone except games can change /
+Processing /etc/passwd line: news:*:8:8:News Subsystem:/:/usr/sbin/nologin
+    Checking if anyone except news can change /
+Processing /etc/passwd line: man:*:9:9:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
+    Checking if anyone except man can change /usr/share/man
+Processing /etc/passwd line: sshd:*:22:22:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
+    Checking if anyone except sshd can change /var/empty
+Processing /etc/passwd line: smmsp:*:25:25:Sendmail Submission User:/var/spool/clientmqueue:/usr/sbin/nologin
+    Checking if anyone except smmsp can change /var/spool/clientmqueue
+[UPC002] WARNING: /var/spool/clientmqueue is the home directory of smmsp. The group smmsp can write to /var/spool/clientmqueue
+Processing /etc/passwd line: mailnull:*:26:26:Sendmail Default User:/var/spool/mqueue:/usr/sbin/nologin
+    Checking if anyone except mailnull can change /var/spool/mqueue
+Processing /etc/passwd line: bind:*:53:53:Bind Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except bind can change /
+Processing /etc/passwd line: unbound:*:59:59:Unbound DNS Resolver:/var/unbound:/usr/sbin/nologin
+    Checking if anyone except unbound can change /var/unbound
+Processing /etc/passwd line: proxy:*:62:62:Packet Filter pseudo-user:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except proxy can change /nonexistent
+Processing /etc/passwd line: _pflogd:*:64:64:pflogd privsep user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _pflogd can change /var/empty
+Processing /etc/passwd line: _dhcp:*:65:65:dhcp programs:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _dhcp can change /var/empty
+Processing /etc/passwd line: uucp:*:66:66:UUCP pseudo-user:/var/spool/uucppublic:/usr/local/libexec/uucp/uucico
+    Checking if anyone except uucp can change /var/spool/uucppublic
+Processing /etc/passwd line: pop:*:68:6:Post Office Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except pop can change /nonexistent
+Processing /etc/passwd line: auditdistd:*:78:77:Auditdistd unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except auditdistd can change /var/empty
+Processing /etc/passwd line: www:*:80:80:World Wide Web Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except www can change /nonexistent
+Processing /etc/passwd line: _ypldap:*:160:160:YP LDAP unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _ypldap can change /var/empty
+Processing /etc/passwd line: hast:*:845:845:HAST unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except hast can change /var/empty
+Processing /etc/passwd line: nobody:*:65534:65534:Unprivileged user:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except nobody can change /nonexistent
+Processing /etc/passwd line: _tss:*:601:601:TrouSerS user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _tss can change /var/empty
+Processing /etc/passwd line: messagebus:*:556:556:D-BUS Daemon User:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except messagebus can change /nonexistent
+Processing /etc/passwd line: avahi:*:558:558:Avahi Daemon User:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except avahi can change /nonexistent
+Processing /etc/passwd line: cups:*:193:193:Cups Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except cups can change /nonexistent
+Processing /etc/passwd line: charix:*:1001:1001:charix:/home/charix:/bin/csh
+    Checking if anyone except charix can change /home/charix
+
+############################################
+Checking for readable sensitive files in home directories
+############################################
+    Checking if anyone except charix can read file /home/charix/.rhosts
+[UPC006] WARNING: /home/charix/.rhosts is in the home directory of charix. The group charix can read /home/charix/.rhosts
+
+############################################
+Checking SUID/SGID programs
+############################################
+Skipping checks of SUID/SGID programs (it's slow!).  Run again in 'detailed' mode.
+
+############################################
+Checking fscaps programs
+############################################
+
+############################################
+Checking for cleartext subversion passwords in home directories
+############################################
+
+############################################
+Checking for Private SSH Keys in home directories
+############################################
+
+############################################
+Checking for Public SSH Keys in home directories
+############################################
+
+############################################
+Checking classpath permissions for Java processes
+############################################
+
+############################################
+Checking for SSH agents
+############################################
+No SSH agents found
+
+############################################
+Checking for GPG agents
+############################################
+No GPG agents found
+
+############################################
+Checking startup files (init.d / rc.d) aren't writable
+############################################
+Processing startup script /etc/rc.d/DAEMON
+    Checking if anyone except root can change /etc/rc.d/DAEMON
+Processing startup script /etc/rc.d/FILESYSTEMS
+    Checking if anyone except root can change /etc/rc.d/FILESYSTEMS
+Processing startup script /etc/rc.d/LOGIN
+    Checking if anyone except root can change /etc/rc.d/LOGIN
+Processing startup script /etc/rc.d/NETWORKING
+    Checking if anyone except root can change /etc/rc.d/NETWORKING
+Processing startup script /etc/rc.d/SERVERS
+    Checking if anyone except root can change /etc/rc.d/SERVERS
+Processing startup script /etc/rc.d/abi
+    Checking if anyone except root can change /etc/rc.d/abi
+Processing startup script /etc/rc.d/accounting
+    Checking if anyone except root can change /etc/rc.d/accounting
+Processing startup script /etc/rc.d/addswap
+    Checking if anyone except root can change /etc/rc.d/addswap
+Processing startup script /etc/rc.d/adjkerntz
+    Checking if anyone except root can change /etc/rc.d/adjkerntz
+Processing startup script /etc/rc.d/amd
+    Checking if anyone except root can change /etc/rc.d/amd
+Processing startup script /etc/rc.d/apm
+    Checking if anyone except root can change /etc/rc.d/apm
+Processing startup script /etc/rc.d/apmd
+    Checking if anyone except root can change /etc/rc.d/apmd
+Processing startup script /etc/rc.d/archdep
+    Checking if anyone except root can change /etc/rc.d/archdep
+Processing startup script /etc/rc.d/atm1
+    Checking if anyone except root can change /etc/rc.d/atm1
+Processing startup script /etc/rc.d/atm2
+    Checking if anyone except root can change /etc/rc.d/atm2
+Processing startup script /etc/rc.d/atm3
+    Checking if anyone except root can change /etc/rc.d/atm3
+Processing startup script /etc/rc.d/auditd
+    Checking if anyone except root can change /etc/rc.d/auditd
+Processing startup script /etc/rc.d/auditdistd
+    Checking if anyone except root can change /etc/rc.d/auditdistd
+Processing startup script /etc/rc.d/automount
+    Checking if anyone except root can change /etc/rc.d/automount
+Processing startup script /etc/rc.d/automountd
+    Checking if anyone except root can change /etc/rc.d/automountd
+Processing startup script /etc/rc.d/autounmountd
+    Checking if anyone except root can change /etc/rc.d/autounmountd
+Processing startup script /etc/rc.d/bgfsck
+    Checking if anyone except root can change /etc/rc.d/bgfsck
+Processing startup script /etc/rc.d/blacklistd
+    Checking if anyone except root can change /etc/rc.d/blacklistd
+Processing startup script /etc/rc.d/bluetooth
+    Checking if anyone except root can change /etc/rc.d/bluetooth
+Processing startup script /etc/rc.d/bootparams
+    Checking if anyone except root can change /etc/rc.d/bootparams
+Processing startup script /etc/rc.d/bridge
+    Checking if anyone except root can change /etc/rc.d/bridge
+Processing startup script /etc/rc.d/bsnmpd
+    Checking if anyone except root can change /etc/rc.d/bsnmpd
+Processing startup script /etc/rc.d/bthidd
+    Checking if anyone except root can change /etc/rc.d/bthidd
+Processing startup script /etc/rc.d/ccd
+    Checking if anyone except root can change /etc/rc.d/ccd
+Processing startup script /etc/rc.d/cleanvar
+    Checking if anyone except root can change /etc/rc.d/cleanvar
+Processing startup script /etc/rc.d/cleartmp
+    Checking if anyone except root can change /etc/rc.d/cleartmp
+Processing startup script /etc/rc.d/cron
+    Checking if anyone except root can change /etc/rc.d/cron
+Processing startup script /etc/rc.d/ctld
+    Checking if anyone except root can change /etc/rc.d/ctld
+Processing startup script /etc/rc.d/ddb
+    Checking if anyone except root can change /etc/rc.d/ddb
+Processing startup script /etc/rc.d/defaultroute
+    Checking if anyone except root can change /etc/rc.d/defaultroute
+Processing startup script /etc/rc.d/devd
+    Checking if anyone except root can change /etc/rc.d/devd
+Processing startup script /etc/rc.d/devfs
+    Checking if anyone except root can change /etc/rc.d/devfs
+Processing startup script /etc/rc.d/dhclient
+    Checking if anyone except root can change /etc/rc.d/dhclient
+Processing startup script /etc/rc.d/dmesg
+    Checking if anyone except root can change /etc/rc.d/dmesg
+Processing startup script /etc/rc.d/dumpon
+    Checking if anyone except root can change /etc/rc.d/dumpon
+Processing startup script /etc/rc.d/fsck
+    Checking if anyone except root can change /etc/rc.d/fsck
+Processing startup script /etc/rc.d/ftp-proxy
+    Checking if anyone except root can change /etc/rc.d/ftp-proxy
+Processing startup script /etc/rc.d/ftpd
+    Checking if anyone except root can change /etc/rc.d/ftpd
+Processing startup script /etc/rc.d/gbde
+    Checking if anyone except root can change /etc/rc.d/gbde
+Processing startup script /etc/rc.d/geli
+    Checking if anyone except root can change /etc/rc.d/geli
+Processing startup script /etc/rc.d/geli2
+    Checking if anyone except root can change /etc/rc.d/geli2
+Processing startup script /etc/rc.d/gptboot
+    Checking if anyone except root can change /etc/rc.d/gptboot
+Processing startup script /etc/rc.d/growfs
+    Checking if anyone except root can change /etc/rc.d/growfs
+Processing startup script /etc/rc.d/gssd
+    Checking if anyone except root can change /etc/rc.d/gssd
+Processing startup script /etc/rc.d/hastd
+    Checking if anyone except root can change /etc/rc.d/hastd
+Processing startup script /etc/rc.d/hcsecd
+    Checking if anyone except root can change /etc/rc.d/hcsecd
+Processing startup script /etc/rc.d/hostapd
+    Checking if anyone except root can change /etc/rc.d/hostapd
+Processing startup script /etc/rc.d/hostid
+    Checking if anyone except root can change /etc/rc.d/hostid
+Processing startup script /etc/rc.d/hostid_save
+    Checking if anyone except root can change /etc/rc.d/hostid_save
+Processing startup script /etc/rc.d/hostname
+    Checking if anyone except root can change /etc/rc.d/hostname
+Processing startup script /etc/rc.d/inetd
+    Checking if anyone except root can change /etc/rc.d/inetd
+Processing startup script /etc/rc.d/iovctl
+    Checking if anyone except root can change /etc/rc.d/iovctl
+Processing startup script /etc/rc.d/ip6addrctl
+    Checking if anyone except root can change /etc/rc.d/ip6addrctl
+Processing startup script /etc/rc.d/ipfilter
+    Checking if anyone except root can change /etc/rc.d/ipfilter
+Processing startup script /etc/rc.d/ipfs
+    Checking if anyone except root can change /etc/rc.d/ipfs
+Processing startup script /etc/rc.d/ipfw
+    Checking if anyone except root can change /etc/rc.d/ipfw
+Processing startup script /etc/rc.d/ipmon
+    Checking if anyone except root can change /etc/rc.d/ipmon
+Processing startup script /etc/rc.d/ipnat
+    Checking if anyone except root can change /etc/rc.d/ipnat
+Processing startup script /etc/rc.d/ipropd_master
+    Checking if anyone except root can change /etc/rc.d/ipropd_master
+Processing startup script /etc/rc.d/ipropd_slave
+    Checking if anyone except root can change /etc/rc.d/ipropd_slave
+Processing startup script /etc/rc.d/ipsec
+    Checking if anyone except root can change /etc/rc.d/ipsec
+Processing startup script /etc/rc.d/iscsictl
+    Checking if anyone except root can change /etc/rc.d/iscsictl
+Processing startup script /etc/rc.d/iscsid
+    Checking if anyone except root can change /etc/rc.d/iscsid
+Processing startup script /etc/rc.d/jail
+    Checking if anyone except root can change /etc/rc.d/jail
+Processing startup script /etc/rc.d/kadmind
+    Checking if anyone except root can change /etc/rc.d/kadmind
+Processing startup script /etc/rc.d/kdc
+    Checking if anyone except root can change /etc/rc.d/kdc
+Processing startup script /etc/rc.d/keyserv
+    Checking if anyone except root can change /etc/rc.d/keyserv
+Processing startup script /etc/rc.d/kfd
+    Checking if anyone except root can change /etc/rc.d/kfd
+Processing startup script /etc/rc.d/kld
+    Checking if anyone except root can change /etc/rc.d/kld
+Processing startup script /etc/rc.d/kldxref
+    Checking if anyone except root can change /etc/rc.d/kldxref
+Processing startup script /etc/rc.d/kpasswdd
+    Checking if anyone except root can change /etc/rc.d/kpasswdd
+Processing startup script /etc/rc.d/ldconfig
+    Checking if anyone except root can change /etc/rc.d/ldconfig
+Processing startup script /etc/rc.d/local
+    Checking if anyone except root can change /etc/rc.d/local
+Processing startup script /etc/rc.d/local_unbound
+    Checking if anyone except root can change /etc/rc.d/local_unbound
+Processing startup script /etc/rc.d/localpkg
+    Checking if anyone except root can change /etc/rc.d/localpkg
+Processing startup script /etc/rc.d/lockd
+    Checking if anyone except root can change /etc/rc.d/lockd
+Processing startup script /etc/rc.d/lpd
+    Checking if anyone except root can change /etc/rc.d/lpd
+Processing startup script /etc/rc.d/mdconfig
+    Checking if anyone except root can change /etc/rc.d/mdconfig
+Processing startup script /etc/rc.d/mdconfig2
+    Checking if anyone except root can change /etc/rc.d/mdconfig2
+Processing startup script /etc/rc.d/mixer
+    Checking if anyone except root can change /etc/rc.d/mixer
+Processing startup script /etc/rc.d/motd
+    Checking if anyone except root can change /etc/rc.d/motd
+Processing startup script /etc/rc.d/mountcritlocal
+    Checking if anyone except root can change /etc/rc.d/mountcritlocal
+Processing startup script /etc/rc.d/mountcritremote
+    Checking if anyone except root can change /etc/rc.d/mountcritremote
+Processing startup script /etc/rc.d/mountd
+    Checking if anyone except root can change /etc/rc.d/mountd
+Processing startup script /etc/rc.d/mountlate
+    Checking if anyone except root can change /etc/rc.d/mountlate
+Processing startup script /etc/rc.d/moused
+    Checking if anyone except root can change /etc/rc.d/moused
+Processing startup script /etc/rc.d/msgs
+    Checking if anyone except root can change /etc/rc.d/msgs
+Processing startup script /etc/rc.d/natd
+    Checking if anyone except root can change /etc/rc.d/natd
+Processing startup script /etc/rc.d/netif
+    Checking if anyone except root can change /etc/rc.d/netif
+Processing startup script /etc/rc.d/netoptions
+    Checking if anyone except root can change /etc/rc.d/netoptions
+Processing startup script /etc/rc.d/netwait
+    Checking if anyone except root can change /etc/rc.d/netwait
+Processing startup script /etc/rc.d/newsyslog
+    Checking if anyone except root can change /etc/rc.d/newsyslog
+Processing startup script /etc/rc.d/nfscbd
+    Checking if anyone except root can change /etc/rc.d/nfscbd
+Processing startup script /etc/rc.d/nfsclient
+    Checking if anyone except root can change /etc/rc.d/nfsclient
+Processing startup script /etc/rc.d/nfsd
+    Checking if anyone except root can change /etc/rc.d/nfsd
+Processing startup script /etc/rc.d/nfsuserd
+    Checking if anyone except root can change /etc/rc.d/nfsuserd
+Processing startup script /etc/rc.d/nisdomain
+    Checking if anyone except root can change /etc/rc.d/nisdomain
+Processing startup script /etc/rc.d/nscd
+    Checking if anyone except root can change /etc/rc.d/nscd
+Processing startup script /etc/rc.d/nsswitch
+    Checking if anyone except root can change /etc/rc.d/nsswitch
+Processing startup script /etc/rc.d/ntpd
+    Checking if anyone except root can change /etc/rc.d/ntpd
+Processing startup script /etc/rc.d/ntpdate
+    Checking if anyone except root can change /etc/rc.d/ntpdate
+Processing startup script /etc/rc.d/othermta
+    Checking if anyone except root can change /etc/rc.d/othermta
+Processing startup script /etc/rc.d/pf
+    Checking if anyone except root can change /etc/rc.d/pf
+Processing startup script /etc/rc.d/pflog
+    Checking if anyone except root can change /etc/rc.d/pflog
+Processing startup script /etc/rc.d/pfsync
+    Checking if anyone except root can change /etc/rc.d/pfsync
+Processing startup script /etc/rc.d/power_profile
+    Checking if anyone except root can change /etc/rc.d/power_profile
+Processing startup script /etc/rc.d/powerd
+    Checking if anyone except root can change /etc/rc.d/powerd
+Processing startup script /etc/rc.d/ppp
+    Checking if anyone except root can change /etc/rc.d/ppp
+Processing startup script /etc/rc.d/pppoed
+    Checking if anyone except root can change /etc/rc.d/pppoed
+Processing startup script /etc/rc.d/pwcheck
+    Checking if anyone except root can change /etc/rc.d/pwcheck
+Processing startup script /etc/rc.d/quota
+    Checking if anyone except root can change /etc/rc.d/quota
+Processing startup script /etc/rc.d/random
+    Checking if anyone except root can change /etc/rc.d/random
+Processing startup script /etc/rc.d/rarpd
+    Checking if anyone except root can change /etc/rc.d/rarpd
+Processing startup script /etc/rc.d/rctl
+    Checking if anyone except root can change /etc/rc.d/rctl
+Processing startup script /etc/rc.d/resolv
+    Checking if anyone except root can change /etc/rc.d/resolv
+Processing startup script /etc/rc.d/rfcomm_pppd_server
+    Checking if anyone except root can change /etc/rc.d/rfcomm_pppd_server
+Processing startup script /etc/rc.d/root
+    Checking if anyone except root can change /etc/rc.d/root
+Processing startup script /etc/rc.d/route6d
+    Checking if anyone except root can change /etc/rc.d/route6d
+Processing startup script /etc/rc.d/routed
+    Checking if anyone except root can change /etc/rc.d/routed
+Processing startup script /etc/rc.d/routing
+    Checking if anyone except root can change /etc/rc.d/routing
+Processing startup script /etc/rc.d/rpcbind
+    Checking if anyone except root can change /etc/rc.d/rpcbind
+Processing startup script /etc/rc.d/rtadvd
+    Checking if anyone except root can change /etc/rc.d/rtadvd
+Processing startup script /etc/rc.d/rtsold
+    Checking if anyone except root can change /etc/rc.d/rtsold
+Processing startup script /etc/rc.d/rwho
+    Checking if anyone except root can change /etc/rc.d/rwho
+Processing startup script /etc/rc.d/savecore
+    Checking if anyone except root can change /etc/rc.d/savecore
+Processing startup script /etc/rc.d/sdpd
+    Checking if anyone except root can change /etc/rc.d/sdpd
+Processing startup script /etc/rc.d/securelevel
+    Checking if anyone except root can change /etc/rc.d/securelevel
+Processing startup script /etc/rc.d/sendmail
+    Checking if anyone except root can change /etc/rc.d/sendmail
+Processing startup script /etc/rc.d/serial
+    Checking if anyone except root can change /etc/rc.d/serial
+Processing startup script /etc/rc.d/sppp
+    Checking if anyone except root can change /etc/rc.d/sppp
+Processing startup script /etc/rc.d/sshd
+    Checking if anyone except root can change /etc/rc.d/sshd
+Processing startup script /etc/rc.d/statd
+    Checking if anyone except root can change /etc/rc.d/statd
+Processing startup script /etc/rc.d/static_arp
+    Checking if anyone except root can change /etc/rc.d/static_arp
+Processing startup script /etc/rc.d/static_ndp
+    Checking if anyone except root can change /etc/rc.d/static_ndp
+Processing startup script /etc/rc.d/stf
+    Checking if anyone except root can change /etc/rc.d/stf
+Processing startup script /etc/rc.d/swap
+    Checking if anyone except root can change /etc/rc.d/swap
+Processing startup script /etc/rc.d/swaplate
+    Checking if anyone except root can change /etc/rc.d/swaplate
+Processing startup script /etc/rc.d/syscons
+    Checking if anyone except root can change /etc/rc.d/syscons
+Processing startup script /etc/rc.d/sysctl
+    Checking if anyone except root can change /etc/rc.d/sysctl
+Processing startup script /etc/rc.d/syslogd
+    Checking if anyone except root can change /etc/rc.d/syslogd
+Processing startup script /etc/rc.d/timed
+    Checking if anyone except root can change /etc/rc.d/timed
+Processing startup script /etc/rc.d/tmp
+    Checking if anyone except root can change /etc/rc.d/tmp
+Processing startup script /etc/rc.d/ubthidhci
+    Checking if anyone except root can change /etc/rc.d/ubthidhci
+Processing startup script /etc/rc.d/ugidfw
+    Checking if anyone except root can change /etc/rc.d/ugidfw
+Processing startup script /etc/rc.d/utx
+    Checking if anyone except root can change /etc/rc.d/utx
+Processing startup script /etc/rc.d/var
+    Checking if anyone except root can change /etc/rc.d/var
+Processing startup script /etc/rc.d/virecover
+    Checking if anyone except root can change /etc/rc.d/virecover
+Processing startup script /etc/rc.d/watchdogd
+    Checking if anyone except root can change /etc/rc.d/watchdogd
+Processing startup script /etc/rc.d/wpa_supplicant
+    Checking if anyone except root can change /etc/rc.d/wpa_supplicant
+Processing startup script /etc/rc.d/ypbind
+    Checking if anyone except root can change /etc/rc.d/ypbind
+Processing startup script /etc/rc.d/ypldap
+    Checking if anyone except root can change /etc/rc.d/ypldap
+Processing startup script /etc/rc.d/yppasswdd
+    Checking if anyone except root can change /etc/rc.d/yppasswdd
+Processing startup script /etc/rc.d/ypserv
+    Checking if anyone except root can change /etc/rc.d/ypserv
+Processing startup script /etc/rc.d/ypset
+    Checking if anyone except root can change /etc/rc.d/ypset
+Processing startup script /etc/rc.d/ypupdated
+    Checking if anyone except root can change /etc/rc.d/ypupdated
+Processing startup script /etc/rc.d/ypxfrd
+    Checking if anyone except root can change /etc/rc.d/ypxfrd
+Processing startup script /etc/rc.d/zfs
+    Checking if anyone except root can change /etc/rc.d/zfs
+Processing startup script /etc/rc.d/zfsbe
+    Checking if anyone except root can change /etc/rc.d/zfsbe
+Processing startup script /etc/rc.d/zfsd
+    Checking if anyone except root can change /etc/rc.d/zfsd
+Processing startup script /etc/rc.d/zvol
+    Checking if anyone except root can change /etc/rc.d/zvol
+Processing startup script /usr/local/etc/rc.d/apache24
+    Checking if anyone except root can change /usr/local/etc/rc.d/apache24
+Processing startup script /usr/local/etc/rc.d/avahi-daemon
+    Checking if anyone except root can change /usr/local/etc/rc.d/avahi-daemon
+Processing startup script /usr/local/etc/rc.d/avahi-dnsconfd
+    Checking if anyone except root can change /usr/local/etc/rc.d/avahi-dnsconfd
+Processing startup script /usr/local/etc/rc.d/cupsd
+    Checking if anyone except root can change /usr/local/etc/rc.d/cupsd
+Processing startup script /usr/local/etc/rc.d/dbus
+    Checking if anyone except root can change /usr/local/etc/rc.d/dbus
+Processing startup script /usr/local/etc/rc.d/htcacheclean
+    Checking if anyone except root can change /usr/local/etc/rc.d/htcacheclean
+Processing startup script /usr/local/etc/rc.d/php-fpm
+    Checking if anyone except root can change /usr/local/etc/rc.d/php-fpm
+Processing startup script /usr/local/etc/rc.d/tcsd
+    Checking if anyone except root can change /usr/local/etc/rc.d/tcsd
+Processing startup script /usr/local/etc/rc.d/tpmd
+    Checking if anyone except root can change /usr/local/etc/rc.d/tpmd
+Processing startup script /usr/local/etc/rc.d/vmware-guestd
+    Checking if anyone except root can change /usr/local/etc/rc.d/vmware-guestd
+Processing startup script /usr/local/etc/rc.d/vmware-kmod
+    Checking if anyone except root can change /usr/local/etc/rc.d/vmware-kmod
+Processing startup script /usr/local/etc/rc.d/vncserver
+    Checking if anyone except root can change /usr/local/etc/rc.d/vncserver
+
+############################################
+Checking if running programs are writable
+############################################
+ERROR: Can't find absolute path for COMMAND.  Skipping.
+    Checking if anyone except charix can change /bin/sh
+ERROR: Can't find absolute path for [intr].  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for [kernel].  Skipping.
+    Checking if anyone except root can change /sbin/init
+ERROR: Can't find absolute path for [crypto].  Skipping.
+ERROR: Can't find absolute path for [crypto.  Skipping.
+ERROR: Can't find absolute path for [cam].  Skipping.
+ERROR: Can't find absolute path for [mpt_recovery0].  Skipping.
+ERROR: Can't find absolute path for [sctp_iterator].  Skipping.
+ERROR: Can't find absolute path for [rand_harvestq].  Skipping.
+ERROR: Can't find absolute path for [soaiod1].  Skipping.
+ERROR: Can't find absolute path for [soaiod2].  Skipping.
+ERROR: Can't find absolute path for [audit].  Skipping.
+ERROR: Can't find absolute path for [idle].  Skipping.
+ERROR: Can't find absolute path for [geom].  Skipping.
+ERROR: Can't find absolute path for [usb].  Skipping.
+ERROR: Can't find absolute path for [soaiod3].  Skipping.
+ERROR: Can't find absolute path for [soaiod4].  Skipping.
+ERROR: Can't find absolute path for [pagedaemon].  Skipping.
+ERROR: Can't find absolute path for [vmdaemon].  Skipping.
+ERROR: Can't find absolute path for [pagezero].  Skipping.
+ERROR: Can't find absolute path for [bufdaemon].  Skipping.
+ERROR: Can't find absolute path for [bufspacedaemon].  Skipping.
+ERROR: Can't find absolute path for [syncer].  Skipping.
+ERROR: Can't find absolute path for [vnlru].  Skipping.
+    Checking if anyone except root can change /sbin/devd
+    Checking if anyone except root can change /usr/sbin/syslogd
+    Checking if anyone except root can change /usr/local/bin/vmtoolsd
+    Checking if anyone except root can change /usr/sbin/sshd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except root can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sendmail:.  Skipping.
+ERROR: Can't find absolute path for sendmail:.  Skipping.
+    Checking if anyone except root can change /usr/sbin/cron
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for Xvnc.  Skipping.
+ERROR: Can't find absolute path for xterm.  Skipping.
+ERROR: Can't find absolute path for twm.  Skipping.
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for Xvnc.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for ps.  Skipping.
+    Checking if anyone except charix can change /bin/sh
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for chpass.  Skipping.
+ERROR: Can't find absolute path for vi.  Skipping.
+ERROR: Can't find absolute path for vim.  Skipping.
+    Checking if anyone except charix can change /bin/sh
+ERROR: Can't find absolute path for less.  Skipping.
+    Checking if anyone except charix can change /bin/csh
+    Checking if anyone except charix can change /bin/sh
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for Xvnc.  Skipping.
+ERROR: Can't find absolute path for xterm.  Skipping.
+ERROR: Can't find absolute path for twm.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+
+############################################
+Checking exploit mitigation
+############################################

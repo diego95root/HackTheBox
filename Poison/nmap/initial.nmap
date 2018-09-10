@@ -1,0 +1,24 @@
+# Nmap 7.01 scan initiated Fri May 25 16:45:13 2018 as: nmap -sV -sC -oA nmap/initial 10.10.10.84
+Nmap scan report for 10.10.10.84
+Host is up (0.062s latency).
+Not shown: 995 closed ports
+PORT     STATE SERVICE VERSION
+22/tcp   open  ssh     OpenSSH 7.2 (FreeBSD 20161230; protocol 2.0)
+| ssh-hostkey: 
+|   2048 e3:3b:7d:3c:8f:4b:8c:f9:cd:7f:d2:3a:ce:2d:ff:bb (RSA)
+|_  256 4c:e8:c6:02:bd:fc:83:ff:c9:80:01:54:7d:22:81:72 (ECDSA)
+80/tcp   open  http    Apache httpd 2.4.29 ((FreeBSD) PHP/5.6.32)
+|_http-server-header: Apache/2.4.29 (FreeBSD) PHP/5.6.32
+|_http-title: Site doesn't have a title (text/html; charset=UTF-8).
+5802/tcp open  http    Bacula http config
+5902/tcp open  vnc     VNC (protocol 3.8)
+| vnc-info: 
+|   Protocol version: 3.8
+|   Security types: 
+|     VNC Authentication (2)
+|_    Tight (16)
+6002/tcp open  X11     (access denied)
+Service Info: OS: FreeBSD; CPE: cpe:/o:freebsd:freebsd
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri May 25 16:46:20 2018 -- 1 IP address (1 host up) scanned in 66.47 seconds

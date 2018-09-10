@@ -10,10 +10,11 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Sense](https://github.com/diego95root/HackTheBox/tree/master/Sense)
 * [Bashed](https://github.com/diego95root/HackTheBox/tree/master/Bashed)
 * [Stratosphere](https://github.com/diego95root/HackTheBox/tree/master/Stratosphere)
-* [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison) (Not retired yet)
+* [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison)
 * [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
 * [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not retired yet)
+* [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 

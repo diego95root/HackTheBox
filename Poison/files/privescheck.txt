@@ -1,0 +1,1 @@
+charix@Poison:/tmp % ./privssec.sh detailed

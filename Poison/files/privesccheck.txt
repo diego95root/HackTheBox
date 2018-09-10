@@ -1,0 +1,2678 @@
+charix@Poison:/tmp % ./privssec.sh detailed
+Assuming the OS is: bsd
+Starting unix-privesc-check v1.6-svn- ( http://pentestmonkey.net/tools/unix-privesc-check )
+
+This script checks file permissions and other settings that could allow
+local users to escalate privileges.
+
+Use of this script is only permitted on systems which you have been granted
+legal permission to perform a security assessment of.  Apart from this 
+condition the GPL v2 applies.
+
+Search the output below for the word 'WARNING'.  If you don't see it then
+this script didn't find any problems.
+
+
+############################################
+Recording hostname
+############################################
+Poison
+
+############################################
+Recording uname
+############################################
+FreeBSD Poison 11.1-RELEASE FreeBSD 11.1-RELEASE #0 r321309: Fri Jul 21 02:08:28 UTC 2017     root@releng2.nyi.freebsd.org:/usr/obj/usr/src/sys/GENERIC  amd64
+
+############################################
+Recording Interface IP addresses
+############################################
+le0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
+	options=8<VLAN_MTU>
+	ether 00:50:56:b9:ba:8c
+	hwaddr 00:50:56:b9:ba:8c
+	inet 10.10.10.84 netmask 0xffffff00 broadcast 10.10.10.255 
+	nd6 options=29<PERFORMNUD,IFDISABLED,AUTO_LINKLOCAL>
+	media: Ethernet autoselect
+	status: active
+lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> metric 0 mtu 16384
+	options=600003<RXCSUM,TXCSUM,RXCSUM_IPV6,TXCSUM_IPV6>
+	inet6 ::1 prefixlen 128 
+	inet6 fe80::1%lo0 prefixlen 64 scopeid 0x2 
+	inet 127.0.0.1 netmask 0xff000000 
+	nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
+	groups: lo 
+
+############################################
+Checking if external authentication is allowed in /etc/passwd
+############################################
+No +:... line found in /etc/passwd
+
+############################################
+Checking nsswitch.conf/netsvc.conf for addition authentication methods
+############################################
+[UPC011] WARNING: NIS is used for authentication on this system
+
+############################################
+Checking for writable config files
+############################################
+    Checking if anyone except root can change /etc/passwd
+    Checking if anyone except root can change /etc/group
+    Checking if anyone except root can change /etc/master.passwd
+    Checking if anyone except root can change /etc/inetd.conf
+    Checking if anyone except root can change /etc/crontab
+    Checking if anyone except root can change /etc/fstab
+    Checking if anyone except root can change /etc/profile
+    Checking if anyone except root can change /etc/hosts.equiv
+    Checking if anyone except root can change /etc/master.passwd
+
+############################################
+Checking if /etc/master.passwd is readable
+############################################
+    Checking if anyone except root can read file /etc/master.passwd
+
+############################################
+Checking if /etc/master.passwd is writable
+############################################
+    Checking if anyone except root can change /etc/master.passwd
+
+############################################
+Checking if /etc/passwd is writable
+############################################
+    Checking if anyone except root can change /etc/passwd
+
+############################################
+Checking for password hashes in /etc/passwd
+############################################
+No password hashes found in /etc/passwd
+
+############################################
+Checking account settings
+############################################
+File /etc/master.passwd isn't readable.  Skipping some checks.
+
+############################################
+Checking library directories from /etc/ld.so.conf
+############################################
+File /etc/ld.so.conf not present.  Skipping checks.
+
+############################################
+Checking sudo configuration
+############################################
+File /etc/sudoers not present.  Skipping checks.
+
+############################################
+Checking permissions on swap file(s)
+############################################
+usage: swapon [-F fstab] -aLq | file ...
+
+############################################
+Checking programs run from inittab
+############################################
+File /etc/inittab not present.  Skipping checks.
+
+############################################
+Checking postgres trust relationships
+############################################
+No postgres trusts detected
+
+############################################
+Checking permissions on device files for mounted partitions
+############################################
+Checking device /dev/da0s1a
+    Checking if anyone except root can change /dev/da0s1a
+
+############################################
+Checking cron job programs aren't writable (/etc/crontab)
+############################################
+Crontab path is /etc:/bin:/sbin:/usr/bin:/usr/sbin
+Processing crontab entry: */5	*	*	*	*	root	/usr/libexec/atrun
+    Checking if anyone except root can change /usr/libexec/atrun
+    Checking if anyone except root can change /usr/libexec/atrun:
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /O
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /usr/sbin/sendmail
+    Checking if anyone except root can change /var/at/jobs/
+[UPC001] WARNING: /usr/libexec/atrun is run from crontab as root. /usr/libexec/atrun contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs/
+[UPC001] WARNING: /usr/libexec/atrun is run from crontab as root. /usr/libexec/atrun contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs
+    Checking if anyone except root can change /var/at/spool
+[UPC001] WARNING: /usr/libexec/atrun is run from crontab as root. /usr/libexec/atrun contains the string /var/at/spool. The user daemon can write to /var/at/spool
+Processing crontab entry: */11	*	*	*	*	operator /usr/libexec/save-entropy
+    Checking if anyone except operator can change /usr/libexec/save-entropy
+    Checking if anyone except operator can change /binx0a/usr/bin
+    Checking if anyone except operator can change /dev/null
+[UPC002] WARNING: /usr/libexec/save-entropy is run from crontab as operator. /usr/libexec/save-entropy contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/libexec/save-entropy is run from crontab as operator. /usr/libexec/save-entropy contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except operator can change /dev/random
+    Checking if anyone except operator can change /sbin/sysctl
+    Checking if anyone except operator can change /var/db/entropyx0a
+Processing crontab entry: 0	*	*	*	*	root	newsyslog
+    Checking if anyone except root can change /usr/sbin/newsyslog
+Processing crontab entry: 1	3	*	*	*	root	periodic daily
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 15	4	*	*	6	root	periodic weekly
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 30	5	1	*	*	root	periodic monthly
+    Checking if anyone except root can change /usr/sbin/periodic
+Processing crontab entry: 1,31	0-5	*	*	*	root	adjkerntz -a
+    Checking if anyone except root can change /sbin/adjkerntz
+
+############################################
+Checking cron job programs aren't writable (/var/spool/cron/crontabs)
+############################################
+Directory /var/spool/cron/crontabs is not present.  Skipping checks.
+
+############################################
+Checking cron job programs aren't writable (/var/spool/cron/tabs)
+############################################
+Directory /var/spool/cron/tabs is not present.  Skipping checks.
+
+############################################
+Checking inetd programs aren't writable
+############################################
+
+############################################
+Checking xinetd programs aren't writeable
+############################################
+Directory /etc/xinetd.d not present.  Skipping checks.
+
+############################################
+Checking home directories aren't writable
+############################################
+Processing /etc/passwd line: root:*:0:0:Charlie &:/root:/bin/csh
+    Checking if anyone except root can change /root
+Processing /etc/passwd line: toor:*:0:0:Bourne-again Superuser:/root:
+    Checking if anyone except toor can change /root
+Processing /etc/passwd line: daemon:*:1:1:Owner of many system processes:/root:/usr/sbin/nologin
+    Checking if anyone except daemon can change /root
+Processing /etc/passwd line: operator:*:2:5:System &:/:/usr/sbin/nologin
+    Checking if anyone except operator can change /
+Processing /etc/passwd line: bin:*:3:7:Binaries Commands and Source:/:/usr/sbin/nologin
+    Checking if anyone except bin can change /
+Processing /etc/passwd line: tty:*:4:65533:Tty Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except tty can change /
+Processing /etc/passwd line: kmem:*:5:65533:KMem Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except kmem can change /
+Processing /etc/passwd line: games:*:7:13:Games pseudo-user:/:/usr/sbin/nologin
+    Checking if anyone except games can change /
+Processing /etc/passwd line: news:*:8:8:News Subsystem:/:/usr/sbin/nologin
+    Checking if anyone except news can change /
+Processing /etc/passwd line: man:*:9:9:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
+    Checking if anyone except man can change /usr/share/man
+Processing /etc/passwd line: sshd:*:22:22:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
+    Checking if anyone except sshd can change /var/empty
+Processing /etc/passwd line: smmsp:*:25:25:Sendmail Submission User:/var/spool/clientmqueue:/usr/sbin/nologin
+    Checking if anyone except smmsp can change /var/spool/clientmqueue
+[UPC002] WARNING: /var/spool/clientmqueue is the home directory of smmsp. The group smmsp can write to /var/spool/clientmqueue
+Processing /etc/passwd line: mailnull:*:26:26:Sendmail Default User:/var/spool/mqueue:/usr/sbin/nologin
+    Checking if anyone except mailnull can change /var/spool/mqueue
+Processing /etc/passwd line: bind:*:53:53:Bind Sandbox:/:/usr/sbin/nologin
+    Checking if anyone except bind can change /
+Processing /etc/passwd line: unbound:*:59:59:Unbound DNS Resolver:/var/unbound:/usr/sbin/nologin
+    Checking if anyone except unbound can change /var/unbound
+Processing /etc/passwd line: proxy:*:62:62:Packet Filter pseudo-user:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except proxy can change /nonexistent
+Processing /etc/passwd line: _pflogd:*:64:64:pflogd privsep user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _pflogd can change /var/empty
+Processing /etc/passwd line: _dhcp:*:65:65:dhcp programs:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _dhcp can change /var/empty
+Processing /etc/passwd line: uucp:*:66:66:UUCP pseudo-user:/var/spool/uucppublic:/usr/local/libexec/uucp/uucico
+    Checking if anyone except uucp can change /var/spool/uucppublic
+Processing /etc/passwd line: pop:*:68:6:Post Office Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except pop can change /nonexistent
+Processing /etc/passwd line: auditdistd:*:78:77:Auditdistd unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except auditdistd can change /var/empty
+Processing /etc/passwd line: www:*:80:80:World Wide Web Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except www can change /nonexistent
+Processing /etc/passwd line: _ypldap:*:160:160:YP LDAP unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _ypldap can change /var/empty
+Processing /etc/passwd line: hast:*:845:845:HAST unprivileged user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except hast can change /var/empty
+Processing /etc/passwd line: nobody:*:65534:65534:Unprivileged user:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except nobody can change /nonexistent
+Processing /etc/passwd line: _tss:*:601:601:TrouSerS user:/var/empty:/usr/sbin/nologin
+    Checking if anyone except _tss can change /var/empty
+Processing /etc/passwd line: messagebus:*:556:556:D-BUS Daemon User:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except messagebus can change /nonexistent
+Processing /etc/passwd line: avahi:*:558:558:Avahi Daemon User:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except avahi can change /nonexistent
+Processing /etc/passwd line: cups:*:193:193:Cups Owner:/nonexistent:/usr/sbin/nologin
+    Checking if anyone except cups can change /nonexistent
+Processing /etc/passwd line: charix:*:1001:1001:charix:/home/charix:/bin/csh
+    Checking if anyone except charix can change /home/charix
+
+############################################
+Checking for readable sensitive files in home directories
+############################################
+    Checking if anyone except charix can read file /home/charix/.rhosts
+[UPC006] WARNING: /home/charix/.rhosts is in the home directory of charix. The group charix can read /home/charix/.rhosts
+
+############################################
+Checking SUID/SGID programs
+############################################
+Checking SGID-kmem program /usr/sbin/trpt: -r-xr-sr-x  1 root  kmem  11800 Jul 21  2017 /usr/sbin/trpt
+    Checking if anyone except root can change /usr/sbin/trpt:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/kmem
+Checking SUID-root program /usr/sbin/traceroute6: -r-sr-xr-x  1 root  wheel  26736 Jul 21  2017 /usr/sbin/traceroute6
+    Checking if anyone except root can change /usr/sbin/traceroute6:
+    Checking if anyone except root can change /lib/libipsec.so.4
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /5
+    Checking if anyone except root can change /tcp
+Checking SUID-root program /usr/sbin/authpf-noip: -r-sr-sr-x  2 root  authpf  24312 Jul 21  2017 /usr/sbin/authpf-noip
+    Checking if anyone except root can change /usr/sbin/authpf-noip:
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/pf
+    Checking if anyone except root can change /etc/authpf/banned
+    Checking if anyone except root can change /etc/authpf/users
+    Checking if anyone except root can change /ipsrc
+    Checking if anyone except root can change /ruleset
+    Checking if anyone except root can change /sbin/pfctl
+    Checking if anyone except root can change /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf-noip
+    Checking if anyone except root can change /var/authpf
+[UPC002] WARNING: /usr/sbin/authpf-noip is SUID root. /usr/sbin/authpf-noip contains the string /var/authpf. The group authpf can write to /var/authpf
+Checking SGID-authpf program /usr/sbin/authpf-noip: -r-sr-sr-x  2 root  authpf  24312 Jul 21  2017 /usr/sbin/authpf-noip
+    Checking if anyone except root can change /usr/sbin/authpf-noip:
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/pf
+    Checking if anyone except root can change /etc/authpf/banned
+    Checking if anyone except root can change /etc/authpf/users
+    Checking if anyone except root can change /ipsrc
+    Checking if anyone except root can change /ruleset
+    Checking if anyone except root can change /sbin/pfctl
+    Checking if anyone except root can change /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf-noip
+    Checking if anyone except root can change /var/authpf
+[UPC002] WARNING: /usr/sbin/authpf-noip is SGID authpf. /usr/sbin/authpf-noip contains the string /var/authpf. The group authpf can write to /var/authpf
+Checking SUID-root program /usr/sbin/traceroute: -r-sr-xr-x  1 root  wheel  32808 Jul 21  2017 /usr/sbin/traceroute
+    Checking if anyone except root can change /usr/sbin/traceroute:
+    Checking if anyone except root can change /lib/libipsec.so.4
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/sbin/traceroute is SUID root. /usr/sbin/traceroute contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/sbin/traceroute is SUID root. /usr/sbin/traceroute contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /tcp
+Checking SUID-root program /usr/sbin/timedc: -r-sr-xr-x  1 root  wheel  21512 Jul 21  2017 /usr/sbin/timedc
+    Checking if anyone except root can change /usr/sbin/timedc:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /udpx0a
+Checking SUID-root program /usr/sbin/authpf: -r-sr-sr-x  2 root  authpf  24312 Jul 21  2017 /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf:
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/pf
+    Checking if anyone except root can change /etc/authpf/banned
+    Checking if anyone except root can change /etc/authpf/users
+    Checking if anyone except root can change /ipsrc
+    Checking if anyone except root can change /ruleset
+    Checking if anyone except root can change /sbin/pfctl
+    Checking if anyone except root can change /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf-noip
+    Checking if anyone except root can change /var/authpf
+[UPC002] WARNING: /usr/sbin/authpf is SUID root. /usr/sbin/authpf contains the string /var/authpf. The group authpf can write to /var/authpf
+Checking SGID-authpf program /usr/sbin/authpf: -r-sr-sr-x  2 root  authpf  24312 Jul 21  2017 /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf:
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/pf
+    Checking if anyone except root can change /etc/authpf/banned
+    Checking if anyone except root can change /etc/authpf/users
+    Checking if anyone except root can change /ipsrc
+    Checking if anyone except root can change /ruleset
+    Checking if anyone except root can change /sbin/pfctl
+    Checking if anyone except root can change /usr/sbin/authpf
+    Checking if anyone except root can change /usr/sbin/authpf-noip
+    Checking if anyone except root can change /var/authpf
+[UPC002] WARNING: /usr/sbin/authpf is SGID authpf. /usr/sbin/authpf contains the string /var/authpf. The group authpf can write to /var/authpf
+Checking SUID-root program /usr/sbin/ppp: -r-sr-xr--  1 root  network  433872 Jul 21  2017 /usr/sbin/ppp
+    Checking if anyone except root can change /usr/sbin/ppp:
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /3Com
+    Checking if anyone except root can change /CTS
+    Checking if anyone except root can change /DEFLATE
+    Checking if anyone except root can change /ESTABLISH
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /IP
+    Checking if anyone except root can change /LCP
+    Checking if anyone except root can change /RTS
+    Checking if anyone except root can change /SHORTSEQ
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /cuau0
+    Checking if anyone except root can change /dH
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /dev/cuau0
+    Checking if anyone except root can change /dev/cuau1
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/sbin/ppp is SUID root. /usr/sbin/ppp contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/sbin/ppp is SUID root. /usr/sbin/ppp contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/tty
+[UPC001] WARNING: /usr/sbin/ppp is SUID root. /usr/sbin/ppp contains the string /dev/tty. The user charix can write to /dev/tty
+[UPC002] WARNING: /usr/sbin/ppp is SUID root. /usr/sbin/ppp contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except root can change /dev/tun
+    Checking if anyone except root can change /dst
+    Checking if anyone except root can change /echo
+    Checking if anyone except root can change /etc/ppp
+    Checking if anyone except root can change /gather
+    Checking if anyone except root can change /sec
+    Checking if anyone except root can change /stdout
+    Checking if anyone except root can change /tcp
+    Checking if anyone except root can change /udp
+    Checking if anyone except root can change /uj
+    Checking if anyone except root can change /var/run/
+    Checking if anyone except root can change /x0a
+Checking SGID-daemon program /usr/sbin/lpc: -r-xr-sr-x  1 root  daemon  59800 Jul 21  2017 /usr/sbin/lpc
+    Checking if anyone except root can change /usr/sbin/lpc:
+    Checking if anyone except root can change /lib/libedit.so.7
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libncursesw.so.8
+    Checking if anyone except root can change /bottomq
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/run/printer
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SGID-smmsp program /usr/libexec/sendmail/sendmail: -r-xr-sr-x  1 root  smmsp  729800 Jul 21  2017 /usr/libexec/sendmail/sendmail
+    Checking if anyone except root can change /usr/libexec/sendmail/sendmail:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libssl.so.8
+    Checking if anyone except root can change /lib/libcrypto.so.8
+    Checking if anyone except root can change /usr/lib/libwrap.so.6
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /-
+    Checking if anyone except root can change /0123
+    Checking if anyone except root can change /3
+    Checking if anyone except root can change /EHLO
+    Checking if anyone except root can change /EXPN/VRFY/ETRN
+    Checking if anyone except root can change /H
+    Checking if anyone except root can change /I
+    Checking if anyone except root can change /LPC
+    Checking if anyone except root can change /NAK
+    Checking if anyone except root can change /O
+    Checking if anyone except root can change /R-
+    Checking if anyone except root can change /READMEx0a
+    Checking if anyone except root can change /Recipient--------
+    Checking if anyone except root can change /Recipient-----------
+    Checking if anyone except root can change /SENDMAIL/ANY/SHELL/
+    Checking if anyone except root can change /UH
+    Checking if anyone except root can change /canon
+    Checking if anyone except root can change /class
+    Checking if anyone except root can change /dH
+    Checking if anyone except root can change /delivery-status
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/libexec/sendmail/sendmail is SGID smmsp. /usr/libexec/sendmail/sendmail contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/libexec/sendmail/sendmail is SGID smmsp. /usr/libexec/sendmail/sendmail contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /df/
+    Checking if anyone except root can change /etc/hosts
+    Checking if anyone except root can change /etc/mail/
+    Checking if anyone except root can change /flushing
+    Checking if anyone except root can change /forwarding
+    Checking if anyone except root can change /gid
+    Checking if anyone except root can change /map
+    Checking if anyone except root can change /mx
+    Checking if anyone except root can change /no/such/directory
+    Checking if anyone except root can change /parse
+    Checking if anyone except root can change /plain
+    Checking if anyone except root can change /qf/
+    Checking if anyone except root can change /quit
+    Checking if anyone except root can change /rfc822
+    Checking if anyone except root can change /rfc822-headers
+    Checking if anyone except root can change /ruid
+    Checking if anyone except root can change /set-group-ID
+    Checking if anyone except root can change /signed
+    Checking if anyone except root can change /t
+    Checking if anyone except root can change /t0
+    Checking if anyone except root can change /tSH
+    Checking if anyone except root can change /tmp
+[UPC002] WARNING: /usr/libexec/sendmail/sendmail is SGID smmsp. /usr/libexec/sendmail/sendmail contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/libexec/sendmail/sendmail is SGID smmsp. /usr/libexec/sendmail/sendmail contains the string /tmp. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /try
+    Checking if anyone except root can change /tryflags
+    Checking if anyone except root can change /u
+    Checking if anyone except root can change /uLH
+    Checking if anyone except root can change /udH
+    Checking if anyone except root can change /ux0aH
+    Checking if anyone except root can change /var/spool/mqueue
+    Checking if anyone except root can change /x0a
+    Checking if anyone except root can change /xf/
+Checking SUID-root program /usr/libexec/dma-mbox-create: -r-sr-xr--  1 root  mail  7424 Jul 21  2017 /usr/libexec/dma-mbox-create
+    Checking if anyone except root can change /usr/libexec/dma-mbox-create:
+    Checking if anyone except root can change /var/mail
+[UPC002] WARNING: /usr/libexec/dma-mbox-create is SUID root. /usr/libexec/dma-mbox-create contains the string /var/mail. The group mail can write to /var/mail
+Checking SUID-root program /usr/libexec/ulog-helper: -r-sr-xr-x  1 root  wheel  6232 Jul 21  2017 /usr/libexec/ulog-helper
+    Checking if anyone except root can change /usr/libexec/ulog-helper:
+    Checking if anyone except root can change /lib/libulog.so.0
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libmd.so.6
+Checking SUID-root program /usr/libexec/ssh-keysign: -r-sr-xr-x  1 root  wheel  49152 Jul 21  2017 /usr/libexec/ssh-keysign
+    Checking if anyone except root can change /usr/libexec/ssh-keysign:
+    Checking if anyone except root can change /usr/lib/libprivatessh.so.5
+    Checking if anyone except root can change /lib/libcrypto.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /usr/lib/libprivateldns.so.5
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libz.so.6
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/libexec/ssh-keysign is SUID root. /usr/libexec/ssh-keysign contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/libexec/ssh-keysign is SUID root. /usr/libexec/ssh-keysign contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/ssh/ssh_config
+    Checking if anyone except root can change /etc/ssh/ssh_host_dsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_ecdsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_ed25519_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_rsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_known_hosts
+    Checking if anyone except root can change /etc/ssh/ssh_known_hosts2
+    Checking if anyone except root can change /id_dsa
+    Checking if anyone except root can change /id_ecdsa
+    Checking if anyone except root can change /id_ed25519
+    Checking if anyone except root can change /id_rsa
+    Checking if anyone except root can change /identity
+    Checking if anyone except root can change /usr/local/bin/xauth
+Checking SGID-mail program /usr/libexec/dma: -r-xr-sr-x  1 root  mail  63088 Jul 21  2017 /usr/libexec/dma
+    Checking if anyone except root can change /usr/libexec/dma:
+    Checking if anyone except root can change /usr/lib/libssl.so.8
+    Checking if anyone except root can change /lib/libcrypto.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/random
+    Checking if anyone except root can change /dev/urandom
+    Checking if anyone except root can change /etc/aliases
+    Checking if anyone except root can change /usr/libexec/dma-mbox-create
+    Checking if anyone except root can change /usr/libexec/dma-mbox-createx0a
+    Checking if anyone except root can change /var/mail
+[UPC002] WARNING: /usr/libexec/dma is SGID mail. /usr/libexec/dma contains the string /var/mail. The group mail can write to /var/mail
+    Checking if anyone except root can change /var/spool/dma
+[UPC002] WARNING: /usr/libexec/dma is SGID mail. /usr/libexec/dma contains the string /var/spool/dma. The group mail can write to /var/spool/dma
+    Checking if anyone except root can change /x0a
+Checking SUID-root program /usr/bin/lpq: -r-sr-sr-x  1 root  daemon  34368 Jul 21  2017 /usr/bin/lpq
+    Checking if anyone except root can change /usr/bin/lpq:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SGID-daemon program /usr/bin/lpq: -r-sr-sr-x  1 root  daemon  34368 Jul 21  2017 /usr/bin/lpq
+    Checking if anyone except root can change /usr/bin/lpq:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SUID-root program /usr/bin/rlogin: -r-sr-xr-x  1 root  wheel  16216 Jul 21  2017 /usr/bin/rlogin
+    Checking if anyone except root can change /usr/bin/rlogin:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /tcpx0a
+Checking SUID-root program /usr/bin/lprm: -r-sr-sr-x  1 root  daemon  33072 Jul 21  2017 /usr/bin/lprm
+    Checking if anyone except root can change /usr/bin/lprm:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dH
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/run/printer
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SGID-daemon program /usr/bin/lprm: -r-sr-sr-x  1 root  daemon  33072 Jul 21  2017 /usr/bin/lprm
+    Checking if anyone except root can change /usr/bin/lprm:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dH
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/run/printer
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SGID-kmem program /usr/bin/btsockstat: -r-xr-sr-x  1 root  kmem  13840 Jul 21  2017 /usr/bin/btsockstat
+    Checking if anyone except root can change /usr/bin/btsockstat:
+    Checking if anyone except root can change /usr/lib/libbluetooth.so.4
+    Checking if anyone except root can change /lib/libkvm.so.7
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libelf.so.2
+    Checking if anyone except root can change /PSM
+Checking SUID-root program /usr/bin/lpr: -r-sr-sr-x  1 root  daemon  41248 Jul 21  2017 /usr/bin/lpr
+    Checking if anyone except root can change /usr/bin/lpr:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /L
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/run/printer
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SGID-daemon program /usr/bin/lpr: -r-sr-sr-x  1 root  daemon  41248 Jul 21  2017 /usr/bin/lpr
+    Checking if anyone except root can change /usr/bin/lpr:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /L
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/lp
+    Checking if anyone except root can change /etc/printcap
+    Checking if anyone except root can change /var/run/printer
+    Checking if anyone except root can change /var/spool/output/lpd
+Checking SUID-root program /usr/bin/at: -r-sr-xr-x  4 root  wheel  29016 Jul 21  2017 /usr/bin/at
+    Checking if anyone except root can change /usr/bin/at:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /var/at/jobs/
+[UPC001] WARNING: /usr/bin/at is SUID root. /usr/bin/at contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs/
+[UPC001] WARNING: /usr/bin/at is SUID root. /usr/bin/at contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs
+    Checking if anyone except root can change /var/at/jobs/12345678901234
+[UPC001] WARNING: /usr/bin/at is SUID root. /usr/bin/at contains the string /var/at/jobs/12345678901234. The user daemon can write to /var/at/jobs
+Checking SUID-root program /usr/bin/crontab: -r-sr-xr-x  1 root  wheel  33288 Jul 21  2017 /usr/bin/crontab
+    Checking if anyone except root can change /usr/bin/crontab:
+    Checking if anyone except root can change /lib/libmd.so.6
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /deny
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/bin/crontab is SUID root. /usr/bin/crontab contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/bin/crontab is SUID root. /usr/bin/crontab contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/crontab
+    Checking if anyone except root can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except root can change /tmp
+[UPC002] WARNING: /usr/bin/crontab is SUID root. /usr/bin/crontab contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/bin/crontab is SUID root. /usr/bin/crontab contains the string /tmp. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /usr/bin/vi
+    Checking if anyone except root can change /var/cron
+Checking SUID-root program /usr/bin/atrm: -r-sr-xr-x  4 root  wheel  29016 Jul 21  2017 /usr/bin/atrm
+    Checking if anyone except root can change /usr/bin/atrm:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /var/at/jobs/
+[UPC001] WARNING: /usr/bin/atrm is SUID root. /usr/bin/atrm contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs/
+[UPC001] WARNING: /usr/bin/atrm is SUID root. /usr/bin/atrm contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs
+    Checking if anyone except root can change /var/at/jobs/12345678901234
+[UPC001] WARNING: /usr/bin/atrm is SUID root. /usr/bin/atrm contains the string /var/at/jobs/12345678901234. The user daemon can write to /var/at/jobs
+Checking SUID-root program /usr/bin/atq: -r-sr-xr-x  4 root  wheel  29016 Jul 21  2017 /usr/bin/atq
+    Checking if anyone except root can change /usr/bin/atq:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /var/at/jobs/
+[UPC001] WARNING: /usr/bin/atq is SUID root. /usr/bin/atq contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs/
+[UPC001] WARNING: /usr/bin/atq is SUID root. /usr/bin/atq contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs
+    Checking if anyone except root can change /var/at/jobs/12345678901234
+[UPC001] WARNING: /usr/bin/atq is SUID root. /usr/bin/atq contains the string /var/at/jobs/12345678901234. The user daemon can write to /var/at/jobs
+Checking SUID-root program /usr/bin/su: -r-sr-xr-x  1 root  wheel  17584 Jul 21  2017 /usr/bin/su
+    Checking if anyone except root can change /usr/bin/su:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /usr/lib/libbsm.so.3
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /bin/sh
+Checking SUID-root program /usr/bin/chpass: -r-sr-xr-x  1 root  wheel  25488 Jul 21  2017 /usr/bin/chpass
+    Checking if anyone except root can change /usr/bin/chpass:
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libypclnt.so.4
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /bin/sh
+Checking SUID-root program /usr/bin/quota: -r-sr-xr-x  1 root  wheel  16264 Jul 21  2017 /usr/bin/quota
+    Checking if anyone except root can change /usr/bin/quota:
+    Checking if anyone except root can change /usr/lib/librpcsvc.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+Checking SUID-root program /usr/bin/passwd: -r-sr-xr-x  1 root  wheel  9856 Jul 21  2017 /usr/bin/passwd
+    Checking if anyone except root can change /usr/bin/passwd:
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /lib/libc.so.7
+Checking SGID-tty program /usr/bin/write: -r-xr-sr-x  1 root  tty  12280 Jul 21  2017 /usr/bin/write
+    Checking if anyone except root can change /usr/bin/write:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/
+Checking SUID-root program /usr/bin/opieinfo: -r-sr-xr-x  1 root  wheel  7256 Jul 21  2017 /usr/bin/opieinfo
+    Checking if anyone except root can change /usr/bin/opieinfo:
+    Checking if anyone except root can change /usr/lib/libopie.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libmd.so.6
+Checking SGID-kmem program /usr/bin/netstat: -r-xr-sr-x  1 root  kmem  154448 Jul 21  2017 /usr/bin/netstat
+    Checking if anyone except root can change /usr/bin/netstat:
+    Checking if anyone except root can change /lib/libkvm.so.7
+    Checking if anyone except root can change /usr/lib/libmemstat.so.3
+    Checking if anyone except root can change /lib/libxo.so.0
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libnetgraph.so.4
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libelf.so.2
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /7x0a
+    Checking if anyone except root can change /F
+    Checking if anyone except root can change /TCP
+    Checking if anyone except root can change /icmp6
+    Checking if anyone except root can change /ip6
+    Checking if anyone except root can change /temporary
+    Checking if anyone except root can change /x0a
+Checking SUID-root program /usr/bin/login: -r-sr-xr-x  1 root  wheel  26040 Jul 21  2017 /usr/bin/login
+    Checking if anyone except root can change /usr/bin/login:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /usr/lib/libbsm.so.3
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /dev/tty
+[UPC001] WARNING: /usr/bin/login is SUID root. /usr/bin/login contains the string /dev/tty. The user charix can write to /dev/tty
+[UPC002] WARNING: /usr/bin/login is SUID root. /usr/bin/login contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except root can change /etc/fbtab
+    Checking if anyone except root can change /etc/logindevperm
+    Checking if anyone except root can change /etc/motd
+    Checking if anyone except root can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except root can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except root can change /var/mail
+[UPC002] WARNING: /usr/bin/login is SUID root. /usr/bin/login contains the string /var/mail. The group mail can write to /var/mail
+Checking SUID-root program /usr/bin/batch: -r-sr-xr-x  4 root  wheel  29016 Jul 21  2017 /usr/bin/batch
+    Checking if anyone except root can change /usr/bin/batch:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /var/at/jobs/
+[UPC001] WARNING: /usr/bin/batch is SUID root. /usr/bin/batch contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs/
+[UPC001] WARNING: /usr/bin/batch is SUID root. /usr/bin/batch contains the string /var/at/jobs/. The user daemon can write to /var/at/jobs
+    Checking if anyone except root can change /var/at/jobs/12345678901234
+[UPC001] WARNING: /usr/bin/batch is SUID root. /usr/bin/batch contains the string /var/at/jobs/12345678901234. The user daemon can write to /var/at/jobs
+Checking SGID-tty program /usr/bin/wall: -r-xr-sr-x  1 root  tty  15984 Jul 21  2017 /usr/bin/wall
+    Checking if anyone except root can change /usr/bin/wall:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /tmp/
+[UPC002] WARNING: /usr/bin/wall is SGID tty. /usr/bin/wall contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /usr/bin/wall is SGID tty. /usr/bin/wall contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /usr/bin/wall is SGID tty. /usr/bin/wall contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/bin/wall is SGID tty. /usr/bin/wall contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /x0a
+Checking SUID-root program /usr/bin/opiepasswd: -r-sr-xr-x  1 root  wheel  14304 Jul 21  2017 /usr/bin/opiepasswd
+    Checking if anyone except root can change /usr/bin/opiepasswd:
+    Checking if anyone except root can change /usr/lib/libopie.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libmd.so.6
+Checking SUID-root program /usr/bin/lock: -r-sr-xr-x  1 root  wheel  11600 Jul 21  2017 /usr/bin/lock
+    Checking if anyone except root can change /usr/bin/lock:
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /dev/
+Checking SUID-root program /usr/bin/rsh: -r-sr-xr-x  1 root  wheel  12192 Jul 21  2017 /usr/bin/rsh
+    Checking if anyone except root can change /usr/bin/rsh:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /tcpx0a
+    Checking if anyone except root can change /usr/bin/rlogin
+Checking SUID-root program /usr/local/bin/Xorg: -r-sr-xr-x  1 root  wheel  2191384 Jan  2 10:36 /usr/local/bin/Xorg
+    Checking if anyone except root can change /usr/local/bin/Xorg:
+    Checking if anyone except root can change /lib/libcrypto.so.8
+    Checking if anyone except root can change /usr/local/lib/libunwind.so.8
+    Checking if anyone except root can change /usr/local/lib/libpciaccess.so.0
+    Checking if anyone except root can change /usr/local/lib/libdrm.so.2
+    Checking if anyone except root can change /usr/local/lib/libpixman-1.so.0
+    Checking if anyone except root can change /usr/local/lib/libXfont.so.1
+    Checking if anyone except root can change /usr/local/lib/libXau.so.6
+    Checking if anyone except root can change /usr/local/lib/libxshmfence.so.1
+    Checking if anyone except root can change /usr/local/lib/libXdmcp.so.6
+    Checking if anyone except root can change /usr/lib/librpcsvc.so.5
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libthr.so.3
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libgcc_s.so.1
+    Checking if anyone except root can change /usr/lib/liblzma.so.5
+    Checking if anyone except root can change /usr/local/lib/libfreetype.so.6
+    Checking if anyone except root can change /lib/libz.so.6
+    Checking if anyone except root can change /usr/local/lib/libfontenc.so.1
+    Checking if anyone except root can change /usr/lib/libbz2.so.4
+    Checking if anyone except root can change /
+    Checking if anyone except root can change //
+    Checking if anyone except root can change /0G
+    Checking if anyone except root can change /0I
+    Checking if anyone except root can change /2
+    Checking if anyone except root can change /484
+    Checking if anyone except root can change /4o
+    Checking if anyone except root can change /7
+    Checking if anyone except root can change /8
+    Checking if anyone except root can change /8J
+    Checking if anyone except root can change /A
+    Checking if anyone except root can change /A9
+    Checking if anyone except root can change /Color
+    Checking if anyone except root can change /E1
+    Checking if anyone except root can change /GrayScale
+    Checking if anyone except root can change /H
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /Hc6H
+    Checking if anyone except root can change /I
+    Checking if anyone except root can change /Ic
+    Checking if anyone except root can change /IcD
+    Checking if anyone except root can change /O
+    Checking if anyone except root can change /ScreenInit
+    Checking if anyone except root can change /Vtx
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /cd
+    Checking if anyone except root can change /dev
+    Checking if anyone except root can change /dev/agpgart
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/io
+    Checking if anyone except root can change /dev/mem
+    Checking if anyone except root can change /dev/nulH
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/sysmouse
+    Checking if anyone except root can change /dev/tty
+[UPC001] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /dev/tty. The user charix can write to /dev/tty
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except root can change /dev/ttyv
+    Checking if anyone except root can change /dev/ttyv0
+    Checking if anyone except root can change /dev/ttyxx
+    Checking if anyone except root can change /dev/vga
+    Checking if anyone except root can change /devd
+    Checking if anyone except root can change /devdx0a
+    Checking if anyone except root can change /disable
+    Checking if anyone except root can change /etc
+    Checking if anyone except root can change /fbbpp
+    Checking if anyone except root can change /g/b
+    Checking if anyone except root can change /hal
+    Checking if anyone except root can change /interlace/doublescan
+    Checking if anyone except root can change /layout
+    Checking if anyone except root can change /open
+    Checking if anyone except root can change /share
+    Checking if anyone except root can change /t
+    Checking if anyone except root can change /t9
+    Checking if anyone except root can change /tjH
+    Checking if anyone except root can change /tmp
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /tmp/
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /tmp/launch
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/launch. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/launch. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /tmp/shmfd-XXXXXX
+[UPC002] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/shmfd-XXXXXX. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/local/bin/Xorg is SUID root. /usr/local/bin/Xorg contains the string /tmp/shmfd-XXXXXX. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /u9L
+    Checking if anyone except root can change /u_H
+    Checking if anyone except root can change /udev
+    Checking if anyone except root can change /usr/locI
+    Checking if anyone except root can change /usr/local
+    Checking if anyone except root can change /usr/local/bin
+    Checking if anyone except root can change /usr/local/etc
+    Checking if anyone except root can change /usr/local/lib
+    Checking if anyone except root can change /usr/local/lib/xorg/modules
+    Checking if anyone except root can change /usr/local/share
+    Checking if anyone except root can change /usr/local/share/X11/xkb
+    Checking if anyone except root can change /usr/local/share/X11/xkb/compiled/
+    Checking if anyone except root can change /white
+    Checking if anyone except root can change /wscons
+    Checking if anyone except root can change /x0a
+    Checking if anyone except root can change /x0aK
+    Checking if anyone except root can change /xH
+    Checking if anyone except root can change /y
+Checking SUID-root program /usr/local/libexec/dbus-daemon-launch-helper: -rwsr-x---  1 root  messagebus  49416 Jan  2 02:29 /usr/local/libexec/dbus-daemon-launch-helper
+Checking SUID-root program /bin/rcp: -r-sr-xr-x  1 root  wheel  20912 Jul 21  2017 /bin/rcp
+    Checking if anyone except root can change /bin/rcp:
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /bin/cp
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /tcpx0a
+    Checking if anyone except root can change /usr/bin/rsh
+Checking SUID-root program /sbin/ping6: -r-sr-xr-x  1 root  wheel  40752 Jul 21  2017 /sbin/ping6
+    Checking if anyone except root can change /sbin/ping6:
+    Checking if anyone except root can change /lib/libipsec.so.4
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libmd.so.6
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /avg/max/std-dev
+Checking SUID-root program /sbin/poweroff: -r-sr-xr--  2 root  operator  15904 Jul 21  2017 /sbin/poweroff
+    Checking if anyone except root can change /sbin/poweroff:
+    Checking if anyone except root can change /sbin/halt
+    Checking if anyone except root can change /sbin/reboot
+    Checking if anyone except root can change /usr/bin/wall
+    Checking if anyone except root can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except root can change /var/run/nologin
+Checking SUID-root program /sbin/mksnap_ffs: -r-sr-xr--  1 root  operator  10600 Jul 21  2017 /sbin/mksnap_ffs
+    Checking if anyone except root can change /sbin/mksnap_ffs:
+Checking SUID-root program /sbin/shutdown: -r-sr-xr--  2 root  operator  15904 Jul 21  2017 /sbin/shutdown
+    Checking if anyone except root can change /sbin/shutdown:
+    Checking if anyone except root can change /sbin/halt
+    Checking if anyone except root can change /sbin/reboot
+    Checking if anyone except root can change /usr/bin/wall
+    Checking if anyone except root can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except root can change /var/run/nologin
+Checking SUID-root program /sbin/ping: -r-sr-xr-x  1 root  wheel  32488 Jul 21  2017 /sbin/ping
+    Checking if anyone except root can change /sbin/ping:
+    Checking if anyone except root can change /lib/libm.so.5
+    Checking if anyone except root can change /lib/libcasper.so.0
+    Checking if anyone except root can change /lib/casper/libcap_dns.so.0
+    Checking if anyone except root can change /lib/libipsec.so.4
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /lib/libnv.so.0
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /avg/max/stddev
+
+############################################
+Checking fscaps programs
+############################################
+
+############################################
+Checking for cleartext subversion passwords in home directories
+############################################
+
+############################################
+Checking for Private SSH Keys in home directories
+############################################
+
+############################################
+Checking for Public SSH Keys in home directories
+############################################
+
+############################################
+Checking classpath permissions for Java processes
+############################################
+
+############################################
+Checking for SSH agents
+############################################
+No SSH agents found
+
+############################################
+Checking for GPG agents
+############################################
+No GPG agents found
+
+############################################
+Checking startup files (init.d / rc.d) aren't writable
+############################################
+Processing startup script /etc/rc.d/DAEMON
+    Checking if anyone except root can change /etc/rc.d/DAEMON
+Processing startup script /etc/rc.d/FILESYSTEMS
+    Checking if anyone except root can change /etc/rc.d/FILESYSTEMS
+Processing startup script /etc/rc.d/LOGIN
+    Checking if anyone except root can change /etc/rc.d/LOGIN
+Processing startup script /etc/rc.d/NETWORKING
+    Checking if anyone except root can change /etc/rc.d/NETWORKING
+Processing startup script /etc/rc.d/SERVERS
+    Checking if anyone except root can change /etc/rc.d/SERVERS
+Processing startup script /etc/rc.d/abi
+    Checking if anyone except root can change /etc/rc.d/abi
+    Checking if anyone except root can change /compat/linux/sbin/ldconfig
+    Checking if anyone except root can change /compat/linux/sbin/ldconfigDisabled
+Processing startup script /etc/rc.d/accounting
+    Checking if anyone except root can change /etc/rc.d/accounting
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /usr/sbin/acctonx0a
+    Checking if anyone except root can change /var/account/acctx0a
+Processing startup script /etc/rc.d/addswap
+    Checking if anyone except root can change /etc/rc.d/addswap
+Processing startup script /etc/rc.d/adjkerntz
+    Checking if anyone except root can change /etc/rc.d/adjkerntz
+Processing startup script /etc/rc.d/amd
+    Checking if anyone except root can change /etc/rc.d/amd
+Processing startup script /etc/rc.d/apm
+    Checking if anyone except root can change /etc/rc.d/apm
+Processing startup script /etc/rc.d/apmd
+    Checking if anyone except root can change /etc/rc.d/apmd
+    Checking if anyone except root can change /dev/apmctl
+[UPC002] WARNING: /etc/rc.d/apmd is run by root at startup. /etc/rc.d/apmd contains the string /dev/apmctl. The group operator can write to /dev/apmctl
+Processing startup script /etc/rc.d/archdep
+    Checking if anyone except root can change /etc/rc.d/archdep
+Processing startup script /etc/rc.d/atm1
+    Checking if anyone except root can change /etc/rc.d/atm1
+Processing startup script /etc/rc.d/atm2
+    Checking if anyone except root can change /etc/rc.d/atm2
+Processing startup script /etc/rc.d/atm3
+    Checking if anyone except root can change /etc/rc.d/atm3
+Processing startup script /etc/rc.d/auditd
+    Checking if anyone except root can change /etc/rc.d/auditd
+    Checking if anyone except root can change /etc/security/audit_class
+    Checking if anyone except root can change /etc/security/audit_event
+    Checking if anyone except root can change /etc/security/audit_warnx0a
+    Checking if anyone except root can change /usr/sbin/audit
+Processing startup script /etc/rc.d/auditdistd
+    Checking if anyone except root can change /etc/rc.d/auditdistd
+Processing startup script /etc/rc.d/automount
+    Checking if anyone except root can change /etc/rc.d/automount
+    Checking if anyone except root can change /sbin/umount
+    Checking if anyone except root can change /usr/sbin/automount
+Processing startup script /etc/rc.d/automountd
+    Checking if anyone except root can change /etc/rc.d/automountd
+Processing startup script /etc/rc.d/autounmountd
+    Checking if anyone except root can change /etc/rc.d/autounmountd
+Processing startup script /etc/rc.d/bgfsck
+    Checking if anyone except root can change /etc/rc.d/bgfsck
+Processing startup script /etc/rc.d/blacklistd
+    Checking if anyone except root can change /etc/rc.d/blacklistd
+Processing startup script /etc/rc.d/bluetooth
+    Checking if anyone except root can change /etc/rc.d/bluetooth
+    Checking if anyone except root can change /UART
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/bluetooth is run by root at startup. /etc/rc.d/bluetooth contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/bluetooth is run by root at startup. /etc/rc.d/bluetooth contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /usr/bin/uname
+    Checking if anyone except root can change /usr/sbin/hccontrolx0ax0a
+    Checking if anyone except root can change /usr/sbin/hcserialdx0ax0a
+Processing startup script /etc/rc.d/bootparams
+    Checking if anyone except root can change /etc/rc.d/bootparams
+    Checking if anyone except root can change /etc/bootparamsx0a
+Processing startup script /etc/rc.d/bridge
+    Checking if anyone except root can change /etc/rc.d/bridge
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/bridge is run by root at startup. /etc/rc.d/bridge contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/bridge is run by root at startup. /etc/rc.d/bridge contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/bsnmpd
+    Checking if anyone except root can change /etc/rc.d/bsnmpd
+Processing startup script /etc/rc.d/bthidd
+    Checking if anyone except root can change /etc/rc.d/bthidd
+Processing startup script /etc/rc.d/ccd
+    Checking if anyone except root can change /etc/rc.d/ccd
+Processing startup script /etc/rc.d/cleanvar
+    Checking if anyone except root can change /etc/rc.d/cleanvar
+    Checking if anyone except root can change /var
+    Checking if anyone except root can change /var/run
+    Checking if anyone except root can change /var/run/clean_var
+    Checking if anyone except root can change /var/spool/lock
+[UPC001] WARNING: /etc/rc.d/cleanvar is run by root at startup. /etc/rc.d/cleanvar contains the string /var/spool/lock. The user uucp can write to /var/spool/lock
+[UPC002] WARNING: /etc/rc.d/cleanvar is run by root at startup. /etc/rc.d/cleanvar contains the string /var/spool/lock. The group dialer can write to /var/spool/lock
+    Checking if anyone except root can change /var/spool/lock/clean_var
+[UPC001] WARNING: /etc/rc.d/cleanvar is run by root at startup. /etc/rc.d/cleanvar contains the string /var/spool/lock/clean_var. The user uucp can write to /var/spool/lock
+[UPC002] WARNING: /etc/rc.d/cleanvar is run by root at startup. /etc/rc.d/cleanvar contains the string /var/spool/lock/clean_var. The group dialer can write to /var/spool/lock
+Processing startup script /etc/rc.d/cleartmp
+    Checking if anyone except root can change /etc/rc.d/cleartmp
+    Checking if anyone except root can change /tmp
+[UPC002] WARNING: /etc/rc.d/cleartmp is run by root at startup. /etc/rc.d/cleartmp contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /etc/rc.d/cleartmp is run by root at startup. /etc/rc.d/cleartmp contains the string /tmp. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /tmpx0a
+Processing startup script /etc/rc.d/cron
+    Checking if anyone except root can change /etc/rc.d/cron
+Processing startup script /etc/rc.d/ctld
+    Checking if anyone except root can change /etc/rc.d/ctld
+    Checking if anyone except root can change /
+Processing startup script /etc/rc.d/ddb
+    Checking if anyone except root can change /etc/rc.d/ddb
+Processing startup script /etc/rc.d/defaultroute
+    Checking if anyone except root can change /etc/rc.d/defaultroute
+    Checking if anyone except root can change /sbin/ifconfig
+Processing startup script /etc/rc.d/devd
+    Checking if anyone except root can change /etc/rc.d/devd
+Processing startup script /etc/rc.d/devfs
+    Checking if anyone except root can change /etc/rc.d/devfs
+    Checking if anyone except root can change /dev
+Processing startup script /etc/rc.d/dhclient
+    Checking if anyone except root can change /etc/rc.d/dhclient
+Processing startup script /etc/rc.d/dmesg
+    Checking if anyone except root can change /etc/rc.d/dmesg
+    Checking if anyone except root can change /sbin/dmesg
+Processing startup script /etc/rc.d/dumpon
+    Checking if anyone except root can change /etc/rc.d/dumpon
+    Checking if anyone except root can change /bin/kenv
+    Checking if anyone except root can change /dev/dumpdev
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/dumpon is run by root at startup. /etc/rc.d/dumpon contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/dumpon is run by root at startup. /etc/rc.d/dumpon contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/fstab
+    Checking if anyone except root can change /sbin/dumpon
+Processing startup script /etc/rc.d/fsck
+    Checking if anyone except root can change /etc/rc.d/fsck
+    Checking if anyone except root can change /etc/fstab
+    Checking if anyone except root can change /etc/fstabx0a
+Processing startup script /etc/rc.d/ftp-proxy
+    Checking if anyone except root can change /etc/rc.d/ftp-proxy
+    Checking if anyone except root can change /usr/sbin/ftp-proxyx0a
+Processing startup script /etc/rc.d/ftpd
+    Checking if anyone except root can change /etc/rc.d/ftpd
+Processing startup script /etc/rc.d/gbde
+    Checking if anyone except root can change /etc/rc.d/gbde
+    Checking if anyone except root can change /dev/x0a
+    Checking if anyone except root can change /etc/fstabx0a
+    Checking if anyone except root can change /x0a
+Processing startup script /etc/rc.d/geli
+    Checking if anyone except root can change /etc/rc.d/geli
+    Checking if anyone except root can change /-x0a
+Processing startup script /etc/rc.d/geli2
+    Checking if anyone except root can change /etc/rc.d/geli2
+    Checking if anyone except root can change /-x0a
+Processing startup script /etc/rc.d/gptboot
+    Checking if anyone except root can change /etc/rc.d/gptboot
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/gptboot is run by root at startup. /etc/rc.d/gptboot contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/gptboot is run by root at startup. /etc/rc.d/gptboot contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/growfs
+    Checking if anyone except root can change /etc/rc.d/growfs
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/x0ax0arootdevx0a
+Processing startup script /etc/rc.d/gssd
+    Checking if anyone except root can change /etc/rc.d/gssd
+Processing startup script /etc/rc.d/hastd
+    Checking if anyone except root can change /etc/rc.d/hastd
+    Checking if anyone except root can change /sbin/hastctlx0a
+Processing startup script /etc/rc.d/hcsecd
+    Checking if anyone except root can change /etc/rc.d/hcsecd
+Processing startup script /etc/rc.d/hostapd
+    Checking if anyone except root can change /etc/rc.d/hostapd
+Processing startup script /etc/rc.d/hostid
+    Checking if anyone except root can change /etc/rc.d/hostid
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/hostid is run by root at startup. /etc/rc.d/hostid contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/hostid is run by root at startup. /etc/rc.d/hostid contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/hostid_save
+    Checking if anyone except root can change /etc/rc.d/hostid_save
+Processing startup script /etc/rc.d/hostname
+    Checking if anyone except root can change /etc/rc.d/hostname
+    Checking if anyone except root can change /bin/hostname
+    Checking if anyone except root can change /bin/kenv
+Processing startup script /etc/rc.d/inetd
+    Checking if anyone except root can change /etc/rc.d/inetd
+Processing startup script /etc/rc.d/iovctl
+    Checking if anyone except root can change /etc/rc.d/iovctl
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/iovctl is run by root at startup. /etc/rc.d/iovctl contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/iovctl is run by root at startup. /etc/rc.d/iovctl contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /usr/sbin/iovctlx0a
+Processing startup script /etc/rc.d/ip6addrctl
+    Checking if anyone except root can change /etc/rc.d/ip6addrctl
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/ip6addrctl is run by root at startup. /etc/rc.d/ip6addrctl contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/ip6addrctl is run by root at startup. /etc/rc.d/ip6addrctl contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/stdin
+[UPC002] WARNING: /etc/rc.d/ip6addrctl is run by root at startup. /etc/rc.d/ip6addrctl contains the string /dev/stdin. The group wheel can write to /dev/stdin
+[UPC004] WARNING: /etc/rc.d/ip6addrctl is run by root at startup. /etc/rc.d/ip6addrctl contains the string /dev/stdin. World write is set for /dev/stdin
+    Checking if anyone except root can change /usr/sbin/ip6addrctlx0a
+Processing startup script /etc/rc.d/ipfilter
+    Checking if anyone except root can change /etc/rc.d/ipfilter
+    Checking if anyone except root can change /sbin/ipfsx0a
+    Checking if anyone except root can change /sbin/ipfx0a
+Processing startup script /etc/rc.d/ipfs
+    Checking if anyone except root can change /etc/rc.d/ipfs
+    Checking if anyone except root can change /sbin/ipfx0a
+    Checking if anyone except root can change /var/db/ipf
+Processing startup script /etc/rc.d/ipfw
+    Checking if anyone except root can change /etc/rc.d/ipfw
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/ipfw is run by root at startup. /etc/rc.d/ipfw contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/ipfw is run by root at startup. /etc/rc.d/ipfw contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/ipmon
+    Checking if anyone except root can change /etc/rc.d/ipmon
+    Checking if anyone except root can change /dev/ipl
+    Checking if anyone except root can change /sbin/ipfx0a
+Processing startup script /etc/rc.d/ipnat
+    Checking if anyone except root can change /etc/rc.d/ipnat
+Processing startup script /etc/rc.d/ipropd_master
+    Checking if anyone except root can change /etc/rc.d/ipropd_master
+    Checking if anyone except root can change /var/heimdal/slaves
+Processing startup script /etc/rc.d/ipropd_slave
+    Checking if anyone except root can change /etc/rc.d/ipropd_slave
+Processing startup script /etc/rc.d/ipsec
+    Checking if anyone except root can change /etc/rc.d/ipsec
+    Checking if anyone except root can change /sbin/setkeyx0a
+    Checking if anyone except root can change /v6
+Processing startup script /etc/rc.d/iscsictl
+    Checking if anyone except root can change /etc/rc.d/iscsictl
+Processing startup script /etc/rc.d/iscsid
+    Checking if anyone except root can change /etc/rc.d/iscsid
+Processing startup script /etc/rc.d/jail
+    Checking if anyone except root can change /etc/rc.d/jail
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /128x0a
+    Checking if anyone except root can change /32x0a
+    Checking if anyone except root can change /backward-compatible
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/jail is run by root at startup. /etc/rc.d/jail contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/jail is run by root at startup. /etc/rc.d/jail contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /jail
+    Checking if anyone except root can change /netmask
+    Checking if anyone except root can change /netmask/prefixlen
+    Checking if anyone except root can change /usr/bin/install
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/sbin/jailx0a
+    Checking if anyone except root can change /usr/sbin/jexecx0a
+    Checking if anyone except root can change /usr/sbin/jlsx0a
+Processing startup script /etc/rc.d/kadmind
+    Checking if anyone except root can change /etc/rc.d/kadmind
+Processing startup script /etc/rc.d/kdc
+    Checking if anyone except root can change /etc/rc.d/kdc
+Processing startup script /etc/rc.d/keyserv
+    Checking if anyone except root can change /etc/rc.d/keyserv
+Processing startup script /etc/rc.d/kfd
+    Checking if anyone except root can change /etc/rc.d/kfd
+Processing startup script /etc/rc.d/kld
+    Checking if anyone except root can change /etc/rc.d/kld
+Processing startup script /etc/rc.d/kldxref
+    Checking if anyone except root can change /etc/rc.d/kldxref
+Processing startup script /etc/rc.d/kpasswdd
+    Checking if anyone except root can change /etc/rc.d/kpasswdd
+Processing startup script /etc/rc.d/ldconfig
+    Checking if anyone except root can change /etc/rc.d/ldconfig
+    Checking if anyone except root can change /lib
+    Checking if anyone except root can change /sbin/ldconfigx0a
+    Checking if anyone except root can change /usr/lib/aout
+Processing startup script /etc/rc.d/local
+    Checking if anyone except root can change /etc/rc.d/local
+Processing startup script /etc/rc.d/local_unbound
+    Checking if anyone except root can change /etc/rc.d/local_unbound
+    Checking if anyone except root can change /usr/sbin/local-unbound-setup
+    Checking if anyone except root can change /usr/sbin/unbound-anchor
+    Checking if anyone except root can change /usr/sbin/unbound-checkconf
+    Checking if anyone except root can change /usr/sbin/unboundx0a
+    Checking if anyone except root can change /var/unboundx0a
+Processing startup script /etc/rc.d/localpkg
+    Checking if anyone except root can change /etc/rc.d/localpkg
+Processing startup script /etc/rc.d/lockd
+    Checking if anyone except root can change /etc/rc.d/lockd
+Processing startup script /etc/rc.d/lpd
+    Checking if anyone except root can change /etc/rc.d/lpd
+    Checking if anyone except root can change /etc/printcapx0a
+    Checking if anyone except root can change /usr/sbin/chkprintcap
+Processing startup script /etc/rc.d/mdconfig
+    Checking if anyone except root can change /etc/rc.d/mdconfig
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/mdconfig is run by root at startup. /etc/rc.d/mdconfig contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/mdconfig is run by root at startup. /etc/rc.d/mdconfig contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /x0a
+Processing startup script /etc/rc.d/mdconfig2
+    Checking if anyone except root can change /etc/rc.d/mdconfig2
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/mdconfig2 is run by root at startup. /etc/rc.d/mdconfig2 contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/mdconfig2 is run by root at startup. /etc/rc.d/mdconfig2 contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /x0a
+Processing startup script /etc/rc.d/mixer
+    Checking if anyone except root can change /etc/rc.d/mixer
+    Checking if anyone except root can change /dev
+    Checking if anyone except root can change /usr/sbin/mixer
+Processing startup script /etc/rc.d/motd
+    Checking if anyone except root can change /etc/rc.d/motd
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/motd is run by root at startup. /etc/rc.d/motd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/motd is run by root at startup. /etc/rc.d/motd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/motd
+    Checking if anyone except root can change /etc/motdx0a
+Processing startup script /etc/rc.d/mountcritlocal
+    Checking if anyone except root can change /etc/rc.d/mountcritlocal
+    Checking if anyone except root can change /etc/fstab
+Processing startup script /etc/rc.d/mountcritremote
+    Checking if anyone except root can change /etc/rc.d/mountcritremote
+    Checking if anyone except root can change /sbin/mount
+    Checking if anyone except root can change /var
+    Checking if anyone except root can change /var/run/clean_var
+Processing startup script /etc/rc.d/mountd
+    Checking if anyone except root can change /etc/rc.d/mountd
+    Checking if anyone except root can change /etc/exports
+    Checking if anyone except root can change /etc/exportsx0a
+    Checking if anyone except root can change /var/db/mountdtab
+    Checking if anyone except root can change /var/db/mountdtabx0a
+Processing startup script /etc/rc.d/mountlate
+    Checking if anyone except root can change /etc/rc.d/mountlate
+    Checking if anyone except root can change /etc/fstab
+    Checking if anyone except root can change /sbin/nextboot
+Processing startup script /etc/rc.d/moused
+    Checking if anyone except root can change /etc/rc.d/moused
+    Checking if anyone except root can change /dev/ttyv
+    Checking if anyone except root can change /usr/sbin/moused
+    Checking if anyone except root can change /var/run/mousedx0a
+Processing startup script /etc/rc.d/msgs
+    Checking if anyone except root can change /etc/rc.d/msgs
+    Checking if anyone except root can change /var/msgs
+[UPC001] WARNING: /etc/rc.d/msgs is run by root at startup. /etc/rc.d/msgs contains the string /var/msgs. The user daemon can write to /var/msgs
+    Checking if anyone except root can change /var/msgs/bounds
+[UPC001] WARNING: /etc/rc.d/msgs is run by root at startup. /etc/rc.d/msgs contains the string /var/msgs/bounds. The user daemon can write to /var/msgs
+Processing startup script /etc/rc.d/natd
+    Checking if anyone except root can change /etc/rc.d/natd
+Processing startup script /etc/rc.d/netif
+    Checking if anyone except root can change /etc/rc.d/netif
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/netif is run by root at startup. /etc/rc.d/netif contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/netif is run by root at startup. /etc/rc.d/netif contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/ifconfig
+Processing startup script /etc/rc.d/netoptions
+    Checking if anyone except root can change /etc/rc.d/netoptions
+    Checking if anyone except root can change /IP
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/netoptions is run by root at startup. /etc/rc.d/netoptions contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/netoptions is run by root at startup. /etc/rc.d/netoptions contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/netwait
+    Checking if anyone except root can change /etc/rc.d/netwait
+    Checking if anyone except root can change /sbin/ifconfig
+    Checking if anyone except root can change /sbin/ping
+Processing startup script /etc/rc.d/newsyslog
+    Checking if anyone except root can change /etc/rc.d/newsyslog
+    Checking if anyone except root can change /or
+Processing startup script /etc/rc.d/nfscbd
+    Checking if anyone except root can change /etc/rc.d/nfscbd
+Processing startup script /etc/rc.d/nfsclient
+    Checking if anyone except root can change /etc/rc.d/nfsclient
+    Checking if anyone except root can change /var/db/mounttab
+Processing startup script /etc/rc.d/nfsd
+    Checking if anyone except root can change /etc/rc.d/nfsd
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/nfsd is run by root at startup. /etc/rc.d/nfsd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/nfsd is run by root at startup. /etc/rc.d/nfsd contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/nfsuserd
+    Checking if anyone except root can change /etc/rc.d/nfsuserd
+Processing startup script /etc/rc.d/nisdomain
+    Checking if anyone except root can change /etc/rc.d/nisdomain
+Processing startup script /etc/rc.d/nscd
+    Checking if anyone except root can change /etc/rc.d/nscd
+    Checking if anyone except root can change /usr/sbin/nscd
+Processing startup script /etc/rc.d/nsswitch
+    Checking if anyone except root can change /etc/rc.d/nsswitch
+Processing startup script /etc/rc.d/ntpd
+    Checking if anyone except root can change /etc/rc.d/ntpd
+    Checking if anyone except root can change /dev
+    Checking if anyone except root can change /dev/clockctlx0a
+Processing startup script /etc/rc.d/ntpdate
+    Checking if anyone except root can change /etc/rc.d/ntpdate
+Processing startup script /etc/rc.d/othermta
+    Checking if anyone except root can change /etc/rc.d/othermta
+Processing startup script /etc/rc.d/pf
+    Checking if anyone except root can change /etc/rc.d/pf
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/pf is run by root at startup. /etc/rc.d/pf contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/pf is run by root at startup. /etc/rc.d/pf contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/pf
+Processing startup script /etc/rc.d/pflog
+    Checking if anyone except root can change /etc/rc.d/pflog
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/pflog is run by root at startup. /etc/rc.d/pflog contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/pflog is run by root at startup. /etc/rc.d/pflog contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/pflogdx0a
+    Checking if anyone except root can change /var/run
+Processing startup script /etc/rc.d/pfsync
+    Checking if anyone except root can change /etc/rc.d/pfsync
+Processing startup script /etc/rc.d/power_profile
+    Checking if anyone except root can change /etc/rc.d/power_profile
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/power_profile is run by root at startup. /etc/rc.d/power_profile contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/power_profile is run by root at startup. /etc/rc.d/power_profile contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/powerd
+    Checking if anyone except root can change /etc/rc.d/powerd
+Processing startup script /etc/rc.d/ppp
+    Checking if anyone except root can change /etc/rc.d/ppp
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /bin/pkill
+Processing startup script /etc/rc.d/pppoed
+    Checking if anyone except root can change /etc/rc.d/pppoed
+    Checking if anyone except root can change /usr/libexec/pppoed
+Processing startup script /etc/rc.d/pwcheck
+    Checking if anyone except root can change /etc/rc.d/pwcheck
+    Checking if anyone except root can change /etc/ptmp
+    Checking if anyone except root can change /lock
+Processing startup script /etc/rc.d/quota
+    Checking if anyone except root can change /etc/rc.d/quota
+    Checking if anyone except root can change /check
+    Checking if anyone except root can change /usr/sbin/quotaoff
+Processing startup script /etc/rc.d/random
+    Checking if anyone except root can change /etc/rc.d/random
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /boot/entropyx0a
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/random is run by root at startup. /etc/rc.d/random contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/random is run by root at startup. /etc/rc.d/random contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/random
+    Checking if anyone except root can change /entropyx0a
+    Checking if anyone except root can change /var/db/entropy-file
+    Checking if anyone except root can change /var/db/entropyx0a
+Processing startup script /etc/rc.d/rarpd
+    Checking if anyone except root can change /etc/rc.d/rarpd
+    Checking if anyone except root can change /etc/ethersx0a
+Processing startup script /etc/rc.d/rctl
+    Checking if anyone except root can change /etc/rc.d/rctl
+Processing startup script /etc/rc.d/resolv
+    Checking if anyone except root can change /etc/rc.d/resolv
+    Checking if anyone except root can change /bin/kenv
+    Checking if anyone except root can change /sbin/resolvconf
+Processing startup script /etc/rc.d/rfcomm_pppd_server
+    Checking if anyone except root can change /etc/rc.d/rfcomm_pppd_server
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /bin/pkill
+    Checking if anyone except root can change /usr/sbin/rfcomm_pppdx0a
+Processing startup script /etc/rc.d/root
+    Checking if anyone except root can change /etc/rc.d/root
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/root is run by root at startup. /etc/rc.d/root contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/root is run by root at startup. /etc/rc.d/root contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/nextboot
+    Checking if anyone except root can change /writex0a
+Processing startup script /etc/rc.d/route6d
+    Checking if anyone except root can change /etc/rc.d/route6d
+Processing startup script /etc/rc.d/routed
+    Checking if anyone except root can change /etc/rc.d/routed
+Processing startup script /etc/rc.d/routing
+    Checking if anyone except root can change /etc/rc.d/routing
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/routing is run by root at startup. /etc/rc.d/routing contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/routing is run by root at startup. /etc/rc.d/routing contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/routex0a
+Processing startup script /etc/rc.d/rpcbind
+    Checking if anyone except root can change /etc/rc.d/rpcbind
+    Checking if anyone except root can change /bin/rm
+Processing startup script /etc/rc.d/rtadvd
+    Checking if anyone except root can change /etc/rc.d/rtadvd
+    Checking if anyone except root can change /dst
+    Checking if anyone except root can change /transport/fec0x0a0x0a0x0a1x0ax0a1-fec0x0a0x0a0x0a10x0ax0a1/requirex0a
+    Checking if anyone except root can change /transport/ff05x0ax0a2-fec0x0a0x0a0x0a10x0ax0a1/requirex0a
+    Checking if anyone except root can change /usr/sbin/rtadvctl
+Processing startup script /etc/rc.d/rtsold
+    Checking if anyone except root can change /etc/rc.d/rtsold
+Processing startup script /etc/rc.d/rwho
+    Checking if anyone except root can change /etc/rc.d/rwho
+Processing startup script /etc/rc.d/savecore
+    Checking if anyone except root can change /etc/rc.d/savecore
+    Checking if anyone except root can change /bin/realpath
+    Checking if anyone except root can change /dev/dumpdev
+    Checking if anyone except root can change /var/crashx0a
+Processing startup script /etc/rc.d/sdpd
+    Checking if anyone except root can change /etc/rc.d/sdpd
+    Checking if anyone except root can change /var/run/sdpx0ax0a
+Processing startup script /etc/rc.d/securelevel
+    Checking if anyone except root can change /etc/rc.d/securelevel
+Processing startup script /etc/rc.d/sendmail
+    Checking if anyone except root can change /etc/rc.d/sendmail
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/sendmail is run by root at startup. /etc/rc.d/sendmail contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/sendmail is run by root at startup. /etc/rc.d/sendmail contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/mail/aliases
+    Checking if anyone except root can change /etc/mail/aliasesx0a
+    Checking if anyone except root can change /etc/mail/certs
+    Checking if anyone except root can change /usr/bin/newaliases
+Processing startup script /etc/rc.d/serial
+    Checking if anyone except root can change /etc/rc.d/serial
+Processing startup script /etc/rc.d/sppp
+    Checking if anyone except root can change /etc/rc.d/sppp
+Processing startup script /etc/rc.d/sshd
+    Checking if anyone except root can change /etc/rc.d/sshd
+    Checking if anyone except root can change /etc/ssh/ssh_host_keyx0a
+    Checking if anyone except root can change /usr/bin/ssh-keygen
+Processing startup script /etc/rc.d/statd
+    Checking if anyone except root can change /etc/rc.d/statd
+Processing startup script /etc/rc.d/static_arp
+    Checking if anyone except root can change /etc/rc.d/static_arp
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/static_arp is run by root at startup. /etc/rc.d/static_arp contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/static_arp is run by root at startup. /etc/rc.d/static_arp contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/static_ndp
+    Checking if anyone except root can change /etc/rc.d/static_ndp
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/static_ndp is run by root at startup. /etc/rc.d/static_ndp contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/static_ndp is run by root at startup. /etc/rc.d/static_ndp contains the string /dev/null. World write is set for /dev/null
+Processing startup script /etc/rc.d/stf
+    Checking if anyone except root can change /etc/rc.d/stf
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/stf is run by root at startup. /etc/rc.d/stf contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/stf is run by root at startup. /etc/rc.d/stf contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/ifconfig
+Processing startup script /etc/rc.d/swap
+    Checking if anyone except root can change /etc/rc.d/swap
+    Checking if anyone except root can change /sbin/swapon
+Processing startup script /etc/rc.d/swaplate
+    Checking if anyone except root can change /etc/rc.d/swaplate
+    Checking if anyone except root can change /sbin/swapoff
+    Checking if anyone except root can change /sbin/swapon
+Processing startup script /etc/rc.d/syscons
+    Checking if anyone except root can change /etc/rc.d/syscons
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/syscons is run by root at startup. /etc/rc.d/syscons contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/syscons is run by root at startup. /etc/rc.d/syscons contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/ttyv
+    Checking if anyone except root can change /dev/ttyv0
+    Checking if anyone except root can change /usr/src/tools/tools/vt/keymaps/x0a
+Processing startup script /etc/rc.d/sysctl
+    Checking if anyone except root can change /etc/rc.d/sysctl
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/sysctl is run by root at startup. /etc/rc.d/sysctl contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/sysctl is run by root at startup. /etc/rc.d/sysctl contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/sysctlx0a
+Processing startup script /etc/rc.d/syslogd
+    Checking if anyone except root can change /etc/rc.d/syslogd
+    Checking if anyone except root can change /dev/log
+    Checking if anyone except root can change /var/run/log
+    Checking if anyone except root can change /var/run/logx0a
+Processing startup script /etc/rc.d/timed
+    Checking if anyone except root can change /etc/rc.d/timed
+Processing startup script /etc/rc.d/tmp
+    Checking if anyone except root can change /etc/rc.d/tmp
+    Checking if anyone except root can change /bin/df
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /tmp
+[UPC002] WARNING: /etc/rc.d/tmp is run by root at startup. /etc/rc.d/tmp contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /etc/rc.d/tmp is run by root at startup. /etc/rc.d/tmp contains the string /tmp. World write is set for /tmp (but sticky bit set)
+Processing startup script /etc/rc.d/ubthidhci
+    Checking if anyone except root can change /etc/rc.d/ubthidhci
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/ubthidhci is run by root at startup. /etc/rc.d/ubthidhci contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/ubthidhci is run by root at startup. /etc/rc.d/ubthidhci contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /usr/sbin/usbconfigx0a
+Processing startup script /etc/rc.d/ugidfw
+    Checking if anyone except root can change /etc/rc.d/ugidfw
+Processing startup script /etc/rc.d/utx
+    Checking if anyone except root can change /etc/rc.d/utx
+Processing startup script /etc/rc.d/var
+    Checking if anyone except root can change /etc/rc.d/var
+    Checking if anyone except root can change /bin/mkdir
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /etc/rc.d/var is run by root at startup. /etc/rc.d/var contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /etc/rc.d/var is run by root at startup. /etc/rc.d/var contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /usr
+    Checking if anyone except root can change /usr/sbin/mtree
+    Checking if anyone except root can change /var
+    Checking if anyone except root can change /var/run
+Processing startup script /etc/rc.d/virecover
+    Checking if anyone except root can change /etc/rc.d/virecover
+Processing startup script /etc/rc.d/watchdogd
+    Checking if anyone except root can change /etc/rc.d/watchdogd
+Processing startup script /etc/rc.d/wpa_supplicant
+    Checking if anyone except root can change /etc/rc.d/wpa_supplicant
+Processing startup script /etc/rc.d/ypbind
+    Checking if anyone except root can change /etc/rc.d/ypbind
+Processing startup script /etc/rc.d/ypldap
+    Checking if anyone except root can change /etc/rc.d/ypldap
+Processing startup script /etc/rc.d/yppasswdd
+    Checking if anyone except root can change /etc/rc.d/yppasswdd
+Processing startup script /etc/rc.d/ypserv
+    Checking if anyone except root can change /etc/rc.d/ypserv
+    Checking if anyone except root can change /var/yp/x0a_domain
+Processing startup script /etc/rc.d/ypset
+    Checking if anyone except root can change /etc/rc.d/ypset
+Processing startup script /etc/rc.d/ypupdated
+    Checking if anyone except root can change /etc/rc.d/ypupdated
+Processing startup script /etc/rc.d/ypxfrd
+    Checking if anyone except root can change /etc/rc.d/ypxfrd
+Processing startup script /etc/rc.d/zfs
+    Checking if anyone except root can change /etc/rc.d/zfs
+    Checking if anyone except root can change /etc/zfs/exports
+Processing startup script /etc/rc.d/zfsbe
+    Checking if anyone except root can change /etc/rc.d/zfsbe
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /x0a
+    Checking if anyone except root can change /x0a_be/x0a
+    Checking if anyone except root can change /x0a_bex0a
+Processing startup script /etc/rc.d/zfsd
+    Checking if anyone except root can change /etc/rc.d/zfsd
+Processing startup script /etc/rc.d/zvol
+    Checking if anyone except root can change /etc/rc.d/zvol
+Processing startup script /usr/local/etc/rc.d/apache24
+    Checking if anyone except root can change /usr/local/etc/rc.d/apache24
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/local/etc/rc.d/apache24 is run by root at startup. /usr/local/etc/rc.d/apache24 contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/etc/rc.d/apache24 is run by root at startup. /usr/local/etc/rc.d/apache24 contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /sbin/kldstat
+    Checking if anyone except root can change /usr/bin/limits
+    Checking if anyone except root can change /usr/local/sbin/envvarsx0a
+    Checking if anyone except root can change /usr/local/sbin/httpdx0a
+    Checking if anyone except root can change /usr/sbin/setfib
+    Checking if anyone except root can change /var/run/httpdx0a
+Processing startup script /usr/local/etc/rc.d/avahi-daemon
+    Checking if anyone except root can change /usr/local/etc/rc.d/avahi-daemon
+    Checking if anyone except root can change /usr/local/sbin/avahi-daemon
+Processing startup script /usr/local/etc/rc.d/avahi-dnsconfd
+    Checking if anyone except root can change /usr/local/etc/rc.d/avahi-dnsconfd
+    Checking if anyone except root can change /usr/local/sbin/avahi-dnsconfd
+Processing startup script /usr/local/etc/rc.d/cupsd
+    Checking if anyone except root can change /usr/local/etc/rc.d/cupsd
+    Checking if anyone except root can change /usr/local/sbin/cupsdx0a
+Processing startup script /usr/local/etc/rc.d/dbus
+    Checking if anyone except root can change /usr/local/etc/rc.d/dbus
+    Checking if anyone except root can change /usr/local/bin/dbus-daemonx0a
+    Checking if anyone except root can change /usr/local/bin/dbus-uuidgen
+    Checking if anyone except root can change /var/db/dbus
+    Checking if anyone except root can change /var/db/dbus/machine-id
+    Checking if anyone except root can change /var/run/dbus
+    Checking if anyone except root can change /var/run/dbus/pidx0a
+Processing startup script /usr/local/etc/rc.d/htcacheclean
+    Checking if anyone except root can change /usr/local/etc/rc.d/htcacheclean
+    Checking if anyone except root can change /usr/local/sbin/htcachecleanx0a
+    Checking if anyone except root can change /usr/local/www/proxyx0ax0ax0a
+Processing startup script /usr/local/etc/rc.d/php-fpm
+    Checking if anyone except root can change /usr/local/etc/rc.d/php-fpm
+    Checking if anyone except root can change /usr/local/sbin/php-fpmx0a
+Processing startup script /usr/local/etc/rc.d/tcsd
+    Checking if anyone except root can change /usr/local/etc/rc.d/tcsd
+    Checking if anyone except root can change /bin/chmod
+    Checking if anyone except root can change /usr/bin/install
+    Checking if anyone except root can change /usr/local/sbin/tcsd_emux0a
+    Checking if anyone except root can change /usr/sbin/chown
+    Checking if anyone except root can change /var/run/tpm
+[UPC001] WARNING: /usr/local/etc/rc.d/tcsd is run by root at startup. /usr/local/etc/rc.d/tcsd contains the string /var/run/tpm. The user _tss can write to /var/run/tpm
+Processing startup script /usr/local/etc/rc.d/tpmd
+    Checking if anyone except root can change /usr/local/etc/rc.d/tpmd
+Processing startup script /usr/local/etc/rc.d/vmware-guestd
+    Checking if anyone except root can change /usr/local/etc/rc.d/vmware-guestd
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/local/etc/rc.d/vmware-guestd is run by root at startup. /usr/local/etc/rc.d/vmware-guestd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/etc/rc.d/vmware-guestd is run by root at startup. /usr/local/etc/rc.d/vmware-guestd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /usr/local/bin/vmtoolsdx0a
+    Checking if anyone except root can change /usr/local/bin/vmware-checkvm
+Processing startup script /usr/local/etc/rc.d/vmware-kmod
+    Checking if anyone except root can change /usr/local/etc/rc.d/vmware-kmod
+    Checking if anyone except root can change /usr/local/bin/vmware-checkvm
+Processing startup script /usr/local/etc/rc.d/vncserver
+    Checking if anyone except root can change /usr/local/etc/rc.d/vncserver
+    Checking if anyone except root can change /usr/local/bin/vncserver
+
+############################################
+Checking if running programs are writable
+############################################
+ERROR: Can't find absolute path for COMMAND.  Skipping.
+ERROR: Can't find absolute path for [idle].  Skipping.
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /bin/sh:
+    Checking if anyone except charix can change /lib/libedit.so.7
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /lib/libncursesw.so.8
+    Checking if anyone except charix can change /_shXXXXXX
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /dev/tty
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except charix can change /etc/profile
+    Checking if anyone except charix can change /etc/suid_profile
+    Checking if anyone except charix can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except charix can change /tmp/
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except charix can change /u1
+    Checking if anyone except charix can change /upH
+    Checking if anyone except charix can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except charix can change /x0a
+ERROR: Can't find absolute path for [intr].  Skipping.
+ERROR: Can't find absolute path for [kernel].  Skipping.
+    Checking if anyone except root can change /sbin/init
+ERROR: Can't find absolute path for [crypto].  Skipping.
+ERROR: Can't find absolute path for [crypto.  Skipping.
+ERROR: Can't find absolute path for [cam].  Skipping.
+ERROR: Can't find absolute path for [mpt_recovery0].  Skipping.
+ERROR: Can't find absolute path for [sctp_iterator].  Skipping.
+ERROR: Can't find absolute path for [rand_harvestq].  Skipping.
+ERROR: Can't find absolute path for [soaiod1].  Skipping.
+ERROR: Can't find absolute path for [soaiod2].  Skipping.
+ERROR: Can't find absolute path for [audit].  Skipping.
+ERROR: Can't find absolute path for [geom].  Skipping.
+ERROR: Can't find absolute path for [usb].  Skipping.
+ERROR: Can't find absolute path for [soaiod3].  Skipping.
+ERROR: Can't find absolute path for [soaiod4].  Skipping.
+ERROR: Can't find absolute path for [pagedaemon].  Skipping.
+ERROR: Can't find absolute path for [vmdaemon].  Skipping.
+ERROR: Can't find absolute path for [pagezero].  Skipping.
+ERROR: Can't find absolute path for [bufdaemon].  Skipping.
+ERROR: Can't find absolute path for [bufspacedaemon].  Skipping.
+ERROR: Can't find absolute path for [syncer].  Skipping.
+ERROR: Can't find absolute path for [vnlru].  Skipping.
+    Checking if anyone except root can change /sbin/devd
+    Checking if anyone except root can change /usr/sbin/syslogd
+    Checking if anyone except root can change /usr/sbin/syslogd:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /L9
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /dev/console
+    Checking if anyone except root can change /dev/klog
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/sbin/syslogd is currently running as root. /usr/sbin/syslogd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/sbin/syslogd is currently running as root. /usr/sbin/syslogd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/localtime
+    Checking if anyone except root can change /lx0a
+    Checking if anyone except root can change /or
+    Checking if anyone except root can change /var/run/log
+    Checking if anyone except root can change /var/run/logpriv
+    Checking if anyone except root can change /x0a
+    Checking if anyone except root can change /usr/local/bin/vmtoolsd
+    Checking if anyone except root can change /usr/local/bin/vmtoolsd:
+    Checking if anyone except root can change /usr/local/lib/libvmtools.so.0
+    Checking if anyone except root can change /usr/local/lib/libgmodule-2.0.so.0
+    Checking if anyone except root can change /usr/local/lib/libgobject-2.0.so.0
+    Checking if anyone except root can change /usr/local/lib/libgthread-2.0.so.0
+    Checking if anyone except root can change /usr/local/lib/libdnet.so.1
+    Checking if anyone except root can change /lib/libkvm.so.7
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libthr.so.3
+    Checking if anyone except root can change /usr/local/lib/libglib-2.0.so.0
+    Checking if anyone except root can change /usr/local/lib/libintl.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /usr/local/lib/libiconv.so.2
+    Checking if anyone except root can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except root can change /usr/local/lib/libffi.so.6
+    Checking if anyone except root can change /lib/libelf.so.2
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /3
+    Checking if anyone except root can change /usr/local/lib
+    Checking if anyone except root can change /usr/local/lib/open-vm-tools/plugins
+    Checking if anyone except root can change /usr/sbin/sshd
+    Checking if anyone except root can change /usr/sbin/sshd:
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /usr/lib/libprivatessh.so.5
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /usr/lib/libbsm.so.3
+    Checking if anyone except root can change /usr/lib/libblacklist.so.0
+    Checking if anyone except root can change /usr/lib/libgssapi_krb5.so.10
+    Checking if anyone except root can change /usr/lib/libgssapi.so.10
+    Checking if anyone except root can change /usr/lib/libkrb5.so.11
+    Checking if anyone except root can change /usr/lib/libwrap.so.6
+    Checking if anyone except root can change /lib/libcrypto.so.8
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /usr/lib/libprivateldns.so.5
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libz.so.6
+    Checking if anyone except root can change /lib/libthr.so.3
+    Checking if anyone except root can change /usr/lib/libroken.so.11
+    Checking if anyone except root can change /usr/lib/libasn1.so.11
+    Checking if anyone except root can change /usr/lib/libcom_err.so.5
+    Checking if anyone except root can change /usr/lib/libhx509.so.11
+    Checking if anyone except root can change /usr/lib/libwind.so.11
+    Checking if anyone except root can change /usr/lib/libheimbase.so.11
+    Checking if anyone except root can change /usr/lib/libprivateheimipcc.so.11
+    Checking if anyone except root can change /3x0a
+    Checking if anyone except root can change /IP
+    Checking if anyone except root can change /authorized_keys
+    Checking if anyone except root can change /authorized_keys2
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /dev/tty
+[UPC001] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /dev/tty. The user charix can write to /dev/tty
+[UPC002] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except root can change /etc/motd
+    Checking if anyone except root can change /etc/nologin
+    Checking if anyone except root can change /etc/ssh/ssh_host_dsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_ecdsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_ed25519_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_key
+    Checking if anyone except root can change /etc/ssh/ssh_host_rsa_key
+    Checking if anyone except root can change /etc/ssh/ssh_known_hosts
+    Checking if anyone except root can change /etc/ssh/ssh_known_hosts2
+    Checking if anyone except root can change /etc/ssh/sshd_config
+    Checking if anyone except root can change /invalid
+    Checking if anyone except root can change /no
+    Checking if anyone except root can change /nonexist
+    Checking if anyone except root can change /pkblob
+    Checking if anyone except root can change /point-to-point/ethernet/no
+    Checking if anyone except root can change /rc
+    Checking if anyone except root can change /tQH
+    Checking if anyone except root can change /tmp/ssh-XXXXXXXXXX
+[UPC002] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /tmp/ssh-XXXXXXXXXX. The group wheel can write to /tmp
+[UPC003] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /tmp/ssh-XXXXXXXXXX. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except root can change /uOL
+    Checking if anyone except root can change /uoL
+    Checking if anyone except root can change /user
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/bin/passwd
+    Checking if anyone except root can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except root can change /usr/local/bin/xauth
+    Checking if anyone except root can change /var/empty
+    Checking if anyone except root can change /var/mail
+[UPC002] WARNING: /usr/sbin/sshd is currently running as root. /usr/sbin/sshd contains the string /var/mail. The group mail can write to /var/mail
+    Checking if anyone except root can change /var/run/nologin
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except root can change /usr/local/sbin/httpd
+    Checking if anyone except root can change /usr/local/sbin/httpd:
+    Checking if anyone except root can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except root can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except root can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except root can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except root can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except root can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except root can change /lib/libcrypt.so.5
+    Checking if anyone except root can change /lib/libthr.so.3
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /usr/local/lib/libintl.so.8
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /-C
+    Checking if anyone except root can change /-c
+    Checking if anyone except root can change //
+    Checking if anyone except root can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except root can change //IETF//DTD
+    Checking if anyone except root can change /0123456
+    Checking if anyone except root can change /2
+    Checking if anyone except root can change /90L
+    Checking if anyone except root can change /A
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /apache24/data
+    Checking if anyone except root can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except root can change /byteranges
+    Checking if anyone except root can change /dH
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as root. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as root. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /disable
+    Checking if anyone except root can change /hard
+    Checking if anyone except root can change /html
+    Checking if anyone except root can change /http
+    Checking if anyone except root can change /i
+    Checking if anyone except root can change /netmask
+    Checking if anyone except root can change /parsing
+    Checking if anyone except root can change /password
+    Checking if anyone except root can change /plain
+    Checking if anyone except root can change /slot
+    Checking if anyone except root can change /tL
+    Checking if anyone except root can change /tiL
+    Checking if anyone except root can change /txH
+    Checking if anyone except root can change /u
+    Checking if anyone except root can change /usr/local
+    Checking if anyone except root can change /usr/local/bin/suexec
+    Checking if anyone except root can change /usr/local/bin/suexecx0a
+    Checking if anyone except root can change /usr/local/lib
+    Checking if anyone except root can change /usr/localx0a
+    Checking if anyone except root can change /var/run
+    Checking if anyone except root can change /var/run/apache_runtime_status
+    Checking if anyone except root can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except root can change /x-byteranges
+    Checking if anyone except root can change /x-www-form-urlencoded
+    Checking if anyone except root can change /x0a
+    Checking if anyone except root can change /zG
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+ERROR: Can't find absolute path for sendmail:.  Skipping.
+ERROR: Can't find absolute path for sendmail:.  Skipping.
+    Checking if anyone except root can change /usr/sbin/cron
+    Checking if anyone except root can change /usr/sbin/cron:
+    Checking if anyone except root can change /usr/lib/libpam.so.6
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /Hc
+    Checking if anyone except root can change /bin/sh
+    Checking if anyone except root can change /deny
+    Checking if anyone except root can change /dev/null
+[UPC002] WARNING: /usr/sbin/cron is currently running as root. /usr/sbin/cron contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/sbin/cron is currently running as root. /usr/sbin/cron contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except root can change /etc/crontab
+    Checking if anyone except root can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except root can change /usr/sbin/sendmail
+    Checking if anyone except root can change /var/cron
+    Checking if anyone except root can change /var/run/
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+    Checking if anyone except www can change /usr/local/sbin/httpd
+    Checking if anyone except www can change /usr/local/sbin/httpd:
+    Checking if anyone except www can change /usr/local/lib/libpcre.so.1
+    Checking if anyone except www can change /usr/local/lib/libaprutil-1.so.0
+    Checking if anyone except www can change /usr/local/lib/libdb-5.3.so.0
+    Checking if anyone except www can change /usr/local/lib/libgdbm.so.4
+    Checking if anyone except www can change /usr/local/lib/libexpat.so.1
+    Checking if anyone except www can change /usr/local/lib/libapr-1.so.0
+    Checking if anyone except www can change /lib/libcrypt.so.5
+    Checking if anyone except www can change /lib/libthr.so.3
+    Checking if anyone except www can change /lib/libc.so.7
+    Checking if anyone except www can change /usr/local/lib/libintl.so.8
+    Checking if anyone except www can change /
+    Checking if anyone except www can change /-C
+    Checking if anyone except www can change /-c
+    Checking if anyone except www can change //
+    Checking if anyone except www can change //////////00000000000000011223334445566666667789x0a
+    Checking if anyone except www can change //IETF//DTD
+    Checking if anyone except www can change /0123456
+    Checking if anyone except www can change /2
+    Checking if anyone except www can change /90L
+    Checking if anyone except www can change /A
+    Checking if anyone except www can change /Hc
+    Checking if anyone except www can change /apache24/data
+    Checking if anyone except www can change /binx0a/usr/binx0a/usr/ucbx0a/usr/bsdx0a/usr/local/bin
+    Checking if anyone except www can change /byteranges
+    Checking if anyone except www can change /dH
+    Checking if anyone except www can change /dev/null
+[UPC002] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/local/sbin/httpd is currently running as www. /usr/local/sbin/httpd contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except www can change /disable
+    Checking if anyone except www can change /hard
+    Checking if anyone except www can change /html
+    Checking if anyone except www can change /http
+    Checking if anyone except www can change /i
+    Checking if anyone except www can change /netmask
+    Checking if anyone except www can change /parsing
+    Checking if anyone except www can change /password
+    Checking if anyone except www can change /plain
+    Checking if anyone except www can change /slot
+    Checking if anyone except www can change /tL
+    Checking if anyone except www can change /tiL
+    Checking if anyone except www can change /txH
+    Checking if anyone except www can change /u
+    Checking if anyone except www can change /usr/local
+    Checking if anyone except www can change /usr/local/bin/suexec
+    Checking if anyone except www can change /usr/local/bin/suexecx0a
+    Checking if anyone except www can change /usr/local/lib
+    Checking if anyone except www can change /usr/localx0a
+    Checking if anyone except www can change /var/run
+    Checking if anyone except www can change /var/run/apache_runtime_status
+    Checking if anyone except www can change /var/run/apache_runtime_statusx0a
+    Checking if anyone except www can change /x-byteranges
+    Checking if anyone except www can change /x-www-form-urlencoded
+    Checking if anyone except www can change /x0a
+    Checking if anyone except www can change /zG
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for csh.  Skipping.
+ERROR: Can't find absolute path for python.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for <defunct>.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for sshd:.  Skipping.
+ERROR: Can't find absolute path for Xvnc.  Skipping.
+ERROR: Can't find absolute path for xterm.  Skipping.
+ERROR: Can't find absolute path for twm.  Skipping.
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+    Checking if anyone except root can change /usr/libexec/getty
+    Checking if anyone except root can change /usr/libexec/getty:
+    Checking if anyone except root can change /lib/libutil.so.9
+    Checking if anyone except root can change /lib/libc.so.7
+    Checking if anyone except root can change /
+    Checking if anyone except root can change /dev/
+    Checking if anyone except root can change /etc/gettytab
+    Checking if anyone except root can change /usr/bin/login
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for scp.  Skipping.
+    Checking if anyone except charix can change /usr/bin/ssh
+    Checking if anyone except charix can change /usr/bin/ssh:
+    Checking if anyone except charix can change /usr/lib/libprivatessh.so.5
+    Checking if anyone except charix can change /usr/lib/libgssapi.so.10
+    Checking if anyone except charix can change /lib/libcrypto.so.8
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /usr/lib/libprivateldns.so.5
+    Checking if anyone except charix can change /lib/libcrypt.so.5
+    Checking if anyone except charix can change /lib/libz.so.6
+    Checking if anyone except charix can change /
+    Checking if anyone except charix can change /MD5
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /config
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /usr/bin/ssh is currently running as charix. /usr/bin/ssh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /usr/bin/ssh is currently running as charix. /usr/bin/ssh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /etc/ssh/ssh_config
+    Checking if anyone except charix can change /etc/ssh/ssh_host_dsa_key
+    Checking if anyone except charix can change /etc/ssh/ssh_host_ecdsa_key
+    Checking if anyone except charix can change /etc/ssh/ssh_host_ed25519_key
+    Checking if anyone except charix can change /etc/ssh/ssh_host_rsa_key
+    Checking if anyone except charix can change /etc/ssh/ssh_known_hosts
+    Checking if anyone except charix can change /etc/ssh/ssh_known_hosts2
+    Checking if anyone except charix can change /id_dsa
+    Checking if anyone except charix can change /id_ecdsa
+    Checking if anyone except charix can change /id_ed25519
+    Checking if anyone except charix can change /id_rsa
+    Checking if anyone except charix can change /identity
+    Checking if anyone except charix can change /increase
+    Checking if anyone except charix can change /kx0a
+    Checking if anyone except charix can change /name
+    Checking if anyone except charix can change /o
+    Checking if anyone except charix can change /out
+    Checking if anyone except charix can change /out/err
+    Checking if anyone except charix can change /response
+    Checking if anyone except charix can change /usr/libexec/ssh-keysign
+    Checking if anyone except charix can change /usr/local/bin/xauth
+    Checking if anyone except charix can change /x0a
+    Checking if anyone except charix can change /xauthfile
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for Xvnc.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for ps.  Skipping.
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /bin/sh:
+    Checking if anyone except charix can change /lib/libedit.so.7
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /lib/libncursesw.so.8
+    Checking if anyone except charix can change /_shXXXXXX
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /dev/tty
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except charix can change /etc/profile
+    Checking if anyone except charix can change /etc/suid_profile
+    Checking if anyone except charix can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except charix can change /tmp/
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except charix can change /u1
+    Checking if anyone except charix can change /upH
+    Checking if anyone except charix can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except charix can change /x0a
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for vim.  Skipping.
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /bin/sh:
+    Checking if anyone except charix can change /lib/libedit.so.7
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /lib/libncursesw.so.8
+    Checking if anyone except charix can change /_shXXXXXX
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /dev/tty
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except charix can change /etc/profile
+    Checking if anyone except charix can change /etc/suid_profile
+    Checking if anyone except charix can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except charix can change /tmp/
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except charix can change /u1
+    Checking if anyone except charix can change /upH
+    Checking if anyone except charix can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except charix can change /x0a
+ERROR: Can't find absolute path for less.  Skipping.
+    Checking if anyone except charix can change /bin/csh
+    Checking if anyone except charix can change /bin/csh:
+    Checking if anyone except charix can change /lib/libncursesw.so.8
+    Checking if anyone except charix can change /lib/libcrypt.so.5
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /
+    Checking if anyone except charix can change /01/09
+    Checking if anyone except charix can change /01/25
+    Checking if anyone except charix can change /02/09
+    Checking if anyone except charix can change /02/11
+    Checking if anyone except charix can change /02/14
+    Checking if anyone except charix can change /02/25
+    Checking if anyone except charix can change /03/02
+    Checking if anyone except charix can change /03/08
+    Checking if anyone except charix can change /03/30
+    Checking if anyone except charix can change /04/08
+    Checking if anyone except charix can change /04/16
+    Checking if anyone except charix can change /04/17
+    Checking if anyone except charix can change /05/10
+    Checking if anyone except charix can change /05/13
+    Checking if anyone except charix can change /05/26
+    Checking if anyone except charix can change /05/28
+    Checking if anyone except charix can change /06/06
+    Checking if anyone except charix can change /07/09
+    Checking if anyone except charix can change /07/17
+    Checking if anyone except charix can change /08/01
+    Checking if anyone except charix can change /08/13
+    Checking if anyone except charix can change /08/19
+    Checking if anyone except charix can change /08/23
+    Checking if anyone except charix can change /08/24
+    Checking if anyone except charix can change /09/08
+    Checking if anyone except charix can change /09/12
+    Checking if anyone except charix can change /09/23
+    Checking if anyone except charix can change /09/30
+    Checking if anyone except charix can change /10/16
+    Checking if anyone except charix can change /10/18
+    Checking if anyone except charix can change /10/19
+    Checking if anyone except charix can change /10/31
+    Checking if anyone except charix can change /11/03
+    Checking if anyone except charix can change /11/15
+    Checking if anyone except charix can change /11/24
+    Checking if anyone except charix can change /12/09
+    Checking if anyone except charix can change /A
+    Checking if anyone except charix can change /BPT
+    Checking if anyone except charix can change /E1
+    Checking if anyone except charix can change /H
+    Checking if anyone except charix can change /M
+    Checking if anyone except charix can change /O
+    Checking if anyone except charix can change /bin/csh
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /dev/
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /bin/csh is currently running as charix. /bin/csh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /bin/csh is currently running as charix. /bin/csh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /dev/tty
+[UPC002] WARNING: /bin/csh is currently running as charix. /bin/csh contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except charix can change /endif
+    Checking if anyone except charix can change /foreach
+    Checking if anyone except charix can change /lx0a
+    Checking if anyone except charix can change /new
+    Checking if anyone except charix can change /pm
+    Checking if anyone except charix can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except charix can change /tcsh
+    Checking if anyone except charix can change /tmp
+[UPC002] WARNING: /bin/csh is currently running as charix. /bin/csh contains the string /tmp. The group wheel can write to /tmp
+[UPC003] WARNING: /bin/csh is currently running as charix. /bin/csh contains the string /tmp. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except charix can change /tt
+    Checking if anyone except charix can change /u/
+    Checking if anyone except charix can change /u3L
+    Checking if anyone except charix can change /usr/bin/login
+    Checking if anyone except charix can change /usr/man/cat1x0a/usr/man/cat8x0a/usr/man/cat6x0a/usr/local/man/cat1x0a/usr/local/man/cat8x0a/usr/local/man/cat6
+    Checking if anyone except charix can change /usr/share/locale
+    Checking if anyone except charix can change /ux0aH
+    Checking if anyone except charix can change /x0a
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /bin/sh:
+    Checking if anyone except charix can change /lib/libedit.so.7
+    Checking if anyone except charix can change /lib/libc.so.7
+    Checking if anyone except charix can change /lib/libncursesw.so.8
+    Checking if anyone except charix can change /_shXXXXXX
+    Checking if anyone except charix can change /bin/sh
+    Checking if anyone except charix can change /dev/null
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. The group wheel can write to /dev/null
+[UPC004] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/null. World write is set for /dev/null
+    Checking if anyone except charix can change /dev/tty
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /dev/tty. The group tty can write to /dev/tty
+    Checking if anyone except charix can change /etc/profile
+    Checking if anyone except charix can change /etc/suid_profile
+    Checking if anyone except charix can change /sbinx0a/binx0a/usr/sbinx0a/usr/binx0a/usr/local/sbinx0a/usr/local/bin
+    Checking if anyone except charix can change /tmp/
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp/
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp/ (but sticky bit set)
+[UPC002] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. The group wheel can write to /tmp
+[UPC003] WARNING: /bin/sh is currently running as charix. /bin/sh contains the string /tmp/. World write is set for /tmp (but sticky bit set)
+    Checking if anyone except charix can change /u1
+    Checking if anyone except charix can change /upH
+    Checking if anyone except charix can change /usr/binx0a/binx0a/usr/sbinx0a/sbin
+    Checking if anyone except charix can change /x0a
+ERROR: Can't find absolute path for -csh.  Skipping.
+ERROR: Can't find absolute path for -csh.  Skipping.
+
+############################################
+Checking exploit mitigation
+############################################
