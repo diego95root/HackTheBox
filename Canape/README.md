@@ -224,7 +224,7 @@ with open("backup.data", "wb") as file:
     file.write(pickle_data)
 ```
 
-As the article said, when testing this locally, only Powned would be printed to the screen. I tried many combinations and functions, but nothing worked, I only got 500 Internal Errors. After many failed attempt, I concluded this process was time consuming and unsuccessful, for either I got the ``Still reviewing: + contens`` message or the 500 error.
+As the article said, when testing this locally, only Powned would be printed to the screen. I tried many combinations and functions, but nothing worked, I only got 500 Internal Errors. After many failed attempt, I concluded this process was time consuming and unsuccessful, for either I got the ``Still reviewing: + content`` message or the 500 error.
 
 ## Exploit 2.0
 
