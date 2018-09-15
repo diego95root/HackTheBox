@@ -15,6 +15,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
 * [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not retired yet)
 * [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps) (Not retired yet)
+* [Canape](https://github.com/diego95root/HackTheBox/tree/master/Canape)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 

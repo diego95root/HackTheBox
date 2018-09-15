@@ -1,0 +1,18 @@
+# Nmap 7.01 scan initiated Thu Sep  6 16:31:10 2018 as: nmap -sV -sC -oA nmap/initial 10.10.10.70
+Nmap scan report for 10.10.10.70
+Host is up (0.047s latency).
+Not shown: 999 filtered ports
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+| http-git: 
+|   10.10.10.70:80/.git/
+|     Git repository found!
+|     Repository description: Unnamed repository; edit this file 'description' to name the...
+|     Last commit message: final # Please enter the commit message for your changes. Li...
+|     Remotes:
+|_      http://git.canape.htb/simpsons.git
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+|_http-title: Simpsons Fan Site
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Sep  6 16:31:39 2018 -- 1 IP address (1 host up) scanned in 29.43 seconds
