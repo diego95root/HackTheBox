@@ -35,7 +35,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 So no SSH this time. That means we won't be able to get the user's private keys and log in once we get to user. That said, the nmap scan found a web app listening on port 80 (the only service available) with a public git repository. Looks like we found our entry point!
 
-## Further enumaration
+## Further enumeration
 
 We start by inspecting the website, comprised of a home page which states its functionality, a quotes page and a submit page. It basically is a website with a database to store quotes from 'the simpsons'. One important thing to notice is that it uses CouchDB, a fact that will come in handy in the future.
 
