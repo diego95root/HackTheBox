@@ -13,7 +13,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison)
 * [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
-* [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not retired yet)
+* [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not written yet)
 * [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps) (Not retired yet)
 * [Canape](https://github.com/diego95root/HackTheBox/tree/master/Canape)
 
