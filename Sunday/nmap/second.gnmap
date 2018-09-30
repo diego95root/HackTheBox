@@ -1,0 +1,5 @@
+# Nmap 7.01 scan initiated Wed Sep 19 23:26:26 2018 as: nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second sunday
+# Ports scanned: TCP(65536;0-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 10.10.10.76 (sunday)	Status: Up
+Host: 10.10.10.76 (sunday)	Ports: 79/open/tcp//finger//Sun Solaris fingerd/, 22022/open/tcp//ssh//SunSSH 1.3 (protocol 2.0)/, 34904/open/tcp//tcpwrapped///, 37597/open/tcp//tcpwrapped///, 51954/open/tcp//tcpwrapped///
+# Nmap done at Thu Sep 20 00:36:32 2018 -- 1 IP address (1 host up) scanned in 4205.88 seconds

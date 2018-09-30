@@ -1,0 +1,37 @@
+ssh sunny@sunday -p 22022
+sunny:sunday
+sammy:cooldude!
+
+https://touhidshaikh.com/blog/?p=790
+
+parallels@ubuntu:~/Desktop/Sunday$ finger @sunday
+Login       Name               TTY         Idle    When    Where
+sammy    sammy                 pts/3            Wed 22:58  10.10.12.96         
+sammy    sammy                 pts/4            Wed 22:56  10.10.13.188        
+sunny    sunny                 pts/5          1 Wed 22:58  10.10.12.28
+
+sunny@sunday:~/Desktop$ cat /etc/passwd
+root:x:0:0:Super-User:/root:/usr/bin/bash
+daemon:x:1:1::/:
+bin:x:2:2::/usr/bin:
+sys:x:3:3::/:
+adm:x:4:4:Admin:/var/adm:
+lp:x:71:8:Line Printer Admin:/usr/spool/lp:
+uucp:x:5:5:uucp Admin:/usr/lib/uucp:
+nuucp:x:9:9:uucp Admin:/var/spool/uucppublic:/usr/lib/uucp/uucico
+dladm:x:15:3:Datalink Admin:/:
+smmsp:x:25:25:SendMail Message Submission Program:/:
+listen:x:37:4:Network Admin:/usr/net/nls:
+gdm:x:50:50:GDM Reserved UID:/:
+zfssnap:x:51:12:ZFS Automatic Snapshots Reserved UID:/:/usr/bin/pfsh
+xvm:x:60:60:xVM User:/:
+mysql:x:70:70:MySQL Reserved UID:/:
+openldap:x:75:75:OpenLDAP User:/:
+webservd:x:80:80:WebServer Reserved UID:/:
+postgres:x:90:90:PostgreSQL Reserved UID:/:/usr/bin/pfksh
+svctag:x:95:12:Service Tag UID:/:
+nobody:x:60001:60001:NFS Anonymous Access User:/:
+noaccess:x:60002:60002:No Access User:/:
+nobody4:x:65534:65534:SunOS 4.x NFS Anonymous Access User:/:
+sammy:x:101:10:sammy:/export/home/sammy:/bin/bash
+sunny:x:65535:1:sunny:/export/home/sunny:/bin/bash

@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Thu Sep 20 00:51:56 2018 as: nmap -sV -sC -oA nmap/fourth -sT -p 79 sunday
+Host: 10.10.10.76 (sunday)	Status: Up
+Host: 10.10.10.76 (sunday)	Ports: 79/open/tcp//finger//Sun Solaris fingerd/
+# Nmap done at Thu Sep 20 00:52:06 2018 -- 1 IP address (1 host up) scanned in 9.42 seconds

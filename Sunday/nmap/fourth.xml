@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.01 scan initiated Thu Sep 20 00:51:56 2018 as: nmap -sV -sC -oA nmap/fourth -sT -p 79 sunday -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -oA nmap/fourth -sT -p 79 sunday" start="1537397516" startstr="Thu Sep 20 00:51:56 2018" version="7.01" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="1" services="79"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1537397517" endtime="1537397526"><status state="up" reason="conn-refused" reason_ttl="0"/>
+<address addr="10.10.10.76" addrtype="ipv4"/>
+<hostnames>
+<hostname name="sunday" type="user"/>
+<hostname name="sunday" type="PTR"/>
+</hostnames>
+<ports><port protocol="tcp" portid="79"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="finger" product="Sun Solaris fingerd" ostype="Solaris" method="probed" conf="10"><cpe>cpe:/o:sun:sunos</cpe></service><script id="finger" output="Login       Name               TTY         Idle    When    Where&#xd;&#xa;sunny    sunny                 pts/1            Wed 22:34  10.10.13.188        &#xd;&#xa;sammy    sammy                 pts/3            Wed 22:34  10.10.15.78         &#xd;&#xa;sunny    sunny                 pts/4          1 Wed 22:35  10.10.15.22         &#xd;&#xa;sammy    sammy                 pts/5          1 Wed 22:36  10.10.12.249        &#xd;&#xa;sammy    sammy                 pts/6            Wed 22:36  10.10.15.78         &#xd;&#xa;sammy    sammy                 pts/7          3 Wed 22:37  10.10.12.203        &#xd;&#xa;sammy    sammy                 pts/8            Wed 22:49  10.10.13.188        &#xd;&#xa;sammy    sammy                 pts/9            Wed 22:50  10.10.12.96         &#xd;&#xa;"/></port>
+</ports>
+<times srtt="45420" rttvar="34560" to="183660"/>
+</host>
+<runstats><finished time="1537397526" timestr="Thu Sep 20 00:52:06 2018" elapsed="9.42" summary="Nmap done at Thu Sep 20 00:52:06 2018; 1 IP address (1 host up) scanned in 9.42 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

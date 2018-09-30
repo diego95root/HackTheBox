@@ -1,0 +1,18 @@
+# Nmap 7.01 scan initiated Thu Sep 20 00:51:56 2018 as: nmap -sV -sC -oA nmap/fourth -sT -p 79 sunday
+Nmap scan report for sunday (10.10.10.76)
+Host is up (0.045s latency).
+PORT   STATE SERVICE VERSION
+79/tcp open  finger  Sun Solaris fingerd
+| finger: Login       Name               TTY         Idle    When    Where
+| sunny    sunny                 pts/1            Wed 22:34  10.10.13.188        
+| sammy    sammy                 pts/3            Wed 22:34  10.10.15.78         
+| sunny    sunny                 pts/4          1 Wed 22:35  10.10.15.22         
+| sammy    sammy                 pts/5          1 Wed 22:36  10.10.12.249        
+| sammy    sammy                 pts/6            Wed 22:36  10.10.15.78         
+| sammy    sammy                 pts/7          3 Wed 22:37  10.10.12.203        
+| sammy    sammy                 pts/8            Wed 22:49  10.10.13.188        
+|_sammy    sammy                 pts/9            Wed 22:50  10.10.12.96         
+Service Info: OS: Solaris; CPE: cpe:/o:sun:sunos
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Sep 20 00:52:06 2018 -- 1 IP address (1 host up) scanned in 9.42 seconds

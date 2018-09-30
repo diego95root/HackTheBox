@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.01 scan initiated Wed Sep 19 23:26:26 2018 as: nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second sunday -->
+<nmaprun scanner="nmap" args="nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second sunday" start="1537392386" startstr="Wed Sep 19 23:26:26 2018" version="7.01" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="65536" services="0-65535"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="Ping Scan" time="1537392387"/>
+<taskend task="Ping Scan" time="1537392387" extrainfo="1 total hosts"/>
+<taskbegin task="SYN Stealth Scan" time="1537392387"/>
+<taskprogress task="SYN Stealth Scan" time="1537392448" percent="1.85" remaining="3239" etc="1537395686"/>
+<taskprogress task="SYN Stealth Scan" time="1537392481" percent="2.97" remaining="3073" etc="1537395554"/>
+<taskprogress task="SYN Stealth Scan" time="1537392571" percent="5.94" remaining="2912" etc="1537395483"/>
+<taskprogress task="SYN Stealth Scan" time="1537392712" percent="10.56" remaining="2753" etc="1537395464"/>
+<taskprogress task="SYN Stealth Scan" time="1537392898" percent="16.44" remaining="2598" etc="1537395496"/>
+<taskprogress task="SYN Stealth Scan" time="1537393033" percent="20.96" remaining="2436" etc="1537395469"/>
+<taskprogress task="SYN Stealth Scan" time="1537393159" percent="25.31" remaining="2278" etc="1537395437"/>
+<taskprogress task="SYN Stealth Scan" time="1537393282" percent="29.63" remaining="2126" etc="1537395407"/>
+<taskprogress task="SYN Stealth Scan" time="1537393600" percent="38.08" remaining="1973" etc="1537395572"/>
+<taskprogress task="SYN Stealth Scan" time="1537393741" percent="42.79" remaining="1811" etc="1537395551"/>
+<taskprogress task="SYN Stealth Scan" time="1537393900" percent="47.81" remaining="1652" etc="1537395552"/>
+<taskprogress task="SYN Stealth Scan" time="1537394038" percent="52.53" remaining="1493" etc="1537395530"/>
+<taskprogress task="SYN Stealth Scan" time="1537394170" percent="57.20" remaining="1335" etc="1537395504"/>
+<taskprogress task="SYN Stealth Scan" time="1537394308" percent="62.05" remaining="1175" etc="1537395483"/>
+<taskprogress task="SYN Stealth Scan" time="1537394443" percent="66.90" remaining="1018" etc="1537395460"/>
+<taskprogress task="SYN Stealth Scan" time="1537394575" percent="71.74" remaining="862" etc="1537395437"/>
+<taskprogress task="SYN Stealth Scan" time="1537394719" percent="76.70" remaining="709" etc="1537395427"/>
+<taskprogress task="SYN Stealth Scan" time="1537394860" percent="81.72" remaining="554" etc="1537395413"/>
+<taskprogress task="SYN Stealth Scan" time="1537394986" percent="86.68" remaining="400" etc="1537395385"/>
+<taskprogress task="SYN Stealth Scan" time="1537395115" percent="91.64" remaining="250" etc="1537395364"/>
+<taskprogress task="SYN Stealth Scan" time="1537395265" percent="96.72" remaining="98" etc="1537395363"/>
+<taskend task="SYN Stealth Scan" time="1537396584" extrainfo="65536 total ports"/>
+<taskbegin task="Service scan" time="1537396584"/>
+<taskend task="Service scan" time="1537396591" extrainfo="5 services on 1 host"/>
+<taskbegin task="NSE" time="1537396591"/>
+<taskend task="NSE" time="1537396592"/>
+<host starttime="1537392387" endtime="1537396592"><status state="up" reason="echo-reply" reason_ttl="254"/>
+<address addr="10.10.10.76" addrtype="ipv4"/>
+<hostnames>
+<hostname name="sunday" type="user"/>
+<hostname name="sunday" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="49174">
+<extrareasons reason="resets" count="49174"/>
+</extraports>
+<extraports state="filtered" count="16357">
+<extrareasons reason="no-responses" count="16357"/>
+</extraports>
+<port protocol="tcp" portid="79"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="finger" product="Sun Solaris fingerd" ostype="Solaris" method="probed" conf="10"><cpe>cpe:/o:sun:sunos</cpe></service></port>
+<port protocol="tcp" portid="22022"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="ssh" product="SunSSH" version="1.3" extrainfo="protocol 2.0" method="probed" conf="10"><cpe>cpe:/a:sun:sunssh:1.3</cpe></service></port>
+<port protocol="tcp" portid="34904"><state state="open" reason="syn-ack" reason_ttl="59"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+<port protocol="tcp" portid="37597"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+<port protocol="tcp" portid="51954"><state state="open" reason="syn-ack" reason_ttl="63"/><service name="tcpwrapped" method="probed" conf="8"/></port>
+</ports>
+<times srtt="57811" rttvar="19687" to="136559"/>
+</host>
+<runstats><finished time="1537396592" timestr="Thu Sep 20 00:36:32 2018" elapsed="4205.88" summary="Nmap done at Thu Sep 20 00:36:32 2018; 1 IP address (1 host up) scanned in 4205.88 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
