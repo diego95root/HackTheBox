@@ -14,9 +14,12 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
 * [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not written yet)
-* [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps) (Not retired yet)
+* [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps)
 * [Canape](https://github.com/diego95root/HackTheBox/tree/master/Canape)
 * [Sunday](https://github.com/diego95root/HackTheBox/tree/master/Sunday)
+* [Jerry](https://github.com/diego95root/HackTheBox/tree/master/Jerry)
+* [Secnotes](https://github.com/diego95root/HackTheBox/tree/master/Secnotes)
+
 
 I hope you find them useful. In case of advice, feel free to contact me.
 

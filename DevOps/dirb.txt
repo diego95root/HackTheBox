@@ -1,0 +1,21 @@
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
+
+START_TIME: Thu Sep  6 00:12:15 2018
+URL_BASE: http://10.10.10.91:5000/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+
+-----------------
+
+GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://10.10.10.91:5000/ ----
+                           
++ http://10.10.10.91:5000/feed (CODE:200|SIZE:546263)                          
++ http://10.10.10.91:5000/upload (CODE:200|SIZE:347)                           
+                                                                               
+-----------------
+END_TIME: Thu Sep  6 00:22:05 2018
+DOWNLOADED: 4612 - FOUND: 2
