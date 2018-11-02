@@ -2,7 +2,7 @@
 
 This was a machine regarded as easy by most users, but I must say I found the root part really challenging. Thankfully, I got it in the end.
 
-The machine is running on port 10.10.10.68.
+The machine is running on IP 10.10.10.68.
 
 #### Enumeration
 
