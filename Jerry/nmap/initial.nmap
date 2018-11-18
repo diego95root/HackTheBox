@@ -1,0 +1,12 @@
+# Nmap 7.01 scan initiated Mon Oct  8 10:22:18 2018 as: nmap -sV -sC -Pn -oA nmap/initial 10.10.10.95
+Nmap scan report for 10.10.10.95
+Host is up (0.036s latency).
+Not shown: 999 filtered ports
+PORT     STATE SERVICE VERSION
+8080/tcp open  http    Apache Tomcat/Coyote JSP engine 1.1
+|_http-favicon: Apache Tomcat
+|_http-server-header: Apache-Coyote/1.1
+|_http-title: Apache Tomcat/7.0.88
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Oct  8 10:22:33 2018 -- 1 IP address (1 host up) scanned in 14.38 seconds
