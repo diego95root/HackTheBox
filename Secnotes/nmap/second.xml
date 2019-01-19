@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.01 scan initiated Fri Oct  5 12:47:32 2018 as: nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second secnotes -->
+<nmaprun scanner="nmap" args="nmap -v -sV -sS -p0-65535 -T4 -oA nmap/second secnotes" start="1538736452" startstr="Fri Oct  5 12:47:32 2018" version="7.01" xmloutputversion="1.04">
+<scaninfo type="syn" protocol="tcp" numservices="65536" services="0-65535"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="Ping Scan" time="1538736453"/>
+<taskend task="Ping Scan" time="1538736453" extrainfo="1 total hosts"/>
+<taskbegin task="SYN Stealth Scan" time="1538736453"/>
+<taskprogress task="SYN Stealth Scan" time="1538736484" percent="4.41" remaining="673" etc="1538737157"/>
+<taskprogress task="SYN Stealth Scan" time="1538736550" percent="13.62" remaining="616" etc="1538737165"/>
+<taskprogress task="SYN Stealth Scan" time="1538736598" percent="20.06" remaining="578" etc="1538737176"/>
+<taskprogress task="SYN Stealth Scan" time="1538736621" percent="23.87" remaining="536" etc="1538737157"/>
+<taskprogress task="SYN Stealth Scan" time="1538736679" percent="29.55" remaining="539" etc="1538737218"/>
+<taskprogress task="SYN Stealth Scan" time="1538736709" percent="37.58" remaining="426" etc="1538737134"/>
+<taskprogress task="SYN Stealth Scan" time="1538736748" percent="43.30" remaining="387" etc="1538737134"/>
+<taskprogress task="SYN Stealth Scan" time="1538736781" percent="48.28" remaining="352" etc="1538737132"/>
+<taskprogress task="SYN Stealth Scan" time="1538736811" percent="55.64" remaining="286" etc="1538737096"/>
+<taskprogress task="SYN Stealth Scan" time="1538736841" percent="63.09" remaining="228" etc="1538737068"/>
+<taskprogress task="SYN Stealth Scan" time="1538736871" percent="68.18" remaining="196" etc="1538737066"/>
+<taskprogress task="SYN Stealth Scan" time="1538736901" percent="77.08" remaining="134" etc="1538737034"/>
+<taskprogress task="SYN Stealth Scan" time="1538754935" percent="87.58" remaining="2621" etc="1538757556"/>
+<taskprogress task="SYN Stealth Scan" time="1538755002" percent="88.39" remaining="2436" etc="1538757438"/>
+<taskprogress task="SYN Stealth Scan" time="1538756085" percent="93.41" remaining="1386" etc="1538757470"/>
+<taskprogress task="SYN Stealth Scan" time="1538757168" percent="98.42" remaining="333" etc="1538757500"/>
+<taskend task="SYN Stealth Scan" time="1538757509" extrainfo="65536 total ports"/>
+<taskbegin task="Service scan" time="1538757509"/>
+<taskend task="Service scan" time="1538757522" extrainfo="3 services on 1 host"/>
+<taskbegin task="NSE" time="1538757522"/>
+<taskend task="NSE" time="1538757522"/>
+<host starttime="1538736453" endtime="1538757522"><status state="up" reason="echo-reply" reason_ttl="127"/>
+<address addr="10.10.10.97" addrtype="ipv4"/>
+<hostnames>
+<hostname name="secnotes" type="user"/>
+<hostname name="secnotes" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="65533">
+<extrareasons reason="no-responses" count="65533"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="http" product="Microsoft IIS httpd" version="10.0" ostype="Windows" method="probed" conf="10"><cpe>cpe:/a:microsoft:iis:10.0</cpe><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="microsoft-ds" product="Microsoft Windows 10 microsoft-ds" ostype="Windows 10" method="probed" conf="10"><cpe>cpe:/o:microsoft:windows_10</cpe></service></port>
+<port protocol="tcp" portid="8808"><state state="open" reason="syn-ack" reason_ttl="127"/><service name="http" product="Microsoft IIS httpd" version="10.0" ostype="Windows" method="probed" conf="10"><cpe>cpe:/a:microsoft:iis:10.0</cpe><cpe>cpe:/o:microsoft:windows</cpe></service></port>
+</ports>
+<times srtt="35693" rttvar="1725" to="100000"/>
+</host>
+<runstats><finished time="1538757522" timestr="Fri Oct  5 18:38:42 2018" elapsed="21070.27" summary="Nmap done at Fri Oct  5 18:38:42 2018; 1 IP address (1 host up) scanned in 21070.27 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

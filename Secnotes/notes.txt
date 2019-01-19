@@ -1,0 +1,64 @@
+\\secnotes.htb\new-site
+tyler / 92g!mA8BGjOirkL%OG*&
+
+-----------------------------------
+
+
+root@SECNOTES:~# ls -al
+ls -al
+total 8
+drwx------ 1 root root  512 Jun 22 14:25 .
+drwxr-xr-x 1 root root  512 Jun 21 18:02 ..
+---------- 1 root root  398 Jun 22 14:41 .bash_history
+-rw-r--r-- 1 root root 3112 Jun 22 03:09 .bashrc
+-rw-r--r-- 1 root root  148 Aug 17  2015 .profile
+drwxrwxrwx 1 root root  512 Jun 22 02:56 filesystem
+root@SECNOTES:~# cat .bash_history
+cat .bash_history
+cd /mnt/c/
+ls
+cd Users/
+cd /
+cd ~
+ls
+pwd
+mkdir filesystem
+mount //127.0.0.1/c$ filesystem/
+sudo apt install cifs-utils
+mount //127.0.0.1/c$ filesystem/
+mount //127.0.0.1/c$ filesystem/ -o user=administrator
+cat /proc/filesystems
+sudo modprobe cifs
+smbclient
+apt install smbclient
+smbclient
+smbclient -U 'administrator%u6!4ZwgwOM#^OBf#Nwnh' \\\\127.0.0.1\\c$
+> .bash_history 
+less .bash_history
+
+
+----------------------------------
+
+<?php
+
+if ($includes != 1) {
+        die("ERROR: Should not access directly.");
+}
+
+/* Database credentials. Assuming you are running MySQL
+server with default setting (user 'root' with no password) */
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'secnotes');
+define('DB_PASSWORD', 'q8N#9Eos%JinE57tke72');
+//define('DB_USERNAME', 'root');
+//define('DB_PASSWORD', 'qwer1234QWER!@#$');
+define('DB_NAME', 'secnotes');
+
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+     
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+?>

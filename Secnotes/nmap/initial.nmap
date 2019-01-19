@@ -1,0 +1,30 @@
+# Nmap 7.01 scan initiated Thu Oct  4 18:02:51 2018 as: nmap -sV -sC -oA nmap/initial secnotes
+Nmap scan report for secnotes (10.10.10.97)
+Host is up (0.26s latency).
+Not shown: 998 filtered ports
+PORT    STATE SERVICE      VERSION
+80/tcp  open  http         Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+| http-title: Secure Notes - Login
+|_Requested resource was login.php
+445/tcp open  microsoft-ds Microsoft Windows 10 microsoft-ds
+Service Info: OSs: Windows, Windows 10; CPE: cpe:/o:microsoft:windows, cpe:/o:microsoft:windows_10
+
+Host script results:
+| smb-os-discovery: 
+|   OS: Windows 10 Enterprise 17134 (Windows 10 Enterprise 6.3)
+|   OS CPE: cpe:/o:microsoft:windows_10::-
+|   NetBIOS computer name: SECNOTES
+|   Workgroup: HTB
+|_  System time: 2018-10-04T09:04:11-07:00
+| smb-security-mode: 
+|   account_used: guest
+|   authentication_level: user
+|   challenge_response: supported
+|_  message_signing: disabled (dangerous, but default)
+|_smbv2-enabled: Server supports SMBv2 protocol
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Oct  4 18:04:40 2018 -- 1 IP address (1 host up) scanned in 109.60 seconds
