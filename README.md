@@ -23,6 +23,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Active](https://github.com/diego95root/HackTheBox/tree/master/Active)
 * [Curling](https://github.com/diego95root/HackTheBox/tree/master/Curling) (Not retired yet)
 * [Chaos](https://github.com/diego95root/HackTheBox/tree/master/Chaos) (Not retired yet)
+* [Help](https://github.com/diego95root/HackTheBox/tree/master/Help) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
