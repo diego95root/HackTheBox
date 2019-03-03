@@ -19,7 +19,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Sunday](https://github.com/diego95root/HackTheBox/tree/master/Sunday)
 * [Jerry](https://github.com/diego95root/HackTheBox/tree/master/Jerry)
 * [Secnotes](https://github.com/diego95root/HackTheBox/tree/master/Secnotes)
-* [Access](https://github.com/diego95root/HackTheBox/tree/master/Access) (Not retired yet)
+* [Access](https://github.com/diego95root/HackTheBox/tree/master/Access)
 * [Active](https://github.com/diego95root/HackTheBox/tree/master/Active)
 * [Curling](https://github.com/diego95root/HackTheBox/tree/master/Curling) (Not retired yet)
 * [Chaos](https://github.com/diego95root/HackTheBox/tree/master/Chaos) (Not retired yet)
