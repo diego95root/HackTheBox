@@ -1,0 +1,3 @@
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+floris	ALL=(ALL) NOPASSWD:ALL

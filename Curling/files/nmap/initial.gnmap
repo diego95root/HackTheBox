@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Fri Nov 16 09:26:06 2018 as: nmap -sV -sC -oA nmap/initial curling
+Host: 10.10.10.150 (curling)	Status: Up
+Host: 10.10.10.150 (curling)	Ports: 22/open/tcp//ssh//OpenSSH 7.6p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.29 ((Ubuntu))/	Ignored State: closed (998)
+# Nmap done at Fri Nov 16 09:29:17 2018 -- 1 IP address (1 host up) scanned in 190.42 seconds
