@@ -21,7 +21,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Secnotes](https://github.com/diego95root/HackTheBox/tree/master/Secnotes)
 * [Access](https://github.com/diego95root/HackTheBox/tree/master/Access)
 * [Active](https://github.com/diego95root/HackTheBox/tree/master/Active)
-* [Curling](https://github.com/diego95root/HackTheBox/tree/master/Curling) (Not retired yet)
+* [Curling](https://github.com/diego95root/HackTheBox/tree/master/Curling)
 * [Chaos](https://github.com/diego95root/HackTheBox/tree/master/Chaos) (Not retired yet)
 * [Help](https://github.com/diego95root/HackTheBox/tree/master/Help) (Not retired yet)
 * [FriendZone](https://github.com/diego95root/HackTheBox/tree/master/FriendZone) (Not retired yet)
