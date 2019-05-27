@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Fri Jan 18 07:59:25 2019 as: nmap -sU -T5 -oA nmap/udp 10.10.10.120
+Host: 10.10.10.120 (chaos)	Status: Up
+Host: 10.10.10.120 (chaos)	Ports: 10000/open/udp//ndmp///
+# Nmap done at Fri Jan 18 08:12:59 2019 -- 1 IP address (1 host up) scanned in 813.73 seconds

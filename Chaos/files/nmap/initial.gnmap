@@ -1,0 +1,4 @@
+# Nmap 7.01 scan initiated Fri Jan 18 08:15:18 2019 as: nmap -sV -sC -oA nmap/initial 10.10.10.120
+Host: 10.10.10.120 (chaos)	Status: Up
+Host: 10.10.10.120 (chaos)	Ports: 80/open/tcp//http//Apache httpd 2.4.34 ((Ubuntu))/, 110/open/tcp//pop3//Dovecot pop3d/, 143/open/tcp//imap//Dovecot imapd (Ubuntu)/, 993/open/tcp//ssl|imap//Dovecot imapd (Ubuntu)/, 995/open/tcp//ssl|pop3//Dovecot pop3d/, 10000/open/tcp//http//MiniServ 1.890 (Webmin httpd)/	Ignored State: closed (994)
+# Nmap done at Fri Jan 18 08:16:08 2019 -- 1 IP address (1 host up) scanned in 50.66 seconds

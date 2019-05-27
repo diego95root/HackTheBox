@@ -1,0 +1,208 @@
+parallels@ubuntu:~/Desktop$ cd Chaos/
+parallels@ubuntu:~/Desktop/Chaos$ ls
+DirBusterReport-chaos-80.txt  nmap  notes.txt  wpscan
+parallels@ubuntu:~/Desktop/Chaos$ telnet chaos 993
+Trying 10.10.10.120...
+Connected to chaos.
+Escape character is '^]'.
+a1 LOGIN ayush jiujitsu
+Connection closed by foreign host.
+parallels@ubuntu:~/Desktop/Chaos$ openssl s_connect -connect chaos:993
+openssl:Error: 's_connect' is an invalid command.
+
+Standard commands
+asn1parse         ca                ciphers           cms               
+crl               crl2pkcs7         dgst              dh                
+dhparam           dsa               dsaparam          ec                
+ecparam           enc               engine            errstr            
+gendh             gendsa            genpkey           genrsa            
+nseq              ocsp              passwd            pkcs12            
+pkcs7             pkcs8             pkey              pkeyparam         
+pkeyutl           prime             rand              req               
+rsa               rsautl            s_client          s_server          
+s_time            sess_id           smime             speed             
+spkac             srp               ts                verify            
+version           x509              
+
+Message Digest commands (see the `dgst' command for more details)
+md4               md5               rmd160            sha               
+sha1              
+
+Cipher commands (see the `enc' command for more details)
+aes-128-cbc       aes-128-ecb       aes-192-cbc       aes-192-ecb       
+aes-256-cbc       aes-256-ecb       base64            bf                
+bf-cbc            bf-cfb            bf-ecb            bf-ofb            
+camellia-128-cbc  camellia-128-ecb  camellia-192-cbc  camellia-192-ecb  
+camellia-256-cbc  camellia-256-ecb  cast              cast-cbc          
+cast5-cbc         cast5-cfb         cast5-ecb         cast5-ofb         
+des               des-cbc           des-cfb           des-ecb           
+des-ede           des-ede-cbc       des-ede-cfb       des-ede-ofb       
+des-ede3          des-ede3-cbc      des-ede3-cfb      des-ede3-ofb      
+des-ofb           des3              desx              rc2               
+rc2-40-cbc        rc2-64-cbc        rc2-cbc           rc2-cfb           
+rc2-ecb           rc2-ofb           rc4               rc4-40            
+seed              seed-cbc          seed-cfb          seed-ecb          
+seed-ofb          
+
+parallels@ubuntu:~/Desktop/Chaos$ openssl s_client -connect chaos:993
+CONNECTED(00000003)
+depth=0 CN = chaos
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = chaos
+verify return:1
+---
+Certificate chain
+ 0 s:/CN=chaos
+   i:/CN=chaos
+---
+Server certificate
+-----BEGIN CERTIFICATE-----
+MIICzTCCAbWgAwIBAgIUR18iuul5tpZRMbhU/i2x/e1kGE4wDQYJKoZIhvcNAQEL
+BQAwEDEOMAwGA1UEAwwFY2hhb3MwHhcNMTgxMDI4MTAwMTQ5WhcNMjgxMDI1MTAw
+MTQ5WjAQMQ4wDAYDVQQDDAVjaGFvczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC
+AQoCggEBAJ3R009h0wK/xOFpkbF0R4T+6sxB/qaoMQkgIuRvUV1m1O6vSqrcf5fs
+jT9ePbEqxT6MQPNzbsMQkv7DRx04COy5swfPnYaU7ggQh839JaIg9NrYg5Idkg0b
+dST0M6XixXjj3ZhYDAq1pfGJD0jGXjjJ947GtYdeH0lFXcnIu91fAdVMRD09K26F
+1tmqAU8+08u8H1juf1Ohl8lwP6W3IViBPXyQvuyf+uMv9TdHRjvQpDZEnAsgh64l
+moiQKRK6SznvZVgTngeYVXpqSV7shOBoN7FMM+qhX1f8NPhvFFqvfUtPGls2D8c/
+8lQnNNAVMCjVg6RJQsSkOBgwd9hc36MCAwEAAaMfMB0wCQYDVR0TBAIwADAQBgNV
+HREECTAHggVjaGFvczANBgkqhkiG9w0BAQsFAAOCAQEAiB1XtWlMRtVE0SQWB+dq
+2L3xnis32DWHz+8wvXGtLb99zl539CKknFOqcundqDNkJuSWwVXXaDDsjQlw289A
+rfmiXMwCIrGUfRoTNoK+PocT+yiLfAZzQfuEiQZbOguJNLZvnYwqy1m9AbJrYtrw
+/mucbGHfDOp9OUGUzChzwWe75xzP235VUhLtNhcm7alWUTzEMEnwPFu2sXUNxxOR
+Q9t/HaFNZOLks/R85TUwsCkega43gDpLZAdCp2Z8SPso0Cz1kFBFytotjf6Ws5c/
+nOgq8WcIr+1ilvLvCB41ht5SoGVh8pVS4U4llopbcfKD/Bwq+gRkOxiC1nwDYCPX
+eA==
+-----END CERTIFICATE-----
+subject=/CN=chaos
+issuer=/CN=chaos
+---
+No client certificate CA names sent
+Peer signing digest: SHA512
+Server Temp Key: ECDH, P-256, 256 bits
+---
+SSL handshake has read 1375 bytes and written 431 bytes
+---
+New, TLSv1/SSLv3, Cipher is ECDHE-RSA-AES256-GCM-SHA384
+Server public key is 2048 bit
+Secure Renegotiation IS supported
+Compression: NONE
+Expansion: NONE
+No ALPN negotiated
+SSL-Session:
+    Protocol  : TLSv1.2
+    Cipher    : ECDHE-RSA-AES256-GCM-SHA384
+    Session-ID: 98F07DC5CE94A73211D04777F48FE36E8443DBC7D4D0BAF7A7117895597EEC16
+    Session-ID-ctx: 
+    Master-Key: 217110D8A3055D13CCCE243730E28FA23CF829CB69C6CF7F6CBBE14263E598089ACDB0D3869428315C51B40D3E3B6D72
+    Key-Arg   : None
+    PSK identity: None
+    PSK identity hint: None
+    SRP username: None
+    TLS session ticket lifetime hint: 7200 (seconds)
+    TLS session ticket:
+    0000 - ff 92 33 43 f6 b1 fb 53-51 4d 6a f7 f2 6f e0 aa   ..3C...SQMj..o..
+    0010 - 6b 86 fe e1 f4 04 2d a8-d6 f5 7e e4 43 fe 59 83   k.....-...~.C.Y.
+    0020 - f6 3e c3 e8 33 f1 0e dd-4e 41 e3 2f 8a 9f 74 71   .>..3...NA./..tq
+    0030 - 7a 13 b3 71 4e c1 62 60-1a 8c 68 1c 7e cf 1a ae   z..qN.b`..h.~...
+    0040 - ec c4 91 7d be dc f3 0f-33 45 7c da a6 cb 3c 6c   ...}....3E|...<l
+    0050 - a5 1c 20 9b 18 85 4b d2-12 69 98 85 69 4b fd b5   .. ...K..i..iK..
+    0060 - cd 7a 88 1f 64 e8 fa 0e-ce bd 44 7d aa b8 f3 88   .z..d.....D}....
+    0070 - 03 9c 65 73 dc 0d 5e f7-91 d0 78 40 a2 20 fb 13   ..es..^...x@. ..
+    0080 - 44 8b 63 29 c9 0c 88 56-03 a0 82 9a 56 5d a2 86   D.c)...V....V]..
+    0090 - 40 ca 0d 69 58 94 02 42-f1 8b a1 f2 fa 21 d1 ec   @..iX..B.....!..
+
+    Start Time: 1547846255
+    Timeout   : 300 (sec)
+    Verify return code: 18 (self signed certificate)
+---
+* OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE LITERAL+ AUTH=PLAIN] Dovecot (Ubuntu) ready.
+A1 LOGIN ayush jiujitsu
+A1 OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
+a2 LIST "" "*"
+* LIST (\NoInferiors \UnMarked \Trash) "/" Trash
+* LIST (\NoInferiors \Drafts) "/" Drafts
+* LIST (\NoInferiors \Sent) "/" Sent
+* LIST (\HasNoChildren) "/" INBOX
+a2 OK List completed (0.001 + 0.000 + 0.001 secs).
+a3 examine Drafts
+* FLAGS (\Answered \Flagged \Deleted \Seen \Draft)
+* OK [PERMANENTFLAGS ()] Read-only mailbox.
+* 1 EXISTS
+* 0 RECENT
+* OK [UIDVALIDITY 1540728611] UIDs valid
+* OK [UIDNEXT 5] Predicted next UID
+a3 OK [READ-ONLY] Examine completed (0.002 + 0.000 + 0.001 secs).
+a4 fetch 1 body[]
+* 1 FETCH (BODY[] {2532}
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="=_00b34a28b9033c43ed09c0950f4176e1"
+Date: Sun, 28 Oct 2018 17:46:38 +0530
+From: ayush <ayush@localhost>
+To: undisclosed-recipients:;
+Subject: service
+Message-ID: <7203426a8678788517ce8d28103461bd@webmail.chaos.htb>
+X-Sender: ayush@localhost
+User-Agent: Roundcube Webmail/1.3.8
+
+--=_00b34a28b9033c43ed09c0950f4176e1
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+
+Hii, sahay
+Check the enmsg.txt
+You are the password XD.
+Also attached the script which i used to encrypt.
+Thanks,
+Ayush
+
+--=_00b34a28b9033c43ed09c0950f4176e1
+Content-Transfer-Encoding: base64
+Content-Type: application/octet-stream;
+ name=enim_msg.txt
+Content-Disposition: attachment;
+ filename=enim_msg.txt;
+ size=272
+
+MDAwMDAwMDAwMDAwMDIzNK7uqnoZitizcEs4hVpDg8z18LmJXjnkr2tXhw/AldQmd/g53L6pgva9
+RdPkJ3GSW57onvseOe5ai95/M4APq+3mLp4GQ5YTuRTaGsHtrMs7rNgzwfiVor7zNryPn1Jgbn8M
+7Y2mM6I+lH0zQb6Xt/JkhOZGWQzH4llEbyHvvlIjfu+MW5XrOI6QAeXGYTTinYSutsOhPilLnk1e
+6Hq7AUnTxcMsqqLdqEL5+/px3ZVZccuPUvuSmXHGE023358ud9XKokbNQG3LOQuRFkpE/LS10yge
++l6ON4g1fpYizywI3+h9l5Iwpj/UVb0BcVgojtlyz5gIv12tAHf7kpZ6R08=
+--=_00b34a28b9033c43ed09c0950f4176e1
+Content-Transfer-Encoding: base64
+Content-Type: text/x-python; charset=us-ascii;
+ name=en.py
+Content-Disposition: attachment;
+ filename=en.py;
+ size=804
+
+ZGVmIGVuY3J5cHQoa2V5LCBmaWxlbmFtZSk6CiAgICBjaHVua3NpemUgPSA2NCoxMDI0CiAgICBv
+dXRwdXRGaWxlID0gImVuIiArIGZpbGVuYW1lCiAgICBmaWxlc2l6ZSA9IHN0cihvcy5wYXRoLmdl
+dHNpemUoZmlsZW5hbWUpKS56ZmlsbCgxNikKICAgIElWID1SYW5kb20ubmV3KCkucmVhZCgxNikK
+CiAgICBlbmNyeXB0b3IgPSBBRVMubmV3KGtleSwgQUVTLk1PREVfQ0JDLCBJVikKCiAgICB3aXRo
+IG9wZW4oZmlsZW5hbWUsICdyYicpIGFzIGluZmlsZToKICAgICAgICB3aXRoIG9wZW4ob3V0cHV0
+RmlsZSwgJ3diJykgYXMgb3V0ZmlsZToKICAgICAgICAgICAgb3V0ZmlsZS53cml0ZShmaWxlc2l6
+ZS5lbmNvZGUoJ3V0Zi04JykpCiAgICAgICAgICAgIG91dGZpbGUud3JpdGUoSVYpCgogICAgICAg
+ICAgICB3aGlsZSBUcnVlOgogICAgICAgICAgICAgICAgY2h1bmsgPSBpbmZpbGUucmVhZChjaHVu
+a3NpemUpCgogICAgICAgICAgICAgICAgaWYgbGVuKGNodW5rKSA9PSAwOgogICAgICAgICAgICAg
+ICAgICAgIGJyZWFrCiAgICAgICAgICAgICAgICBlbGlmIGxlbihjaHVuaykgJSAxNiAhPSAwOgog
+ICAgICAgICAgICAgICAgICAgIGNodW5rICs9IGInICcgKiAoMTYgLSAobGVuKGNodW5rKSAlIDE2
+KSkKCiAgICAgICAgICAgICAgICBvdXRmaWxlLndyaXRlKGVuY3J5cHRvci5lbmNyeXB0KGNodW5r
+KSkKCmRlZiBnZXRLZXkocGFzc3dvcmQpOgogICAgICAgICAgICBoYXNoZXIgPSBTSEEyNTYubmV3
+KHBhc3N3b3JkLmVuY29kZSgndXRmLTgnKSkKICAgICAgICAgICAgcmV0dXJuIGhhc2hlci5kaWdl
+c3QoKQoK
+--=_00b34a28b9033c43ed09c0950f4176e1--
+)
+a4 OK Fetch completed (0.002 + 0.000 + 0.001 secs).
+a5 logout
+* BYE Logging out
+a5 OK Logout completed (0.001 + 0.000 secs).
+closed
+parallels@ubuntu:~/Desktop/Chaos$ http://blog.andrewc.com/2013/01/connect-to-imap-server-with-telnet/
+bash: http://blog.andrewc.com/2013/01/connect-to-imap-server-with-telnet/: No such file or directory
+parallels@ubuntu:~/Desktop/Chaos$ 
+

@@ -1,0 +1,9 @@
+# Nmap 7.01 scan initiated Fri Jan 18 07:59:25 2019 as: nmap -sU -T5 -oA nmap/udp 10.10.10.120
+Warning: 10.10.10.120 giving up on port because retransmission cap hit (2).
+Nmap scan report for chaos (10.10.10.120)
+Host is up (0.054s latency).
+Not shown: 755 closed ports, 244 open|filtered ports
+PORT      STATE SERVICE
+10000/udp open  ndmp
+
+# Nmap done at Fri Jan 18 08:12:59 2019 -- 1 IP address (1 host up) scanned in 813.73 seconds
