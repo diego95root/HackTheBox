@@ -1,0 +1,87 @@
+DirBuster 1.0-RC1 - Report
+http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project
+Report produced on Wed Feb 06 20:48:57 GMT 2019
+--------------------------------
+
+http://help:80
+--------------------------------
+Directories found during testing:
+
+Dirs found with a 200 response:
+
+/
+/support/
+/support/images/
+/support/css/
+/support/includes/language/
+/support/includes/language/staff/
+
+Dirs found with a 403 response:
+
+/icons/
+/icons/small/
+/javascript/
+
+Dirs found with a 302 response:
+
+/support/uploads/
+/support/uploads/articles/
+/support/includes/
+/support/js/
+/support/images/cp/
+/support/includes/classes/
+/support/uploads/tickets/
+/support/views/
+/support/views/staff/
+/support/views/client/
+
+
+--------------------------------
+Files found during testing:
+
+Files found with a 200 responce:
+
+/index.html
+/support/index.php
+/support/images/index.php
+/support/css/index.php
+/icons/README.html
+/support/includes/global.php
+/support/includes/language/english.php
+/support/includes/language/spanish.php
+/support/includes/language/staff/english.php
+/support/includes/language/staff/spanish.php
+/support/readme.html
+/support/includes/config.php
+/support/views/staff/news.html
+/support/views/staff/login.html
+/support/LICENSE.txt
+/support/captcha.php
+/support/views/staff/site.html
+/support/views/client/news.html
+/support/views/client/home.html
+/support/views/client/site.html
+/support/views/staff/preferences.html
+/support/views/staff/404.html
+/support/includes/functions.php
+/support/views/client/404.html
+/support/views/staff/tickets.html
+/support/views/client/tickets.html
+/support/views/staff/dashboard.html
+/support/views/client/maintenance.html
+
+Files found with a 302 responce:
+
+/support/uploads/index.php
+/support/uploads/articles/index.php
+/support/includes/index.php
+/support/js/index.php
+/support/images/cp/index.php
+/support/includes/classes/index.php
+/support/uploads/tickets/index.php
+/support/views/index.php
+/support/views/staff/index.php
+/support/views/client/index.php
+
+
+--------------------------------

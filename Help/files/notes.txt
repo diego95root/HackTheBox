@@ -1,0 +1,15 @@
+godhelpmeplz
+
+help:Welcome1
+
+select * from users;
++----+------------+----------+-----------------------+------------------------------------------+------------+--------+
+| id | salutation | fullname | email                 | password                                 | timezone   | status |
++----+------------+----------+-----------------------+------------------------------------------+------------+--------+
+|  1 |          0 | helpme   | helpme@helpme.com     | c3b3bd1eb5142e29adb0044b16ee4d402d06f9ca | US/Central |      1 |
+|  2 |          0 | xcvxv    | lolololol@yopmail.com | ec09fa0d0ba74336ea7fe392869adb198242f15a | NULL       |      1 |
+|  3 |          0 | asdasd   | asdasd@asdasd.nl      | 50ce68860206aaa1bb687174669af5fe4ab40e6e | NULL       |      1 |
++----+------------+----------+-----------------------+------------------------------------------+------------+--------+
+3 rows in set (0.00 sec)
+
+
