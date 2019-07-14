@@ -1,0 +1,27 @@
+- Nikto v2.1.6
+---------------------------------------------------------------------------
++ Target IP:          10.10.10.123
++ Target Hostname:    friendzone
++ Target Port:        80
++ Start Time:         2019-02-14 08:48:48 (GMT0)
+---------------------------------------------------------------------------
++ Server: Apache/2.4.29 (Ubuntu)
++ Server leaks inodes via ETags, header found with file /, fields: 0x144 0x577831e9005e6 
++ The anti-clickjacking X-Frame-Options header is not present.
++ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS
++ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type
++ No CGI Directories found (use '-C all' to force check all possible dirs)
++ Allowed HTTP Methods: GET, POST, OPTIONS, HEAD 
++ OSVDB-3233: /icons/README: Apache default file found.
++ OSVDB-3268: /wordpress/: Directory indexing found.
++ 7374 requests: 0 error(s) and 7 item(s) reported on remote host
++ End Time:           2019-02-14 08:53:29 (GMT0) (281 seconds)
+---------------------------------------------------------------------------
++ 1 host(s) tested
+
+
+      *********************************************************************
+      Portions of the server's headers (Apache/2.4.29) are not in
+      the Nikto database or are newer than the known string. Would you like
+      to submit this information (*no server specific data*) to CIRT.net
+      for a Nikto update (or you may email to sullo@cirt.net) (y/n)? 

@@ -1,0 +1,14 @@
+127.0.0.1		localhost
+127.0.1.1		parrot
+10.10.10.121	help   
+10.10.10.123	friendzoneportal.red
+10.10.10.123	admin.friendzoneportal.red
+10.10.10.123	files.friendzoneportal.red
+10.10.10.123	imports.friendzoneportal.red
+10.10.10.123	vpn.friendzoneportal.red
+
+# The following lines are desirable for IPv6 capable hosts
+::1     localhost ip6-localhost ip6-loopback
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+

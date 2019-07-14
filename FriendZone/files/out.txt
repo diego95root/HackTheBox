@@ -1,0 +1,1721 @@
+
+[00;31m#########################################################[00m
+[00;31m#[00m [00;33mLocal Linux Enumeration & Privilege Escalation Script[00m [00;31m#[00m
+[00;31m#########################################################[00m
+[00;33m# www.rebootuser.com[00m
+[00;33m# version 0.95[00m
+
+[-] Debug Info
+[00;33m[+] Thorough tests = Disabled[00m
+
+
+[00;33mScan started at:
+Wed Feb 20 22:58:58 EET 2019
+[00m
+
+[00;33m### SYSTEM ##############################################[00m
+[00;31m[-] Kernel information:[00m
+Linux FriendZone 4.15.0-36-generic #39-Ubuntu SMP Mon Sep 24 16:19:09 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+
+[00;31m[-] Kernel information (continued):[00m
+Linux version 4.15.0-36-generic (buildd@lgw01-amd64-031) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #39-Ubuntu SMP Mon Sep 24 16:19:09 UTC 2018
+
+
+[00;31m[-] Specific release information:[00m
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.1 LTS"
+NAME="Ubuntu"
+VERSION="18.04.1 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.1 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+
+
+[00;31m[-] Hostname:[00m
+FriendZone
+
+
+[00;33m### USER/GROUP ##########################################[00m
+[00;31m[-] Current user/group info:[00m
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+
+[00;31m[-] Users that have previously logged onto the system:[00m
+Username         Port     From             Latest
+root             tty1                      Thu Jan 24 01:12:41 +0200 2019
+friend           pts/6    10.10.16.59      Wed Feb 20 22:43:49 +0200 2019
+
+
+[00;31m[-] Who else is logged on:[00m
+ 22:58:58 up 26 min,  5 users,  load average: 5.31, 6.87, 4.83
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+friend   pts/0    10.10.15.232     22:33    2.00s  0.40s  0.22s nano /usr/lib/python2.7/os.py
+friend   pts/1    10.10.14.85      22:33   25:38   0.07s  0.07s -bash
+friend   pts/2    10.10.16.59      22:33    1:26  24.18s 23.77s ./pspy64
+friend   pts/4    10.10.14.182     22:34    1:22   3.78s  3.47s ./pspy64 UID=0
+friend   pts/6    10.10.16.59      22:43    1:12   0.15s  0.15s -bash
+
+
+[00;31m[-] Group memberships:[00m
+uid=0(root) gid=0(root) groups=0(root)
+uid=1(daemon) gid=1(daemon) groups=1(daemon)
+uid=2(bin) gid=2(bin) groups=2(bin)
+uid=3(sys) gid=3(sys) groups=3(sys)
+uid=4(sync) gid=65534(nogroup) groups=65534(nogroup)
+uid=5(games) gid=60(games) groups=60(games)
+uid=6(man) gid=12(man) groups=12(man)
+uid=7(lp) gid=7(lp) groups=7(lp)
+uid=8(mail) gid=8(mail) groups=8(mail)
+uid=9(news) gid=9(news) groups=9(news)
+uid=10(uucp) gid=10(uucp) groups=10(uucp)
+uid=13(proxy) gid=13(proxy) groups=13(proxy)
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+uid=34(backup) gid=34(backup) groups=34(backup)
+uid=38(list) gid=38(list) groups=38(list)
+uid=39(irc) gid=39(irc) groups=39(irc)
+uid=41(gnats) gid=41(gnats) groups=41(gnats)
+uid=65534(nobody) gid=65534(nogroup) groups=65534(nogroup)
+uid=100(systemd-network) gid=102(systemd-network) groups=102(systemd-network)
+uid=101(systemd-resolve) gid=103(systemd-resolve) groups=103(systemd-resolve)
+uid=102(syslog) gid=106(syslog) groups=106(syslog),4(adm)
+uid=103(messagebus) gid=107(messagebus) groups=107(messagebus)
+uid=104(_apt) gid=65534(nogroup) groups=65534(nogroup)
+uid=105(uuidd) gid=109(uuidd) groups=109(uuidd)
+uid=1000(friend) gid=1000(friend) groups=1000(friend),4(adm),24(cdrom),30(dip),46(plugdev),111(lpadmin),112(sambashare)
+uid=106(sshd) gid=65534(nogroup) groups=65534(nogroup)
+uid=107(Debian-exim) gid=114(Debian-exim) groups=114(Debian-exim)
+uid=108(ftp) gid=115(ftp) groups=115(ftp)
+uid=109(bind) gid=116(bind) groups=116(bind)
+
+
+[00;31m[-] It looks like we have some admin users:[00m
+uid=102(syslog) gid=106(syslog) groups=106(syslog),4(adm)
+uid=1000(friend) gid=1000(friend) groups=1000(friend),4(adm),24(cdrom),30(dip),46(plugdev),111(lpadmin),112(sambashare)
+
+
+[00;31m[-] Contents of /etc/passwd:[00m
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+systemd-network:x:100:102:systemd Network Management,,,:/run/systemd/netif:/usr/sbin/nologin
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd/resolve:/usr/sbin/nologin
+syslog:x:102:106::/home/syslog:/usr/sbin/nologin
+messagebus:x:103:107::/nonexistent:/usr/sbin/nologin
+_apt:x:104:65534::/nonexistent:/usr/sbin/nologin
+uuidd:x:105:109::/run/uuidd:/usr/sbin/nologin
+friend:x:1000:1000:friend,,,:/home/friend:/bin/bash
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+Debian-exim:x:107:114::/var/spool/exim4:/usr/sbin/nologin
+ftp:x:108:115:ftp daemon,,,:/srv/ftp:/usr/sbin/nologin
+bind:x:109:116::/var/cache/bind:/usr/sbin/nologin
+
+
+[00;31m[-] Super user account(s):[00m
+root
+
+
+[00;31m[-] Accounts that have recently used sudo:[00m
+/home/friend/.sudo_as_admin_successful
+
+
+[00;31m[-] Are permissions on /home directories lax:[00m
+total 12K
+drwxr-xr-x  3 root   root   4.0K Oct  5 23:46 .
+drwxr-xr-x 22 root   root   4.0K Oct  5 23:41 ..
+drwxr-xr-x  5 friend friend 4.0K Jan 24 00:59 friend
+
+
+[00;31m[-] Root is allowed to login via SSH:[00m
+PermitRootLogin yes
+
+
+[00;33m### ENVIRONMENTAL #######################################[00m
+[00;31m[-] Environment information:[00m
+APACHE_LOG_DIR=/var/log/apache2
+LANG=C
+OLDPWD=/home/friend
+INVOCATION_ID=5c3a36c9fd864e0f9db5f395548d8ea6
+APACHE_LOCK_DIR=/var/lock/apache2
+PWD=/tmp
+JOURNAL_STREAM=9:23270
+APACHE_RUN_GROUP=www-data
+APACHE_RUN_DIR=/var/run/apache2
+APACHE_RUN_USER=www-data
+APACHE_PID_FILE=/var/run/apache2/apache2.pid
+SHLVL=1
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+_=/usr/bin/env
+
+
+[00;31m[-] Path information:[00m
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+
+[00;31m[-] Available shells:[00m
+# /etc/shells: valid login shells
+/bin/sh
+/bin/bash
+/bin/rbash
+/bin/dash
+
+
+[00;31m[-] Current umask value:[00m
+0000
+u=rwx,g=rwx,o=rwx
+
+
+[00;31m[-] umask value as specified in /etc/login.defs:[00m
+UMASK		022
+
+
+[00;31m[-] Password and storage information:[00m
+PASS_MAX_DAYS	99999
+PASS_MIN_DAYS	0
+PASS_WARN_AGE	7
+ENCRYPT_METHOD SHA512
+
+
+[00;33m### JOBS/TASKS ##########################################[00m
+[00;31m[-] Cron jobs:[00m
+-rw-r--r-- 1 root root  722 Nov 16  2017 /etc/crontab
+
+/etc/cron.d:
+total 20
+drwxr-xr-x  2 root root 4096 Oct  6 00:19 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rw-r--r--  1 root root  102 Nov 16  2017 .placeholder
+-rw-r--r--  1 root root  712 Jan 18  2018 php
+-rw-r--r--  1 root root  191 Oct  5 23:44 popularity-contest
+
+/etc/cron.daily:
+total 64
+drwxr-xr-x  2 root root 4096 Oct  6 00:59 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rw-r--r--  1 root root  102 Nov 16  2017 .placeholder
+-rwxr-xr-x  1 root root  539 Jun 27  2018 apache2
+-rwxr-xr-x  1 root root 1478 Apr 20  2018 apt-compat
+-rwxr-xr-x  1 root root  355 Dec 29  2017 bsdmainutils
+-rwxr-xr-x  1 root root 1176 Nov  3  2017 dpkg
+-rwxr-xr-x  1 root root 4128 Jan 28  2018 exim4-base
+-rwxr-xr-x  1 root root  372 Aug 21  2017 logrotate
+-rwxr-xr-x  1 root root 1065 Apr  7  2018 man-db
+-rwxr-xr-x  1 root root  538 Mar  1  2018 mlocate
+-rwxr-xr-x  1 root root  249 Jan 25  2018 passwd
+-rwxr-xr-x  1 root root 3477 Feb 21  2018 popularity-contest
+-rwxr-xr-x  1 root root  383 Apr 18  2018 samba
+-rwxr-xr-x  1 root root  246 Mar 21  2018 ubuntu-advantage-tools
+
+/etc/cron.hourly:
+total 12
+drwxr-xr-x  2 root root 4096 Oct  5 23:39 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rw-r--r--  1 root root  102 Nov 16  2017 .placeholder
+
+/etc/cron.monthly:
+total 12
+drwxr-xr-x  2 root root 4096 Oct  5 23:39 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rw-r--r--  1 root root  102 Nov 16  2017 .placeholder
+
+/etc/cron.weekly:
+total 16
+drwxr-xr-x  2 root root 4096 Oct  5 23:44 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rw-r--r--  1 root root  102 Nov 16  2017 .placeholder
+-rwxr-xr-x  1 root root  723 Apr  7  2018 man-db
+
+
+[00;31m[-] Crontab contents:[00m
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don't have to run the `crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields,
+# that none of the other crontabs do.
+
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user	command
+17 *	* * *	root    cd / && run-parts --report /etc/cron.hourly
+25 6	* * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+
+
+[00;31m[-] Systemd timers:[00m
+NEXT                         LEFT        LAST                         PASSED    UNIT                         ACTIVATES
+Wed 2019-02-20 23:09:00 EET  9min left   Wed 2019-02-20 22:39:00 EET  20min ago phpsessionclean.timer        phpsessionclean.service
+Thu 2019-02-21 06:32:34 EET  7h left     Wed 2019-02-20 22:32:57 EET  26min ago apt-daily-upgrade.timer      apt-daily-upgrade.service
+Thu 2019-02-21 11:12:46 EET  12h left    Wed 2019-02-20 22:58:41 EET  21s ago   motd-news.timer              motd-news.service
+Thu 2019-02-21 17:04:50 EET  18h left    Wed 2019-02-20 22:32:57 EET  26min ago apt-daily.timer              apt-daily.service
+Thu 2019-02-21 22:47:50 EET  23h left    Wed 2019-02-20 22:47:50 EET  11min ago systemd-tmpfiles-clean.timer systemd-tmpfiles-clean.service
+Mon 2019-02-25 00:00:00 EET  4 days left Wed 2019-02-20 22:32:57 EET  26min ago fstrim.timer                 fstrim.service
+
+6 timers listed.
+[2mEnable thorough tests to see inactive timers[00m
+
+
+[00;33m### NETWORKING  ##########################################[00m
+[00;31m[-] Network and IP info:[00m
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.10.10.123  netmask 255.255.255.0  broadcast 10.10.10.255
+        inet6 fe80::250:56ff:feb9:a179  prefixlen 64  scopeid 0x20<link>
+        inet6 dead:beef::250:56ff:feb9:a179  prefixlen 64  scopeid 0x0<global>
+        ether 00:50:56:b9:a1:79  txqueuelen 1000  (Ethernet)
+        RX packets 1234335  bytes 203673034 (203.6 MB)
+        RX errors 926  dropped 4862  overruns 0  frame 0
+        TX packets 1222987  bytes 409093270 (409.0 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 19  base 0x2000  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 2257  bytes 168582 (168.5 KB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 2257  bytes 168582 (168.5 KB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+
+[00;31m[-] ARP history:[00m
+? (10.10.10.2) at 00:50:56:aa:9c:8d [ether] on ens33
+? (10.10.10.111) at 00:50:56:b9:fb:14 [ether] on ens33
+
+
+[00;31m[-] Nameserver(s):[00m
+nameserver 127.0.0.53
+
+
+[00;31m[-] Nameserver(s):[00m
+Global
+          DNSSEC NTA: 10.in-addr.arpa
+                      16.172.in-addr.arpa
+                      168.192.in-addr.arpa
+                      17.172.in-addr.arpa
+                      18.172.in-addr.arpa
+                      19.172.in-addr.arpa
+                      20.172.in-addr.arpa
+                      21.172.in-addr.arpa
+                      22.172.in-addr.arpa
+                      23.172.in-addr.arpa
+                      24.172.in-addr.arpa
+                      25.172.in-addr.arpa
+                      26.172.in-addr.arpa
+                      27.172.in-addr.arpa
+                      28.172.in-addr.arpa
+                      29.172.in-addr.arpa
+                      30.172.in-addr.arpa
+                      31.172.in-addr.arpa
+                      corp
+                      d.f.ip6.arpa
+                      home
+                      internal
+                      intranet
+                      lan
+                      local
+                      private
+                      test
+
+Link 2 (ens33)
+      Current Scopes: DNS
+       LLMNR setting: yes
+MulticastDNS setting: no
+      DNSSEC setting: no
+    DNSSEC supported: no
+         DNS Servers: 8.8.8.8
+                      8.8.4.4
+
+
+[00;31m[-] Default route:[00m
+default         10.10.10.2      0.0.0.0         UG    0      0        0 ens33
+
+
+[00;31m[-] Listening TCP:[00m
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 10.10.10.123:53         0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:53            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      -                   
+tcp        0      0 127.0.0.1:953           0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:445             0.0.0.0:*               LISTEN      -                   
+tcp        0      0 0.0.0.0:139             0.0.0.0:*               LISTEN      -                   
+tcp        0      0 10.10.10.123:42594      10.10.14.160:1234       ESTABLISHED 7267/sh             
+tcp        0      0 10.10.10.123:139        10.10.12.170:44676      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.15.30:48498       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.14.160:41790      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:45866      10.10.12.138:1337       ESTABLISHED 6433/sh             
+tcp        0      0 10.10.10.123:445        10.10.12.196:56662      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.15.30:39986       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.12.254:54370      ESTABLISHED -                   
+tcp        0      1 10.10.10.123:58852      8.8.4.4:53              SYN_SENT    -                   
+tcp        0      0 10.10.10.123:445        10.10.14.117:48510      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:22         10.10.16.59:45486       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:22         10.10.16.59:45500       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.13.58:51798       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.13.151:34106      ESTABLISHED -                   
+tcp        0      1 10.10.10.123:445        10.10.13.128:41210      LAST_ACK    -                   
+tcp        0      0 10.10.10.123:139        10.10.13.128:35448      SYN_RECV    -                   
+tcp        0      0 10.10.10.123:139        10.10.14.117:35272      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.12.170:50826      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:22         10.10.14.182:40128      ESTABLISHED -                   
+tcp        0      1 10.10.10.123:58856      8.8.4.4:53              SYN_SENT    -                   
+tcp        0      0 10.10.10.123:22         10.10.15.232:39508      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.12.170:51790      ESTABLISHED -                   
+tcp        0      0 10.10.10.123:22         10.10.14.85:38650       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:42274      10.10.14.160:1234       CLOSE_WAIT  1507/sh             
+tcp        0      0 10.10.10.123:445        10.10.13.128:41214      SYN_RECV    -                   
+tcp        0      1 10.10.10.123:58854      8.8.4.4:53              SYN_SENT    -                   
+tcp        0      0 10.10.10.123:445        10.10.13.35:41050       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.15.96:45766       ESTABLISHED -                   
+tcp        0      0 10.10.10.123:445        10.10.14.90:55700       ESTABLISHED -                   
+tcp6       0      0 :::21                   :::*                    LISTEN      -                   
+tcp6       0      0 :::22                   :::*                    LISTEN      -                   
+tcp6       0      0 ::1:25                  :::*                    LISTEN      -                   
+tcp6       0      0 :::443                  :::*                    LISTEN      -                   
+tcp6       0      0 :::445                  :::*                    LISTEN      -                   
+tcp6       0      0 :::139                  :::*                    LISTEN      -                   
+tcp6       0      0 :::80                   :::*                    LISTEN      -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46622       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56330      LAST_ACK    -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56172      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46810       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38002      ESTABLISHED -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:56124      ESTABLISHED -                   
+tcp6       0    454 10.10.10.123:80         10.10.14.117:55952      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46754       TIME_WAIT   -                   
+tcp6       0    455 10.10.10.123:80         10.10.14.117:55780      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46714       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56346      LAST_ACK    -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:55664      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56362      SYN_RECV    -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:55910      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38000      ESTABLISHED -                   
+tcp6       0    449 10.10.10.123:80         10.10.14.117:56012      ESTABLISHED -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:55288      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46742       TIME_WAIT   -                   
+tcp6       0    443 10.10.10.123:80         10.10.14.117:56188      ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:55872      ESTABLISHED -                   
+tcp6       0    519 10.10.10.123:80         10.10.16.58:47022       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53528        ESTABLISHED -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:55504      ESTABLISHED -                   
+tcp6       0    512 10.10.10.123:80         10.10.16.58:46980       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.12.254:47886      TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56152      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46726       TIME_WAIT   -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:55812      ESTABLISHED -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:55720      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46822       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56364      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46804       TIME_WAIT   -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:55916      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53516        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46860       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46768       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46852       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53526        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56380      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46706       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46660       TIME_WAIT   -                   
+tcp6       0    520 10.10.10.123:80         10.10.16.58:47032       ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:55684      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56366      SYN_RECV    -                   
+tcp6       0    457 10.10.10.123:80         10.10.14.117:55602      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46734       TIME_WAIT   -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:55906      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46868       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46740       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:55574      LAST_ACK    -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56276      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56404      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46722       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:443        10.10.14.154:42866      TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46682       TIME_WAIT   -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:55600      ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:46944       ESTABLISHED -                   
+tcp6       0    524 10.10.10.123:80         10.10.16.58:46974       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38010      ESTABLISHED -                   
+tcp6       0    521 10.10.10.123:80         10.10.16.58:47014       ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:55878      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56382      SYN_RECV    -                   
+tcp6       0    519 10.10.10.123:80         10.10.16.58:47000       ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:46904       ESTABLISHED -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:46928       ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56316      LAST_ACK    -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:56008      ESTABLISHED -                   
+tcp6       0    519 10.10.10.123:80         10.10.16.58:47020       ESTABLISHED -                   
+tcp6       0    449 10.10.10.123:80         10.10.14.117:55974      ESTABLISHED -                   
+tcp6       0    516 10.10.10.123:80         10.10.16.58:46952       ESTABLISHED -                   
+tcp6       0    519 10.10.10.123:80         10.10.16.58:47008       ESTABLISHED -                   
+tcp6       0     34 10.10.10.123:21         10.10.13.151:38006      ESTABLISHED -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:55902      ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56010      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53530        ESTABLISHED -                   
+tcp6       0    524 10.10.10.123:80         10.10.16.58:46914       ESTABLISHED -                   
+tcp6       0    441 10.10.10.123:80         10.10.14.117:56088      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46820       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56398      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53520        ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:46978       ESTABLISHED -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:56284      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46830       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38024      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56394      SYN_RECV    -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56310      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46876       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53518        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53540        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56418      SYN_RECV    -                   
+tcp6       0    442 10.10.10.123:80         10.10.14.117:56020      ESTABLISHED -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:55964      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56396      SYN_RECV    -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:55578      LAST_ACK    -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56336      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38022      ESTABLISHED -                   
+tcp6       0    512 10.10.10.123:80         10.10.16.58:46920       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46748       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56344      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46858       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53534        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38014      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53514        ESTABLISHED -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:47018       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46744       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46784       TIME_WAIT   -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:56332      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46766       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46842       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56324      LAST_ACK    -                   
+tcp6       0    450 10.10.10.123:80         10.10.14.117:56082      ESTABLISHED -                   
+tcp6       0    516 10.10.10.123:80         10.10.16.58:46976       ESTABLISHED -                   
+tcp6       0    512 10.10.10.123:80         10.10.16.58:46966       ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:47030       ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56186      ESTABLISHED -                   
+tcp6       0    521 10.10.10.123:80         10.10.16.58:47012       ESTABLISHED -                   
+tcp6       0    520 10.10.10.123:80         10.10.16.58:46998       ESTABLISHED -                   
+tcp6       0    274 10.10.10.123:443        10.10.12.170:58842      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46788       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56338      LAST_ACK    -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:46924       ESTABLISHED -                   
+tcp6       0    457 10.10.10.123:80         10.10.14.117:56190      ESTABLISHED -                   
+tcp6       0    524 10.10.10.123:80         10.10.16.58:46896       ESTABLISHED -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:56112      ESTABLISHED -                   
+tcp6       0    443 10.10.10.123:80         10.10.14.117:56022      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.12.138:36808      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56376      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53524        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46866       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56416      SYN_RECV    -                   
+tcp6       0    516 10.10.10.123:80         10.10.16.58:46994       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46882       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46672       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46774       TIME_WAIT   -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:55740      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.13.146:56542      TIME_WAIT   -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:46984       ESTABLISHED -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:46972       ESTABLISHED -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:46996       ESTABLISHED -                   
+tcp6       0    511 10.10.10.123:80         10.10.16.58:46900       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46892       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46846       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53532        ESTABLISHED -                   
+tcp6       0    461 10.10.10.123:80         10.10.14.117:56272      ESTABLISHED -                   
+tcp6       0    452 10.10.10.123:80         10.10.14.117:54276      ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56138      ESTABLISHED -                   
+tcp6       0    520 10.10.10.123:80         10.10.16.58:46992       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46732       TIME_WAIT   -                   
+tcp6       0    450 10.10.10.123:80         10.10.14.117:56320      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:37998      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46840       TIME_WAIT   -                   
+tcp6       0    524 10.10.10.123:80         10.10.16.58:46926       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46730       TIME_WAIT   -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:55714      ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56354      LAST_ACK    -                   
+tcp6       0    525 10.10.10.123:80         10.10.16.58:46986       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46836       TIME_WAIT   -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:56028      ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56322      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46670       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46872       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56348      LAST_ACK    -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:55634      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46736       TIME_WAIT   -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:47002       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56420      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46602       TIME_WAIT   -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:47024       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53522        ESTABLISHED -                   
+tcp6       0     22 10.10.10.123:21         10.10.13.151:38018      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46844       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56392      SYN_RECV    -                   
+tcp6       0     22 10.10.10.123:21         10.10.13.151:38016      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56422      SYN_RECV    -                   
+tcp6       0    518 10.10.10.123:80         10.10.16.58:46958       ESTABLISHED -                   
+tcp6       0    445 10.10.10.123:80         10.10.14.117:56160      ESTABLISHED -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:56282      ESTABLISHED -                   
+tcp6       0    514 10.10.10.123:80         10.10.16.58:46950       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56410      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46782       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46662       TIME_WAIT   -                   
+tcp6       0    450 10.10.10.123:80         10.10.14.117:56024      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46856       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56390      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56370      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56374      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46814       TIME_WAIT   -                   
+tcp6       0    459 10.10.10.123:80         10.10.14.117:54848      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46796       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46684       TIME_WAIT   -                   
+tcp6       0    445 10.10.10.123:80         10.10.14.117:56180      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46680       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46752       TIME_WAIT   -                   
+tcp6       0    529 10.10.10.123:80         10.10.16.58:46912       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46824       TIME_WAIT   -                   
+tcp6       0    443 10.10.10.123:80         10.10.14.117:56278      ESTABLISHED -                   
+tcp6       0    452 10.10.10.123:80         10.10.14.117:55184      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56414      SYN_RECV    -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56318      LAST_ACK    -                   
+tcp6       0    462 10.10.10.123:80         10.10.14.117:56136      ESTABLISHED -                   
+tcp6       0    442 10.10.10.123:80         10.10.14.117:56296      ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56030      ESTABLISHED -                   
+tcp6       0    443 10.10.10.123:80         10.10.14.117:56308      ESTABLISHED -                   
+tcp6       0    452 10.10.10.123:80         10.10.14.117:56356      ESTABLISHED -                   
+tcp6       0     34 10.10.10.123:21         10.10.13.151:38008      ESTABLISHED -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:54962      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.14.160:41884      ESTABLISHED -                   
+tcp6       0    523 10.10.10.123:80         10.10.16.58:46916       ESTABLISHED -                   
+tcp6       0    446 10.10.10.123:80         10.10.14.117:56170      ESTABLISHED -                   
+tcp6       0    441 10.10.10.123:80         10.10.14.117:56288      ESTABLISHED -                   
+tcp6       0    444 10.10.10.123:80         10.10.14.117:56266      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56378      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46880       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46780       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46628       TIME_WAIT   -                   
+tcp6       0    520 10.10.10.123:80         10.10.16.58:46988       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56412      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46884       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56386      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53512        ESTABLISHED -                   
+tcp6       0    449 10.10.10.123:80         10.10.14.117:56120      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56402      SYN_RECV    -                   
+tcp6       0    525 10.10.10.123:80         10.10.16.58:46932       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46800       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46790       TIME_WAIT   -                   
+tcp6       0    444 10.10.10.123:80         10.10.14.117:56026      ESTABLISHED -                   
+tcp6       0    445 10.10.10.123:80         10.10.14.117:56100      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46718       TIME_WAIT   -                   
+tcp6       0    509 10.10.10.123:80         10.10.16.58:46934       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56372      SYN_RECV    -                   
+tcp6       0    520 10.10.10.123:80         10.10.16.58:47004       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53536        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46716       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46816       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46750       TIME_WAIT   -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:47006       ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56002      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53542        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46678       TIME_WAIT   -                   
+tcp6       0    519 10.10.10.123:80         10.10.16.58:46964       ESTABLISHED -                   
+tcp6       0    512 10.10.10.123:80         10.10.16.58:47026       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38028      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:443        10.10.13.146:56544      TIME_WAIT   -                   
+tcp6       0    449 10.10.10.123:80         10.10.14.117:55814      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46808       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46756       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38020      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46806       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46760       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38012      ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56000      ESTABLISHED -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56334      ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56350      LAST_ACK    -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56326      LAST_ACK    -                   
+tcp6       0    455 10.10.10.123:80         10.10.14.117:56280      ESTABLISHED -                   
+tcp6       0    522 10.10.10.123:80         10.10.16.58:46898       ESTABLISHED -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:56032      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.14.154:42864      TIME_WAIT   -                   
+tcp6       0    445 10.10.10.123:80         10.10.14.117:55482      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56388      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46834       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56358      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56368      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56400      SYN_RECV    -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:46982       ESTABLISHED -                   
+tcp6       0    448 10.10.10.123:80         10.10.14.117:56312      ESTABLISHED -                   
+tcp6       0    517 10.10.10.123:80         10.10.16.58:46960       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56314      SYN_RECV    -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:55386      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46656       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38026      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46798       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46776       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46762       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46686       TIME_WAIT   -                   
+tcp6       0    440 10.10.10.123:80         10.10.14.117:55672      ESTABLISHED -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56360      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46812       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46864       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56408      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56384      SYN_RECV    -                   
+tcp6       0    454 10.10.10.123:80         10.10.14.117:56238      ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:46956       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.12.254:47884      TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46862       TIME_WAIT   -                   
+tcp6       0    455 10.10.10.123:80         10.10.14.117:55716      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46854       TIME_WAIT   -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56068      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46746       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56342      LAST_ACK    -                   
+tcp6       0    451 10.10.10.123:80         10.10.14.117:55262      ESTABLISHED -                   
+tcp6       0    521 10.10.10.123:80         10.10.16.58:46990       ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46786       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46590       TIME_WAIT   -                   
+tcp6       0    456 10.10.10.123:80         10.10.14.117:55704      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46794       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46848       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:55576      LAST_ACK    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.151:38004      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.14.117:56406      SYN_RECV    -                   
+tcp6       0      0 10.10.10.123:21         10.10.13.5:53538        ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:443        10.10.14.160:41938      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46738       TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:443        10.10.14.154:42862      TIME_WAIT   -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46772       TIME_WAIT   -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56294      ESTABLISHED -                   
+tcp6       0    515 10.10.10.123:80         10.10.16.58:47028       ESTABLISHED -                   
+tcp6       0    447 10.10.10.123:80         10.10.14.117:56262      ESTABLISHED -                   
+tcp6       0    457 10.10.10.123:80         10.10.14.117:56016      ESTABLISHED -                   
+tcp6       0    455 10.10.10.123:80         10.10.14.117:56158      ESTABLISHED -                   
+tcp6       0    456 10.10.10.123:80         10.10.14.117:56328      ESTABLISHED -                   
+tcp6       0    453 10.10.10.123:80         10.10.14.117:56352      ESTABLISHED -                   
+tcp6       0      0 10.10.10.123:80         10.10.16.58:46770       TIME_WAIT   -                   
+tcp6       0      1 10.10.10.123:80         10.10.14.117:56340      LAST_ACK    -                   
+
+
+[00;31m[-] Listening UDP:[00m
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+udp    21504      0 10.10.10.123:53         0.0.0.0:*                           -                   
+udp        0      0 127.0.0.1:53            0.0.0.0:*                           -                   
+udp    29184      0 127.0.0.53:53           0.0.0.0:*                           -                   
+udp        0      0 10.10.10.123:40060      8.8.8.8:53              ESTABLISHED -                   
+udp    21504      0 10.10.10.255:137        0.0.0.0:*                           -                   
+udp     5376      0 10.10.10.123:137        0.0.0.0:*                           -                   
+udp    21504      0 0.0.0.0:137             0.0.0.0:*                           -                   
+udp    30720      0 10.10.10.255:138        0.0.0.0:*                           -                   
+udp        0      0 10.10.10.123:138        0.0.0.0:*                           -                   
+udp    30720      0 0.0.0.0:138             0.0.0.0:*                           -                   
+udp        0      0 127.0.0.1:38612         127.0.0.53:53           ESTABLISHED -                   
+
+
+[00;33m### SERVICES #############################################[00m
+[00;31m[-] Running processes:[00m
+USER        PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root          1  0.1  0.5 159508  5188 ?        Ss   22:32   0:02 /sbin/init splash
+root          2  0.0  0.0      0     0 ?        S    22:32   0:00 [kthreadd]
+root          4  0.0  0.0      0     0 ?        I<   22:32   0:00 [kworker/0:0H]
+root          5  0.2  0.0      0     0 ?        I    22:32   0:04 [kworker/u256:0]
+root          6  0.0  0.0      0     0 ?        I<   22:32   0:00 [mm_percpu_wq]
+root          7  1.9  0.0      0     0 ?        S    22:32   0:31 [ksoftirqd/0]
+root          8  0.1  0.0      0     0 ?        I    22:32   0:03 [rcu_sched]
+root          9  0.0  0.0      0     0 ?        I    22:32   0:00 [rcu_bh]
+root         10  0.0  0.0      0     0 ?        S    22:32   0:00 [migration/0]
+root         11  0.0  0.0      0     0 ?        S    22:32   0:00 [watchdog/0]
+root         12  0.0  0.0      0     0 ?        S    22:32   0:00 [cpuhp/0]
+root         13  0.0  0.0      0     0 ?        S    22:32   0:00 [kdevtmpfs]
+root         14  0.0  0.0      0     0 ?        I<   22:32   0:00 [netns]
+root         15  0.0  0.0      0     0 ?        S    22:32   0:00 [rcu_tasks_kthre]
+root         16  0.0  0.0      0     0 ?        S    22:32   0:00 [kauditd]
+root         17  0.0  0.0      0     0 ?        S    22:32   0:00 [khungtaskd]
+root         18  0.0  0.0      0     0 ?        S    22:32   0:00 [oom_reaper]
+root         19  0.0  0.0      0     0 ?        I<   22:32   0:00 [writeback]
+root         20  0.0  0.0      0     0 ?        S    22:32   0:00 [kcompactd0]
+root         21  0.0  0.0      0     0 ?        SN   22:32   0:00 [ksmd]
+root         22  0.0  0.0      0     0 ?        SN   22:32   0:00 [khugepaged]
+root         23  0.0  0.0      0     0 ?        I<   22:32   0:00 [crypto]
+root         24  0.0  0.0      0     0 ?        I<   22:32   0:00 [kintegrityd]
+root         25  0.0  0.0      0     0 ?        I<   22:32   0:00 [kblockd]
+root         26  0.0  0.0      0     0 ?        I<   22:32   0:00 [ata_sff]
+root         27  0.0  0.0      0     0 ?        I<   22:32   0:00 [md]
+root         28  0.0  0.0      0     0 ?        I<   22:32   0:00 [edac-poller]
+root         29  0.0  0.0      0     0 ?        I<   22:32   0:00 [devfreq_wq]
+root         30  0.0  0.0      0     0 ?        I<   22:32   0:00 [watchdogd]
+root         31  0.1  0.0      0     0 ?        I    22:32   0:02 [kworker/u256:1]
+root         32  0.0  0.0      0     0 ?        I    22:32   0:01 [kworker/0:1]
+root         34  0.2  0.0      0     0 ?        S    22:32   0:04 [kswapd0]
+root         35  0.0  0.0      0     0 ?        S    22:32   0:00 [ecryptfs-kthrea]
+root         77  0.0  0.0      0     0 ?        I<   22:32   0:00 [kthrotld]
+root         78  0.0  0.0      0     0 ?        I<   22:32   0:00 [acpi_thermal_pm]
+root         79  0.0  0.0      0     0 ?        S    22:32   0:00 [scsi_eh_0]
+root         80  0.0  0.0      0     0 ?        I<   22:32   0:00 [scsi_tmf_0]
+root         81  0.0  0.0      0     0 ?        S    22:32   0:00 [scsi_eh_1]
+root         82  0.0  0.0      0     0 ?        I<   22:32   0:00 [scsi_tmf_1]
+root         88  0.0  0.0      0     0 ?        I<   22:32   0:00 [ipv6_addrconf]
+root         97  0.0  0.0      0     0 ?        I<   22:32   0:00 [kstrp]
+root        114  0.0  0.0      0     0 ?        I<   22:32   0:00 [charger_manager]
+root        129  0.0  0.0      0     0 ?        I    22:32   0:00 [kworker/0:2]
+root        176  0.0  0.0      0     0 ?        S    22:32   0:00 [scsi_eh_2]
+root        177  0.0  0.0      0     0 ?        I<   22:32   0:00 [scsi_tmf_2]
+root        178  0.0  0.0      0     0 ?        I<   22:32   0:00 [vmw_pvscsi_wq_2]
+root        180  0.0  0.0      0     0 ?        I<   22:32   0:00 [kworker/0:1H]
+root        181  0.0  0.0      0     0 ?        I<   22:32   0:00 [ttm_swap]
+root        182  0.0  0.0      0     0 ?        S    22:32   0:00 [irq/16-vmwgfx]
+root        203  0.0  0.0      0     0 ?        S    22:32   0:00 [jbd2/sda1-8]
+root        204  0.0  0.0      0     0 ?        I<   22:32   0:00 [ext4-rsv-conver]
+root        236  0.6  3.3 143016 30656 ?        S<s  22:32   0:09 /lib/systemd/systemd-journald
+root        241  0.0  0.4 192524  4336 ?        Ssl  22:32   0:01 /usr/bin/vmtoolsd
+root        258  0.0  0.2  47096  2384 ?        Ss   22:32   0:00 /lib/systemd/systemd-udevd
+systemd+    268  0.0  0.2  71820  2220 ?        Ss   22:32   0:01 /lib/systemd/systemd-networkd
+systemd+    339  0.0  0.0 141912   440 ?        Ssl  22:32   0:00 /lib/systemd/systemd-timesyncd
+systemd+    342  0.0  0.3  70876  3368 ?        Ss   22:32   0:00 /lib/systemd/systemd-resolved
+root        428  0.0  0.3 170408  2780 ?        Ssl  22:32   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root        430  0.0  0.2  31320  2448 ?        Ss   22:32   0:00 /usr/sbin/cron -f
+syslog      431  0.1  0.2 263036  2236 ?        Ssl  22:32   0:01 /usr/sbin/rsyslogd -n
+root        432  0.0  0.3 265344  3460 ?        Ss   22:32   0:00 /usr/sbin/nmbd --foreground --no-process-group
+message+    439  0.3  0.3  50484  3612 ?        Ss   22:32   0:05 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root        470  0.0  0.3  87740  3124 ?        Ss   22:32   0:00 /usr/bin/VGAuthService
+root        471  0.0  0.3  70588  2952 ?        Ss   22:32   0:00 /lib/systemd/systemd-logind
+root        473  0.0  0.2 287540  2276 ?        Ssl  22:32   0:01 /usr/lib/accountsservice/accounts-daemon
+bind        478  0.0  0.6 216820  6236 ?        Ssl  22:32   0:00 /usr/sbin/named -f -4 -u bind
+root        490  0.0  0.3  72296  3208 ?        Ss   22:32   0:00 /usr/sbin/sshd -D
+root        493  0.1  0.2  28676  2296 ?        Ss   22:32   0:02 /usr/sbin/vsftpd /etc/vsftpd.conf
+root        515  0.0  0.1  16180  1536 tty1     Ss+  22:32   0:00 /sbin/agetty -o -p -- \u --noclear tty1 linux
+Debian-+    857  0.0  0.1  65640  1668 ?        Ss   22:32   0:00 /usr/sbin/exim4 -bd -q30m
+root        860  0.1  0.5 357068  5136 ?        Ss   22:32   0:01 /usr/sbin/smbd --foreground --no-process-group
+root        862  0.0  0.7 331720  7196 ?        Ss   22:32   0:00 /usr/sbin/apache2 -k start
+www-data    863  0.1  1.0 336604  9336 ?        S    22:32   0:02 /usr/sbin/apache2 -k start
+www-data    866  0.1  1.1 336592 10220 ?        S    22:32   0:02 /usr/sbin/apache2 -k start
+www-data    867  0.1  0.8 336604  8100 ?        S    22:32   0:02 /usr/sbin/apache2 -k start
+root        904  0.0  0.2 345028  1956 ?        S    22:32   0:00 /usr/sbin/smbd --foreground --no-process-group
+root        905  0.0  0.1 345052   972 ?        S    22:32   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data    910  0.1  1.1 336596 10572 ?        S    22:32   0:01 /usr/sbin/apache2 -k start
+root        922  0.0  0.3 357052  3220 ?        S    22:32   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data    928  0.1  1.1 336600 10264 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data    929  0.1  1.1 336592 10244 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data    974  0.1  1.2 336608 11060 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data    975  0.1  0.9 336596  8804 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data    977  0.1  0.9 336592  8292 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+root        978  0.0  0.3 107984  3016 ?        Ss   22:33   0:00 sshd: friend [priv]
+root       1008  0.0  0.3 107984  2900 ?        Ss   22:33   0:00 sshd: friend [priv]
+www-data   1011  0.1  0.9 336660  8408 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1012  0.1  0.9 336592  9060 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1013  0.1  0.8 336596  8256 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1016  0.1  0.9 336600  8592 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1019  0.1  1.0 336608  9260 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1020  0.1  0.9 336592  8508 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1021  0.1  1.1 336604 10280 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1022  0.1  0.9 336600  8624 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1024  0.1  0.9 336604  8496 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1025  0.1  0.9 336596  8620 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1026  0.1  1.1 336596 10380 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1027  0.1  1.0 336600  9284 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1028  0.1  1.1 336600 10272 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1030  0.1  0.9 336660  8312 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1031  0.1  0.8 336600  8272 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1032  0.1  0.9 336608  8652 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+root       1035  0.0  0.4 359192  3876 ?        S    22:33   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   1040  0.1  0.9 336604  9176 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1043  0.1  0.9 336596  8372 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1045  0.1  0.9 336596  8460 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1046  0.1  1.1 336592 10192 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1047  0.1  1.0 336596  9560 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1048  0.1  1.1 336600 11012 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1049  0.1  1.0 336596  9536 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1050  0.1  1.1 336596 10656 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1051  0.1  1.1 336596 10184 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1053  0.1  1.1 336596 10292 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1054  0.1  0.9 336600  8664 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1055  0.1  1.1 336600 10464 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1057  0.1  0.9 336592  8316 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1058  0.1  1.1 336592 10332 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1060  0.1  0.8 336596  8252 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1065  0.1  1.0 336592 10048 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1067  0.1  1.1 336592 10180 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+root       1068  0.0  0.4 359192  3892 ?        S    22:33   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   1069  0.1  1.1 336596 10280 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1071  0.1  0.9 336600  8668 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1072  0.1  1.2 336612 11332 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1075  0.1  1.1 336592 10196 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1077  0.1  0.9 336596  8576 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1078  0.1  1.1 336608 10500 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1079  0.1  1.1 336592 10388 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+root       1080  0.0  0.8 363548  7720 ?        S    22:33   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   1081  0.1  0.9 336600  9020 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1082  0.1  1.2 336604 11116 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1084  0.1  1.1 336596 10736 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1085  0.1  0.9 336600  8604 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1086  0.1  0.9 336592  8660 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1087  0.1  1.1 336596 10200 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1088  0.1  1.1 336604 10964 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1090  0.1  1.1 336600 10860 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1093  0.1  0.9 336600  8512 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1094  0.1  0.9 336592  8368 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1096  0.1  1.1 336596 10908 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1097  0.1  1.1 336604 10492 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1098  0.1  0.9 336596  8488 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1099  0.1  1.1 336604 10356 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1100  0.1  0.8 336600  8104 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1101  0.1  0.9 336596  8472 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1102  0.0  1.2 336596 11132 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1103  0.1  0.8 336596  8016 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1104  0.1  1.1 336600 10140 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1105  0.1  1.1 336592 10596 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+friend     1107  0.0  0.3  76736  3124 ?        Ss   22:33   0:00 /lib/systemd/systemd --user
+www-data   1108  0.1  1.1 336596 10316 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1109  0.1  0.9 336596  8384 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1110  0.1  1.0 336600  9232 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+friend     1111  0.0  0.0 193492    72 ?        S    22:33   0:00 (sd-pam)
+www-data   1113  0.1  1.1 336596 10392 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1116  0.1  0.9 336596  8620 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1124  0.1  1.1 336600 10488 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1130  0.1  1.1 336596 10708 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1131  0.1  0.9 336600  8276 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1132  0.1  0.8 336596  8056 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1133  0.1  1.2 336600 11180 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1134  0.1  1.1 336596 10916 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1147  0.1  1.1 336596 10212 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1148  0.1  1.1 336604 10720 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1149  0.0  1.2 336592 11152 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1152  0.1  0.9 336596  9072 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1153  0.1  1.1 336600 10540 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1154  0.1  1.1 336680 10500 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1157  0.1  1.1 336596 10324 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1158  0.1  1.2 336604 11224 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1160  0.1  1.1 336604 10380 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1161  0.1  1.1 336592 10352 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+friend     1171  0.3  0.2 108116  1904 ?        S    22:33   0:05 sshd: friend@pts/0
+friend     1173  0.0  0.4  22484  3956 pts/0    Ss   22:33   0:00 -bash
+www-data   1205  0.1  1.2 336600 11404 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1207  0.1  1.1 336596 10948 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1208  0.1  1.1 336592 10292 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1239  0.1  0.9 336600  8376 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1254  0.1  0.9 336596  8688 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1256  0.1  1.2 336672 11296 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+www-data   1257  0.0  1.0 336400  9660 ?        S    22:33   0:00 /usr/sbin/apache2 -k start
+www-data   1258  0.1  1.1 336600 10256 ?        S    22:33   0:01 /usr/sbin/apache2 -k start
+www-data   1261  0.1  1.1 336604 10512 ?        S    22:33   0:02 /usr/sbin/apache2 -k start
+friend     1272  0.0  0.1 107984  1112 ?        S    22:33   0:00 sshd: friend@pts/1
+friend     1279  0.0  0.2  22352  2280 pts/1    Ss+  22:33   0:00 -bash
+root       1379  0.0  0.8 363592  7580 ?        S    22:33   0:00 /usr/sbin/smbd --foreground --no-process-group
+root       1412  0.0  0.3 105684  2948 ?        Ss   22:33   0:00 sshd: friend [priv]
+friend     1506  0.0  0.3 108392  3164 ?        S    22:33   0:01 sshd: friend@pts/2
+www-data   1507  0.0  0.0   4628   676 ?        S    22:33   0:00 sh -c uname -a; w; id; /bin/sh -i
+www-data   1511  0.0  0.0   4628   672 ?        S    22:33   0:00 /bin/sh -i
+friend     1512  0.0  0.4  22484  4076 pts/2    Ss   22:33   0:00 -bash
+www-data   1624  0.0  0.2  33212  2636 ?        S    22:33   0:00 python -c import pty; pty.spawn('/bin/bash')
+www-data   1625  0.0  0.2  18508  2200 pts/3    Ss   22:33   0:00 /bin/bash
+root       1634  0.0  0.3 105684  2948 ?        Ss   22:34   0:00 sshd: friend [priv]
+friend     1692  0.5  0.3 108124  2888 ?        S    22:34   0:08 sshd: friend@pts/4
+friend     1693  0.0  0.4  22624  3924 pts/4    Ss   22:34   0:00 -bash
+www-data   1737  0.1  1.0 336604  9332 ?        S    22:34   0:02 /usr/sbin/apache2 -k start
+root       2165  0.0  0.3 363584  3424 ?        S    22:35   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   2335  0.1  1.1 336592 10220 ?        S    22:35   0:02 /usr/sbin/apache2 -k start
+www-data   2428  0.1  0.8 336592  8236 ?        S    22:36   0:01 /usr/sbin/apache2 -k start
+www-data   2439  0.1  1.1 336592 10284 ?        S    22:36   0:02 /usr/sbin/apache2 -k start
+root       2590  0.0  0.3 363584  3412 ?        S    22:36   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   2836  0.1  0.9 336596  8888 ?        S    22:37   0:01 /usr/sbin/apache2 -k start
+www-data   2843  0.1  0.8 336592  8244 ?        S    22:37   0:01 /usr/sbin/apache2 -k start
+root       3027  0.0  0.3 363376  2920 ?        S    22:37   0:00 /usr/sbin/smbd --foreground --no-process-group
+root       3028  0.0  0.8 363584  7440 ?        S    22:37   0:00 /usr/sbin/smbd --foreground --no-process-group
+root       3097  0.0  0.3 363592  3192 ?        S    22:38   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   3364  0.1  0.8 336588  8240 ?        S    22:38   0:01 /usr/sbin/apache2 -k start
+root       3366  0.0  0.4 363592  4204 ?        S    22:38   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   4074  0.0  0.2  33208  2644 pts/3    S+   22:39   0:00 python -c import pty; pty.spawn('/bin/sh')
+www-data   4076  0.0  0.1   4628  1552 pts/5    Ss+  22:39   0:00 /bin/sh
+www-data   5263  0.1  1.2 336572 11080 ?        S    22:42   0:01 /usr/sbin/apache2 -k start
+www-data   5387  0.1  1.2 336600 11236 ?        S    22:42   0:01 /usr/sbin/apache2 -k start
+www-data   5448  0.1  1.2 336584 11168 ?        S    22:42   0:01 /usr/sbin/apache2 -k start
+www-data   5593  0.1  1.1 336588 10904 ?        S    22:42   0:01 /usr/sbin/apache2 -k start
+root       5736  0.0  0.6 105684  5532 ?        Ss   22:43   0:00 sshd: friend [priv]
+www-data   5842  0.1  1.2 336572 11940 ?        S    22:43   0:01 /usr/sbin/apache2 -k start
+friend     5890  0.0  0.5 108116  5272 ?        S    22:43   0:00 sshd: friend@pts/6
+friend     5891  0.0  0.5  22484  4744 pts/6    Ss+  22:43   0:00 -bash
+root       6161  0.2  0.0      0     0 ?        I    22:44   0:02 [kworker/u256:2]
+www-data   6353  0.1  1.3 336580 11980 ?        S    22:44   0:00 /usr/sbin/apache2 -k start
+www-data   6433  0.0  0.0   4628   800 ?        S    22:45   0:00 sh -c uname -a; w; id; /bin/sh -i
+www-data   6437  0.0  0.1   4628  1576 ?        S    22:45   0:00 /bin/sh -i
+www-data   6780  0.1  1.3 336596 12468 ?        S    22:46   0:00 /usr/sbin/apache2 -k start
+www-data   6905  0.1  1.3 336584 12084 ?        S    22:46   0:00 /usr/sbin/apache2 -k start
+www-data   7045  0.1  1.3 336588 12140 ?        S    22:46   0:00 /usr/sbin/apache2 -k start
+www-data   7166  0.1  1.3 336656 12548 ?        S    22:47   0:00 /usr/sbin/apache2 -k start
+root       7219  0.0  1.6 363588 14720 ?        S    22:47   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   7267  0.0  0.0   4628   768 ?        S    22:47   0:00 sh -c uname -a; w; id; /bin/sh -i
+www-data   7271  0.0  0.1   4628  1720 ?        S    22:47   0:00 /bin/sh -i
+www-data   7493  0.1  1.3 336500 12028 ?        S    22:48   0:00 /usr/sbin/apache2 -k start
+www-data   7937  0.1  1.3 336500 12096 ?        S    22:49   0:00 /usr/sbin/apache2 -k start
+www-data   7942  0.1  1.3 336504 12112 ?        S    22:49   0:00 /usr/sbin/apache2 -k start
+root       8009  0.0  1.5 359208 14416 ?        S    22:49   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data   8193  0.1  0.9 336184  8620 ?        S    22:50   0:00 /usr/sbin/apache2 -k start
+root       8208  0.0  0.0      0     0 ?        I    22:50   0:00 [kworker/u256:3]
+www-data   8283  0.1  1.3 336500 12048 ?        S    22:50   0:00 /usr/sbin/apache2 -k start
+www-data   8428  0.1  1.3 336596 12528 ?        S    22:51   0:00 /usr/sbin/apache2 -k start
+www-data   8661  0.1  1.3 336500 12048 ?        S    22:51   0:00 /usr/sbin/apache2 -k start
+www-data   9478  0.1  0.9 336192  8728 ?        S    22:53   0:00 /usr/sbin/apache2 -k start
+www-data   9749  0.1  1.3 336600 12496 ?        S    22:54   0:00 /usr/sbin/apache2 -k start
+www-data   9983  0.1  0.9 336184  8724 ?        S    22:55   0:00 /usr/sbin/apache2 -k start
+root      10027  0.0  1.6 363564 14800 ?        S    22:55   0:00 /usr/sbin/smbd --foreground --no-process-group
+root      10166  0.0  1.6 363588 14756 ?        S    22:55   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data  10418  0.1  1.2 336556 11588 ?        S    22:56   0:00 /usr/sbin/apache2 -k start
+www-data  10490  0.1  1.2 336564 11772 ?        S    22:56   0:00 /usr/sbin/apache2 -k start
+www-data  10538  0.1  0.9 336184  8728 ?        S    22:56   0:00 /usr/sbin/apache2 -k start
+root      10769  0.0  1.6 363588 14888 ?        S    22:57   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data  10825  0.0  0.9 336176  8772 ?        S    22:57   0:00 /usr/sbin/apache2 -k start
+friend    10895 22.5  1.5  17936 14152 pts/2    Sl+  22:57   0:26 ./pspy64
+friend    10896  0.0  0.1  14428  1100 pts/2    S+   22:57   0:00 grep --color=auto reporter.py
+friend    10923  4.2  0.8  10284  7452 pts/4    Sl+  22:57   0:04 ./pspy64 UID=0
+www-data  11029  0.1  1.2 336556 11452 ?        S    22:57   0:00 /usr/sbin/apache2 -k start
+www-data  11044  0.1  0.9 336184  8728 ?        S    22:57   0:00 /usr/sbin/apache2 -k start
+www-data  11045  0.1  0.9 336192  8672 ?        S    22:57   0:00 /usr/sbin/apache2 -k start
+www-data  11105  0.1  0.6 336180  6088 ?        S    22:58   0:00 /usr/sbin/apache2 -k start
+friend    11164  0.3  0.5  24384  4816 pts/0    S+   22:58   0:00 nano /usr/lib/python2.7/os.py
+www-data  11311  0.1  0.9 336184  8708 ?        S    22:58   0:00 /usr/sbin/apache2 -k start
+www-data  11384  0.1  0.6 336172  6088 ?        S    22:58   0:00 /usr/sbin/apache2 -k start
+www-data  11435  0.0  0.4  19164  3824 ?        S    22:58   0:00 /bin/bash ./LinEnum.sh
+www-data  11436  0.0  0.3  19600  3272 ?        S    22:58   0:00 /bin/bash ./LinEnum.sh
+www-data  11437  0.0  0.0   4536   824 ?        S    22:58   0:00 tee -a
+www-data  11451  0.1  0.6 336180  6088 ?        S    22:58   0:00 /usr/sbin/apache2 -k start
+www-data  11716  0.1  0.6 336172  6088 ?        S    22:59   0:00 /usr/sbin/apache2 -k start
+www-data  11771  0.0  0.6 336172  6088 ?        S    22:59   0:00 /usr/sbin/apache2 -k start
+root      11772  0.1  0.3  37060  2980 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11773  0.5  0.3  63108  3564 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11774  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11775  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11776  0.1  0.3  37060  2980 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11777  0.1  0.3  37060  2980 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11778  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11779  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11780  0.1  0.3  62912  3444 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11781  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11782  0.1  0.3  62912  3444 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11783  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+www-data  11784  0.1  0.6 336172  6088 ?        S    22:59   0:00 /usr/sbin/apache2 -k start
+root      11785  0.5  0.3  37256  3100 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11786  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11788  0.3  0.3  63108  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11789  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11790  0.3  0.3  63108  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11791  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11792  0.0  0.3  37060  2980 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11793  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11794  0.0  0.3  62912  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11795  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11796  0.0  0.3  62912  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11797  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11798  0.7  0.3  63108  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11799  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11800  0.5  0.3  63108  3436 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11801  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11802  0.5  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11803  0.5  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11804  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11805  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11806  0.5  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11807  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11808  0.2  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11809  0.5  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11810  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11811  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11813  0.0  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11814  0.0  0.3  37060  2972 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11815  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11816  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11817  2.0  0.3  62912  3368 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11818  1.0  0.3  62912  3368 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11819  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11820  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11821  0.0  0.3  62912  3364 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11822  0.0  0.3  62912  3364 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11823  0.0  0.3  62912  3364 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11824  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11825  0.0  0.3  62912  3364 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11826  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11827  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11828  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11829  1.0  0.3  62912  3368 ?        Ss   22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+nobody    11830  0.0  0.2  34992  2476 ?        S    22:59   0:00 /usr/sbin/vsftpd /etc/vsftpd.conf
+root      11838  0.0  1.3 363312 12396 ?        S    22:59   0:00 /usr/sbin/smbd --foreground --no-process-group
+www-data  11843  0.0  0.3  19600  3080 ?        S    22:59   0:00 /bin/bash ./LinEnum.sh
+www-data  11844  0.0  0.3  36700  3156 ?        R    22:59   0:00 ps aux
+
+
+[00;31m[-] Process binaries and associated permissions (from above list):[00m
+1.1M -rwxr-xr-x 1 root root 1.1M Apr  4  2018 /bin/bash
+   0 lrwxrwxrwx 1 root root    4 Oct  5 23:39 /bin/sh -> dash
+1.6M -rwxr-xr-x 1 root root 1.6M Jul 20  2018 /lib/systemd/systemd
+128K -rwxr-xr-x 1 root root 127K Jul 20  2018 /lib/systemd/systemd-journald
+216K -rwxr-xr-x 1 root root 215K Jul 20  2018 /lib/systemd/systemd-logind
+1.6M -rwxr-xr-x 1 root root 1.6M Jul 20  2018 /lib/systemd/systemd-networkd
+372K -rwxr-xr-x 1 root root 371K Jul 20  2018 /lib/systemd/systemd-resolved
+ 40K -rwxr-xr-x 1 root root  39K Jul 20  2018 /lib/systemd/systemd-timesyncd
+572K -rwxr-xr-x 1 root root 571K Jul 20  2018 /lib/systemd/systemd-udevd
+ 56K -rwxr-xr-x 1 root root  56K May 16  2018 /sbin/agetty
+   0 lrwxrwxrwx 1 root root   20 Jul 20  2018 /sbin/init -> /lib/systemd/systemd
+124K -rwxr-xr-x 1 root root 123K Oct 10 14:25 /usr/bin/VGAuthService
+232K -rwxr-xr-x 1 root root 232K Nov 16  2017 /usr/bin/dbus-daemon
+   0 lrwxrwxrwx 1 root root    9 Jun 22  2018 /usr/bin/python3 -> python3.6
+ 48K -rwxr-xr-x 1 root root  47K Oct 10 14:25 /usr/bin/vmtoolsd
+180K -rwxr-xr-x 1 root root 179K Dec 18  2017 /usr/lib/accountsservice/accounts-daemon
+656K -rwxr-xr-x 1 root root 656K Oct  3 17:41 /usr/sbin/apache2
+ 48K -rwxr-xr-x 1 root root  47K Nov 16  2017 /usr/sbin/cron
+1.1M -rwsr-xr-x 1 root root 1.1M Feb 14  2018 /usr/sbin/exim4
+772K -rwxr-xr-x 1 root root 772K Aug 10  2018 /usr/sbin/named
+244K -rwxr-xr-x 1 root root 243K Aug  6  2018 /usr/sbin/nmbd
+668K -rwxr-xr-x 1 root root 665K Apr 24  2018 /usr/sbin/rsyslogd
+ 84K -rwxr-xr-x 1 root root  83K Aug  6  2018 /usr/sbin/smbd
+772K -rwxr-xr-x 1 root root 769K Feb 10  2018 /usr/sbin/sshd
+168K -rwxr-xr-x 1 root root 165K Feb  5  2018 /usr/sbin/vsftpd
+
+
+[00;31m[-] /etc/init.d/ binary permissions:[00m
+total 144
+drwxr-xr-x  2 root root 4096 Jan 23 23:50 .
+drwxr-xr-x 90 root root 4096 Jan 23 23:51 ..
+-rwxr-xr-x  1 root root 2489 Jun 27  2018 apache-htcacheclean
+-rwxr-xr-x  1 root root 8181 Jun 27  2018 apache2
+-rwxr-xr-x  1 root root 4335 Mar 22  2018 apparmor
+-rwxr-xr-x  1 root root 3431 Mar 23  2018 bind9
+-rwxr-xr-x  1 root root 1232 Apr 19  2018 console-setup.sh
+-rwxr-xr-x  1 root root 3049 Nov 16  2017 cron
+-rwxr-xr-x  1 root root 2813 Nov 16  2017 dbus
+-rwxr-xr-x  1 root root 6754 Jan 28  2018 exim4
+-rwxr-xr-x  1 root root  985 Jul 13  2018 grub-common
+-rwxr-xr-x  1 root root 3809 Feb 15  2018 hwclock.sh
+-rwxr-xr-x  1 root root 2444 Oct 25  2017 irqbalance
+-rwxr-xr-x  1 root root 1479 Feb 16  2018 keyboard-setup.sh
+-rwxr-xr-x  1 root root 2044 Aug 15  2017 kmod
+-rwxr-xr-x  1 root root 4597 Nov 25  2016 networking
+-rwxr-xr-x  1 root root 1938 Apr 18  2018 nmbd
+-rwxr-xr-x  1 root root 1846 Sep 10 10:24 open-vm-tools
+-rwxr-xr-x  1 root root 1366 Jan 17  2018 plymouth
+-rwxr-xr-x  1 root root  752 Jan 17  2018 plymouth-log
+-rwxr-xr-x  1 root root 1191 Jan 18  2018 procps
+-rwxr-xr-x  1 root root 4355 Dec 13  2017 rsync
+-rwxr-xr-x  1 root root 2864 Jan 14  2018 rsyslog
+-rwxr-xr-x  1 root root 2263 Apr 18  2018 samba-ad-dc
+-rwxr-xr-x  1 root root 1879 Apr 18  2018 smbd
+-rwxr-xr-x  1 root root 3837 Jan 26  2018 ssh
+-rwxr-xr-x  1 root root 5974 Apr 20  2018 udev
+-rwxr-xr-x  1 root root 2083 Aug 15  2017 ufw
+-rwxr-xr-x  1 root root 1306 May 16  2018 uuidd
+-rwxr-xr-x  1 root root 2069 Aug 29  2016 vsftpd
+
+
+[00;31m[-] /lib/systemd/* config file permissions:[00m
+/lib/systemd/:
+total 7.3M
+drwxr-xr-x 23 root root  36K Jan 23 23:56 system
+drwxr-xr-x  2 root root 4.0K Oct  5 23:44 system-sleep
+drwxr-xr-x  2 root root 4.0K Oct  5 23:42 network
+drwxr-xr-x  2 root root 4.0K Oct  5 23:42 system-generators
+drwxr-xr-x  2 root root 4.0K Oct  5 23:42 system-preset
+-rw-r--r--  1 root root 2.3M Jul 20  2018 libsystemd-shared-237.so
+-rwxr-xr-x  1 root root 1.3K Jul 20  2018 set-cpufreq
+-rwxr-xr-x  1 root root 1.6M Jul 20  2018 systemd
+-rwxr-xr-x  1 root root 6.0K Jul 20  2018 systemd-ac-power
+-rwxr-xr-x  1 root root  18K Jul 20  2018 systemd-backlight
+-rwxr-xr-x  1 root root  11K Jul 20  2018 systemd-binfmt
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-cgroups-agent
+-rwxr-xr-x  1 root root  22K Jul 20  2018 systemd-cryptsetup
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-dissect
+-rwxr-xr-x  1 root root  18K Jul 20  2018 systemd-fsck
+-rwxr-xr-x  1 root root  23K Jul 20  2018 systemd-fsckd
+-rwxr-xr-x  1 root root  19K Jul 20  2018 systemd-growfs
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-hibernate-resume
+-rwxr-xr-x  1 root root  23K Jul 20  2018 systemd-hostnamed
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-initctl
+-rwxr-xr-x  1 root root 127K Jul 20  2018 systemd-journald
+-rwxr-xr-x  1 root root  35K Jul 20  2018 systemd-localed
+-rwxr-xr-x  1 root root 215K Jul 20  2018 systemd-logind
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-makefs
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-modules-load
+-rwxr-xr-x  1 root root 1.6M Jul 20  2018 systemd-networkd
+-rwxr-xr-x  1 root root  19K Jul 20  2018 systemd-networkd-wait-online
+-rwxr-xr-x  1 root root  11K Jul 20  2018 systemd-quotacheck
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-random-seed
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-remount-fs
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-reply-password
+-rwxr-xr-x  1 root root 371K Jul 20  2018 systemd-resolved
+-rwxr-xr-x  1 root root  19K Jul 20  2018 systemd-rfkill
+-rwxr-xr-x  1 root root  43K Jul 20  2018 systemd-shutdown
+-rwxr-xr-x  1 root root  19K Jul 20  2018 systemd-sleep
+-rwxr-xr-x  1 root root  23K Jul 20  2018 systemd-socket-proxyd
+-rwxr-xr-x  1 root root  11K Jul 20  2018 systemd-sulogin-shell
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-sysctl
+-rwxr-xr-x  1 root root  27K Jul 20  2018 systemd-timedated
+-rwxr-xr-x  1 root root  39K Jul 20  2018 systemd-timesyncd
+-rwxr-xr-x  1 root root 571K Jul 20  2018 systemd-udevd
+-rwxr-xr-x  1 root root  15K Jul 20  2018 systemd-update-utmp
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-user-sessions
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-veritysetup
+-rwxr-xr-x  1 root root  10K Jul 20  2018 systemd-volatile-root
+-rwxr-xr-x  1 root root 1.3K Jun 22  2018 systemd-sysv-install
+drwxr-xr-x  2 root root 4.0K Apr 20  2018 system-shutdown
+-rw-r--r--  1 root root  685 Jan 28  2018 resolv.conf
+
+/lib/systemd/system:
+total 864K
+drwxr-xr-x 2 root root 4.0K Oct  5 23:51 apache2.service.d
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 halt.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 initrd-switch-root.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 kexec.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 multi-user.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 poweroff.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 reboot.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:44 sysinit.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 getty.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 graphical.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 local-fs.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 rescue.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 sockets.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 timers.target.wants
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 rc-local.service.d
+drwxr-xr-x 2 root root 4.0K Oct  5 23:42 user@.service.d
+-rw-r--r-- 1 root root  412 Sep 12 02:03 plymouth-halt.service
+-rw-r--r-- 1 root root  426 Sep 12 02:03 plymouth-kexec.service
+lrwxrwxrwx 1 root root   27 Sep 12 02:03 plymouth-log.service -> plymouth-read-write.service
+-rw-r--r-- 1 root root  421 Sep 12 02:03 plymouth-poweroff.service
+-rw-r--r-- 1 root root  200 Sep 12 02:03 plymouth-quit-wait.service
+-rw-r--r-- 1 root root  194 Sep 12 02:03 plymouth-quit.service
+-rw-r--r-- 1 root root  244 Sep 12 02:03 plymouth-read-write.service
+-rw-r--r-- 1 root root  416 Sep 12 02:03 plymouth-reboot.service
+-rw-r--r-- 1 root root  532 Sep 12 02:03 plymouth-start.service
+-rw-r--r-- 1 root root  291 Sep 12 02:03 plymouth-switch-root.service
+lrwxrwxrwx 1 root root   21 Sep 12 02:03 plymouth.service -> plymouth-quit.service
+-rw-r--r-- 1 root root  490 Sep 12 02:03 systemd-ask-password-plymouth.path
+-rw-r--r-- 1 root root  467 Sep 12 02:03 systemd-ask-password-plymouth.service
+-rw-r--r-- 1 root root  306 Sep 11 07:42 open-vm-tools.service
+-rw-r--r-- 1 root root  298 Sep 10 10:24 vgauth.service
+-rw-r--r-- 1 root root  173 Aug  7  2018 motd-news.service
+-rw-r--r-- 1 root root  175 Aug  7  2018 motd-news.timer
+-rw-r--r-- 1 root root  417 Aug  6  2018 nmbd.service
+-rw-r--r-- 1 root root  384 Aug  6  2018 samba-ad-dc.service
+-rw-r--r-- 1 root root  429 Aug  6  2018 smbd.service
+lrwxrwxrwx 1 root root   14 Jul 20  2018 autovt@.service -> getty@.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 bootlogd.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 bootlogs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 bootmisc.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 checkfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 checkroot-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 checkroot.service -> /dev/null
+-rw-r--r-- 1 root root 1.1K Jul 20  2018 console-getty.service
+-rw-r--r-- 1 root root 1.3K Jul 20  2018 container-getty@.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 cryptdisks-early.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 cryptdisks.service -> /dev/null
+lrwxrwxrwx 1 root root   13 Jul 20  2018 ctrl-alt-del.target -> reboot.target
+lrwxrwxrwx 1 root root   25 Jul 20  2018 dbus-org.freedesktop.hostname1.service -> systemd-hostnamed.service
+lrwxrwxrwx 1 root root   23 Jul 20  2018 dbus-org.freedesktop.locale1.service -> systemd-localed.service
+lrwxrwxrwx 1 root root   22 Jul 20  2018 dbus-org.freedesktop.login1.service -> systemd-logind.service
+lrwxrwxrwx 1 root root   25 Jul 20  2018 dbus-org.freedesktop.timedate1.service -> systemd-timedated.service
+-rw-r--r-- 1 root root 1.1K Jul 20  2018 debug-shell.service
+lrwxrwxrwx 1 root root   16 Jul 20  2018 default.target -> graphical.target
+-rw-r--r-- 1 root root  797 Jul 20  2018 emergency.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 fuse.service -> /dev/null
+-rw-r--r-- 1 root root 2.0K Jul 20  2018 getty@.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 halt.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 hostname.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 hwclock.service -> /dev/null
+-rw-r--r-- 1 root root  670 Jul 20  2018 initrd-cleanup.service
+-rw-r--r-- 1 root root  830 Jul 20  2018 initrd-parse-etc.service
+-rw-r--r-- 1 root root  589 Jul 20  2018 initrd-switch-root.service
+-rw-r--r-- 1 root root  704 Jul 20  2018 initrd-udevadm-cleanup-db.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 killprocs.service -> /dev/null
+-rw-r--r-- 1 root root  717 Jul 20  2018 kmod-static-nodes.service
+lrwxrwxrwx 1 root root   28 Jul 20  2018 kmod.service -> systemd-modules-load.service
+lrwxrwxrwx 1 root root   28 Jul 20  2018 module-init-tools.service -> systemd-modules-load.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 motd.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountall-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountall.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountdevsubfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountkernfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountnfs-bootclean.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 mountnfs.service -> /dev/null
+lrwxrwxrwx 1 root root   22 Jul 20  2018 procps.service -> systemd-sysctl.service
+-rw-r--r-- 1 root root  609 Jul 20  2018 quotaon.service
+-rw-r--r-- 1 root root  716 Jul 20  2018 rc-local.service
+lrwxrwxrwx 1 root root   16 Jul 20  2018 rc.local.service -> rc-local.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 rc.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 rcS.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 reboot.service -> /dev/null
+-rw-r--r-- 1 root root  788 Jul 20  2018 rescue.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 rmnologin.service -> /dev/null
+lrwxrwxrwx 1 root root   15 Jul 20  2018 runlevel0.target -> poweroff.target
+lrwxrwxrwx 1 root root   13 Jul 20  2018 runlevel1.target -> rescue.target
+lrwxrwxrwx 1 root root   17 Jul 20  2018 runlevel2.target -> multi-user.target
+lrwxrwxrwx 1 root root   17 Jul 20  2018 runlevel3.target -> multi-user.target
+lrwxrwxrwx 1 root root   17 Jul 20  2018 runlevel4.target -> multi-user.target
+lrwxrwxrwx 1 root root   16 Jul 20  2018 runlevel5.target -> graphical.target
+lrwxrwxrwx 1 root root   13 Jul 20  2018 runlevel6.target -> reboot.target
+lrwxrwxrwx 1 root root    9 Jul 20  2018 sendsigs.service -> /dev/null
+-rw-r--r-- 1 root root 1.5K Jul 20  2018 serial-getty@.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 single.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 stop-bootlogd-single.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 stop-bootlogd.service -> /dev/null
+-rw-r--r-- 1 root root  554 Jul 20  2018 suspend-then-hibernate.target
+-rw-r--r-- 1 root root 1.4K Jul 20  2018 system-update-cleanup.service
+-rw-r--r-- 1 root root  724 Jul 20  2018 systemd-ask-password-console.service
+-rw-r--r-- 1 root root  752 Jul 20  2018 systemd-ask-password-wall.service
+-rw-r--r-- 1 root root  752 Jul 20  2018 systemd-backlight@.service
+-rw-r--r-- 1 root root  999 Jul 20  2018 systemd-binfmt.service
+-rw-r--r-- 1 root root  537 Jul 20  2018 systemd-exit.service
+-rw-r--r-- 1 root root  714 Jul 20  2018 systemd-fsck-root.service
+-rw-r--r-- 1 root root  715 Jul 20  2018 systemd-fsck@.service
+-rw-r--r-- 1 root root  551 Jul 20  2018 systemd-fsckd.service
+-rw-r--r-- 1 root root  540 Jul 20  2018 systemd-fsckd.socket
+-rw-r--r-- 1 root root  584 Jul 20  2018 systemd-halt.service
+-rw-r--r-- 1 root root  671 Jul 20  2018 systemd-hibernate-resume@.service
+-rw-r--r-- 1 root root  541 Jul 20  2018 systemd-hibernate.service
+-rw-r--r-- 1 root root 1.1K Jul 20  2018 systemd-hostnamed.service
+-rw-r--r-- 1 root root  818 Jul 20  2018 systemd-hwdb-update.service
+-rw-r--r-- 1 root root  559 Jul 20  2018 systemd-hybrid-sleep.service
+-rw-r--r-- 1 root root  551 Jul 20  2018 systemd-initctl.service
+-rw-r--r-- 1 root root  771 Jul 20  2018 systemd-journal-flush.service
+-rw-r--r-- 1 root root  686 Jul 20  2018 systemd-journald-audit.socket
+-rw-r--r-- 1 root root 1.6K Jul 20  2018 systemd-journald.service
+-rw-r--r-- 1 root root  597 Jul 20  2018 systemd-kexec.service
+-rw-r--r-- 1 root root 1.1K Jul 20  2018 systemd-localed.service
+-rw-r--r-- 1 root root 1.5K Jul 20  2018 systemd-logind.service
+-rw-r--r-- 1 root root  733 Jul 20  2018 systemd-machine-id-commit.service
+-rw-r--r-- 1 root root 1007 Jul 20  2018 systemd-modules-load.service
+-rw-r--r-- 1 root root  740 Jul 20  2018 systemd-networkd-wait-online.service
+-rw-r--r-- 1 root root 1.9K Jul 20  2018 systemd-networkd.service
+-rw-r--r-- 1 root root  593 Jul 20  2018 systemd-poweroff.service
+-rw-r--r-- 1 root root  655 Jul 20  2018 systemd-quotacheck.service
+-rw-r--r-- 1 root root  792 Jul 20  2018 systemd-random-seed.service
+-rw-r--r-- 1 root root  588 Jul 20  2018 systemd-reboot.service
+-rw-r--r-- 1 root root  833 Jul 20  2018 systemd-remount-fs.service
+-rw-r--r-- 1 root root 1.7K Jul 20  2018 systemd-resolved.service
+-rw-r--r-- 1 root root  724 Jul 20  2018 systemd-rfkill.service
+-rw-r--r-- 1 root root  573 Jul 20  2018 systemd-suspend-then-hibernate.service
+-rw-r--r-- 1 root root  537 Jul 20  2018 systemd-suspend.service
+-rw-r--r-- 1 root root  693 Jul 20  2018 systemd-sysctl.service
+-rw-r--r-- 1 root root 1.1K Jul 20  2018 systemd-timedated.service
+-rw-r--r-- 1 root root 1.4K Jul 20  2018 systemd-timesyncd.service
+-rw-r--r-- 1 root root  659 Jul 20  2018 systemd-tmpfiles-clean.service
+-rw-r--r-- 1 root root  764 Jul 20  2018 systemd-tmpfiles-setup-dev.service
+-rw-r--r-- 1 root root  744 Jul 20  2018 systemd-tmpfiles-setup.service
+-rw-r--r-- 1 root root  863 Jul 20  2018 systemd-udev-settle.service
+-rw-r--r-- 1 root root  755 Jul 20  2018 systemd-udev-trigger.service
+-rw-r--r-- 1 root root  985 Jul 20  2018 systemd-udevd.service
+-rw-r--r-- 1 root root  797 Jul 20  2018 systemd-update-utmp-runlevel.service
+-rw-r--r-- 1 root root  794 Jul 20  2018 systemd-update-utmp.service
+-rw-r--r-- 1 root root  628 Jul 20  2018 systemd-user-sessions.service
+-rw-r--r-- 1 root root  690 Jul 20  2018 systemd-volatile-root.service
+lrwxrwxrwx 1 root root   21 Jul 20  2018 udev.service -> systemd-udevd.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 umountfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 umountnfs.service -> /dev/null
+lrwxrwxrwx 1 root root    9 Jul 20  2018 umountroot.service -> /dev/null
+lrwxrwxrwx 1 root root   27 Jul 20  2018 urandom.service -> systemd-random-seed.service
+-rw-r--r-- 1 root root  593 Jul 20  2018 user@.service
+lrwxrwxrwx 1 root root    9 Jul 20  2018 x11-common.service -> /dev/null
+-rw-r--r-- 1 root root  238 Jul  9  2018 apt-daily-upgrade.service
+-rw-r--r-- 1 root root  184 Jul  9  2018 apt-daily-upgrade.timer
+-rw-r--r-- 1 root root  326 Jul  9  2018 apt-daily.service
+-rw-r--r-- 1 root root  156 Jul  9  2018 apt-daily.timer
+-rw-r--r-- 1 root root  266 Jul  5  2018 netplan-wpa@.service
+-rw-r--r-- 1 root root  528 Jun 27  2018 apache-htcacheclean.service
+-rw-r--r-- 1 root root  537 Jun 27  2018 apache-htcacheclean@.service
+-rw-r--r-- 1 root root  346 Jun 27  2018 apache2.service
+-rw-r--r-- 1 root root  418 Jun 27  2018 apache2@.service
+-rw-r--r-- 1 root root  342 Jun 22  2018 getty-static.service
+-rw-r--r-- 1 root root  362 Jun 22  2018 ondemand.service
+-rw-r--r-- 1 root root  258 Jun 19  2018 networkd-dispatcher.service
+-rw-r--r-- 1 root root   92 May 16  2018 fstrim.service
+-rw-r--r-- 1 root root  170 May 16  2018 fstrim.timer
+-rw-r--r-- 1 root root  189 May 16  2018 uuidd.service
+-rw-r--r-- 1 root root  126 May 16  2018 uuidd.socket
+-rw-r--r-- 1 root root  290 Apr 24  2018 rsyslog.service
+drwxr-xr-x 2 root root 4.0K Apr 20  2018 runlevel1.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 20  2018 runlevel2.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 20  2018 runlevel3.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 20  2018 runlevel4.target.wants
+drwxr-xr-x 2 root root 4.0K Apr 20  2018 runlevel5.target.wants
+-rw-r--r-- 1 root root  808 Mar 29  2018 friendly-recovery.service
+-rw-r--r-- 1 root root  350 Mar 23  2018 bind9-pkcs11.service
+-rw-r--r-- 1 root root  324 Mar 23  2018 bind9.service
+-rw-r--r-- 1 root root  370 Mar 23  2018 bind9-resolvconf.service
+-rw-r--r-- 1 root root  544 Mar 22  2018 apparmor.service
+-rw-r--r-- 1 root root  287 Feb 16  2018 keyboard-setup.service
+-rw-r--r-- 1 root root  312 Feb 16  2018 console-setup.service
+-rw-r--r-- 1 root root  919 Jan 28  2018 basic.target
+-rw-r--r-- 1 root root  419 Jan 28  2018 bluetooth.target
+-rw-r--r-- 1 root root  465 Jan 28  2018 cryptsetup-pre.target
+-rw-r--r-- 1 root root  412 Jan 28  2018 cryptsetup.target
+-rw-r--r-- 1 root root  750 Jan 28  2018 dev-hugepages.mount
+-rw-r--r-- 1 root root  665 Jan 28  2018 dev-mqueue.mount
+-rw-r--r-- 1 root root  471 Jan 28  2018 emergency.target
+-rw-r--r-- 1 root root  541 Jan 28  2018 exit.target
+-rw-r--r-- 1 root root  480 Jan 28  2018 final.target
+-rw-r--r-- 1 root root  506 Jan 28  2018 getty-pre.target
+-rw-r--r-- 1 root root  500 Jan 28  2018 getty.target
+-rw-r--r-- 1 root root  598 Jan 28  2018 graphical.target
+-rw-r--r-- 1 root root  527 Jan 28  2018 halt.target
+-rw-r--r-- 1 root root  509 Jan 28  2018 hibernate.target
+-rw-r--r-- 1 root root  530 Jan 28  2018 hybrid-sleep.target
+-rw-r--r-- 1 root root  593 Jan 28  2018 initrd-fs.target
+-rw-r--r-- 1 root root  561 Jan 28  2018 initrd-root-device.target
+-rw-r--r-- 1 root root  566 Jan 28  2018 initrd-root-fs.target
+-rw-r--r-- 1 root root  754 Jan 28  2018 initrd-switch-root.target
+-rw-r--r-- 1 root root  763 Jan 28  2018 initrd.target
+-rw-r--r-- 1 root root  541 Jan 28  2018 kexec.target
+-rw-r--r-- 1 root root  435 Jan 28  2018 local-fs-pre.target
+-rw-r--r-- 1 root root  547 Jan 28  2018 local-fs.target
+-rw-r--r-- 1 root root  445 Jan 28  2018 machine.slice
+-rw-r--r-- 1 root root  532 Jan 28  2018 multi-user.target
+-rw-r--r-- 1 root root  505 Jan 28  2018 network-online.target
+-rw-r--r-- 1 root root  502 Jan 28  2018 network-pre.target
+-rw-r--r-- 1 root root  521 Jan 28  2018 network.target
+-rw-r--r-- 1 root root  554 Jan 28  2018 nss-lookup.target
+-rw-r--r-- 1 root root  513 Jan 28  2018 nss-user-lookup.target
+-rw-r--r-- 1 root root  394 Jan 28  2018 paths.target
+-rw-r--r-- 1 root root  592 Jan 28  2018 poweroff.target
+-rw-r--r-- 1 root root  417 Jan 28  2018 printer.target
+-rw-r--r-- 1 root root  745 Jan 28  2018 proc-sys-fs-binfmt_misc.automount
+-rw-r--r-- 1 root root  655 Jan 28  2018 proc-sys-fs-binfmt_misc.mount
+-rw-r--r-- 1 root root  583 Jan 28  2018 reboot.target
+-rw-r--r-- 1 root root  549 Jan 28  2018 remote-cryptsetup.target
+-rw-r--r-- 1 root root  436 Jan 28  2018 remote-fs-pre.target
+-rw-r--r-- 1 root root  522 Jan 28  2018 remote-fs.target
+-rw-r--r-- 1 root root  492 Jan 28  2018 rescue.target
+-rw-r--r-- 1 root root  540 Jan 28  2018 rpcbind.target
+-rw-r--r-- 1 root root  442 Jan 28  2018 shutdown.target
+-rw-r--r-- 1 root root  402 Jan 28  2018 sigpwr.target
+-rw-r--r-- 1 root root  460 Jan 28  2018 sleep.target
+-rw-r--r-- 1 root root  449 Jan 28  2018 slices.target
+-rw-r--r-- 1 root root  420 Jan 28  2018 smartcard.target
+-rw-r--r-- 1 root root  396 Jan 28  2018 sockets.target
+-rw-r--r-- 1 root root  420 Jan 28  2018 sound.target
+-rw-r--r-- 1 root root  503 Jan 28  2018 suspend.target
+-rw-r--r-- 1 root root  393 Jan 28  2018 swap.target
+-rw-r--r-- 1 root root  795 Jan 28  2018 sys-fs-fuse-connections.mount
+-rw-r--r-- 1 root root  767 Jan 28  2018 sys-kernel-config.mount
+-rw-r--r-- 1 root root  710 Jan 28  2018 sys-kernel-debug.mount
+-rw-r--r-- 1 root root  558 Jan 28  2018 sysinit.target
+-rw-r--r-- 1 root root 1.4K Jan 28  2018 syslog.socket
+-rw-r--r-- 1 root root  592 Jan 28  2018 system-update.target
+-rw-r--r-- 1 root root  445 Jan 28  2018 system.slice
+-rw-r--r-- 1 root root  704 Jan 28  2018 systemd-ask-password-console.path
+-rw-r--r-- 1 root root  632 Jan 28  2018 systemd-ask-password-wall.path
+-rw-r--r-- 1 root root  564 Jan 28  2018 systemd-initctl.socket
+-rw-r--r-- 1 root root 1.2K Jan 28  2018 systemd-journald-dev-log.socket
+-rw-r--r-- 1 root root  882 Jan 28  2018 systemd-journald.socket
+-rw-r--r-- 1 root root  631 Jan 28  2018 systemd-networkd.socket
+-rw-r--r-- 1 root root  657 Jan 28  2018 systemd-rfkill.socket
+-rw-r--r-- 1 root root  490 Jan 28  2018 systemd-tmpfiles-clean.timer
+-rw-r--r-- 1 root root  635 Jan 28  2018 systemd-udevd-control.socket
+-rw-r--r-- 1 root root  610 Jan 28  2018 systemd-udevd-kernel.socket
+-rw-r--r-- 1 root root  435 Jan 28  2018 time-sync.target
+-rw-r--r-- 1 root root  445 Jan 28  2018 timers.target
+-rw-r--r-- 1 root root  457 Jan 28  2018 umount.target
+-rw-r--r-- 1 root root  432 Jan 28  2018 user.slice
+-rw-r--r-- 1 root root  493 Jan 26  2018 ssh.service
+-rw-r--r-- 1 root root  244 Jan 26  2018 ssh@.service
+lrwxrwxrwx 1 root root    9 Jan 18  2018 sudo.service -> /dev/null
+-rw-r--r-- 1 root root  155 Jan 18  2018 phpsessionclean.service
+-rw-r--r-- 1 root root  144 Jan 18  2018 phpsessionclean.timer
+-rw-r--r-- 1 root root  216 Jan 16  2018 ssh.socket
+-rw-r--r-- 1 root root  741 Dec 18  2017 accounts-daemon.service
+-rw-r--r-- 1 root root  368 Dec 11  2017 irqbalance.service
+-rw-r--r-- 1 root root  251 Nov 16  2017 cron.service
+-rw-r--r-- 1 root root  505 Nov 16  2017 dbus.service
+-rw-r--r-- 1 root root  106 Nov 16  2017 dbus.socket
+-rw-r--r-- 1 root root  266 Aug 15  2017 ufw.service
+-rw-r--r-- 1 root root  250 Aug 15  2017 ureadahead-stop.service
+-rw-r--r-- 1 root root  242 Aug 15  2017 ureadahead-stop.timer
+-rw-r--r-- 1 root root  401 Aug 15  2017 ureadahead.service
+-rw-r--r-- 1 root root  330 Aug 10  2017 setvtrgb.service
+-rw-r--r-- 1 root root  248 Jul 27  2014 vsftpd.service
+-rw-r--r-- 1 root root  188 Feb 24  2014 rsync.service
+
+/lib/systemd/system/apache2.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 42 Jun 27  2018 apache2-systemd.conf
+
+/lib/systemd/system/halt.target.wants:
+total 0
+lrwxrwxrwx 1 root root 24 Sep 12 02:03 plymouth-halt.service -> ../plymouth-halt.service
+
+/lib/systemd/system/initrd-switch-root.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 Sep 12 02:03 plymouth-start.service -> ../plymouth-start.service
+lrwxrwxrwx 1 root root 31 Sep 12 02:03 plymouth-switch-root.service -> ../plymouth-switch-root.service
+
+/lib/systemd/system/kexec.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 Sep 12 02:03 plymouth-kexec.service -> ../plymouth-kexec.service
+
+/lib/systemd/system/multi-user.target.wants:
+total 0
+lrwxrwxrwx 1 root root 29 Sep 12 02:03 plymouth-quit-wait.service -> ../plymouth-quit-wait.service
+lrwxrwxrwx 1 root root 24 Sep 12 02:03 plymouth-quit.service -> ../plymouth-quit.service
+lrwxrwxrwx 1 root root 15 Jul 20  2018 getty.target -> ../getty.target
+lrwxrwxrwx 1 root root 33 Jul 20  2018 systemd-ask-password-wall.path -> ../systemd-ask-password-wall.path
+lrwxrwxrwx 1 root root 25 Jul 20  2018 systemd-logind.service -> ../systemd-logind.service
+lrwxrwxrwx 1 root root 39 Jul 20  2018 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+lrwxrwxrwx 1 root root 32 Jul 20  2018 systemd-user-sessions.service -> ../systemd-user-sessions.service
+lrwxrwxrwx 1 root root 15 Nov 16  2017 dbus.service -> ../dbus.service
+
+/lib/systemd/system/poweroff.target.wants:
+total 0
+lrwxrwxrwx 1 root root 28 Sep 12 02:03 plymouth-poweroff.service -> ../plymouth-poweroff.service
+
+/lib/systemd/system/reboot.target.wants:
+total 0
+lrwxrwxrwx 1 root root 26 Sep 12 02:03 plymouth-reboot.service -> ../plymouth-reboot.service
+
+/lib/systemd/system/sysinit.target.wants:
+total 0
+lrwxrwxrwx 1 root root 30 Sep 12 02:03 plymouth-read-write.service -> ../plymouth-read-write.service
+lrwxrwxrwx 1 root root 25 Sep 12 02:03 plymouth-start.service -> ../plymouth-start.service
+lrwxrwxrwx 1 root root 20 Jul 20  2018 cryptsetup.target -> ../cryptsetup.target
+lrwxrwxrwx 1 root root 22 Jul 20  2018 dev-hugepages.mount -> ../dev-hugepages.mount
+lrwxrwxrwx 1 root root 19 Jul 20  2018 dev-mqueue.mount -> ../dev-mqueue.mount
+lrwxrwxrwx 1 root root 28 Jul 20  2018 kmod-static-nodes.service -> ../kmod-static-nodes.service
+lrwxrwxrwx 1 root root 36 Jul 20  2018 proc-sys-fs-binfmt_misc.automount -> ../proc-sys-fs-binfmt_misc.automount
+lrwxrwxrwx 1 root root 32 Jul 20  2018 sys-fs-fuse-connections.mount -> ../sys-fs-fuse-connections.mount
+lrwxrwxrwx 1 root root 26 Jul 20  2018 sys-kernel-config.mount -> ../sys-kernel-config.mount
+lrwxrwxrwx 1 root root 25 Jul 20  2018 sys-kernel-debug.mount -> ../sys-kernel-debug.mount
+lrwxrwxrwx 1 root root 36 Jul 20  2018 systemd-ask-password-console.path -> ../systemd-ask-password-console.path
+lrwxrwxrwx 1 root root 25 Jul 20  2018 systemd-binfmt.service -> ../systemd-binfmt.service
+lrwxrwxrwx 1 root root 30 Jul 20  2018 systemd-hwdb-update.service -> ../systemd-hwdb-update.service
+lrwxrwxrwx 1 root root 32 Jul 20  2018 systemd-journal-flush.service -> ../systemd-journal-flush.service
+lrwxrwxrwx 1 root root 27 Jul 20  2018 systemd-journald.service -> ../systemd-journald.service
+lrwxrwxrwx 1 root root 36 Jul 20  2018 systemd-machine-id-commit.service -> ../systemd-machine-id-commit.service
+lrwxrwxrwx 1 root root 31 Jul 20  2018 systemd-modules-load.service -> ../systemd-modules-load.service
+lrwxrwxrwx 1 root root 30 Jul 20  2018 systemd-random-seed.service -> ../systemd-random-seed.service
+lrwxrwxrwx 1 root root 25 Jul 20  2018 systemd-sysctl.service -> ../systemd-sysctl.service
+lrwxrwxrwx 1 root root 37 Jul 20  2018 systemd-tmpfiles-setup-dev.service -> ../systemd-tmpfiles-setup-dev.service
+lrwxrwxrwx 1 root root 33 Jul 20  2018 systemd-tmpfiles-setup.service -> ../systemd-tmpfiles-setup.service
+lrwxrwxrwx 1 root root 31 Jul 20  2018 systemd-udev-trigger.service -> ../systemd-udev-trigger.service
+lrwxrwxrwx 1 root root 24 Jul 20  2018 systemd-udevd.service -> ../systemd-udevd.service
+lrwxrwxrwx 1 root root 30 Jul 20  2018 systemd-update-utmp.service -> ../systemd-update-utmp.service
+
+/lib/systemd/system/getty.target.wants:
+total 0
+lrwxrwxrwx 1 root root 23 Jul 20  2018 getty-static.service -> ../getty-static.service
+
+/lib/systemd/system/graphical.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jul 20  2018 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+
+/lib/systemd/system/local-fs.target.wants:
+total 0
+lrwxrwxrwx 1 root root 29 Jul 20  2018 systemd-remount-fs.service -> ../systemd-remount-fs.service
+
+/lib/systemd/system/rescue.target.wants:
+total 0
+lrwxrwxrwx 1 root root 39 Jul 20  2018 systemd-update-utmp-runlevel.service -> ../systemd-update-utmp-runlevel.service
+
+/lib/systemd/system/sockets.target.wants:
+total 0
+lrwxrwxrwx 1 root root 25 Jul 20  2018 systemd-initctl.socket -> ../systemd-initctl.socket
+lrwxrwxrwx 1 root root 32 Jul 20  2018 systemd-journald-audit.socket -> ../systemd-journald-audit.socket
+lrwxrwxrwx 1 root root 34 Jul 20  2018 systemd-journald-dev-log.socket -> ../systemd-journald-dev-log.socket
+lrwxrwxrwx 1 root root 26 Jul 20  2018 systemd-journald.socket -> ../systemd-journald.socket
+lrwxrwxrwx 1 root root 31 Jul 20  2018 systemd-udevd-control.socket -> ../systemd-udevd-control.socket
+lrwxrwxrwx 1 root root 30 Jul 20  2018 systemd-udevd-kernel.socket -> ../systemd-udevd-kernel.socket
+lrwxrwxrwx 1 root root 14 Nov 16  2017 dbus.socket -> ../dbus.socket
+
+/lib/systemd/system/timers.target.wants:
+total 0
+lrwxrwxrwx 1 root root 31 Jul 20  2018 systemd-tmpfiles-clean.timer -> ../systemd-tmpfiles-clean.timer
+
+/lib/systemd/system/rc-local.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 290 Jun 22  2018 debian.conf
+
+/lib/systemd/system/user@.service.d:
+total 4.0K
+-rw-r--r-- 1 root root 125 Jun 22  2018 timeout.conf
+
+/lib/systemd/system/runlevel1.target.wants:
+total 0
+
+/lib/systemd/system/runlevel2.target.wants:
+total 0
+
+/lib/systemd/system/runlevel3.target.wants:
+total 0
+
+/lib/systemd/system/runlevel4.target.wants:
+total 0
+
+/lib/systemd/system/runlevel5.target.wants:
+total 0
+
+/lib/systemd/system-sleep:
+total 4.0K
+-rwxr-xr-x 1 root root 92 Feb 22  2018 hdparm
+
+/lib/systemd/network:
+total 16K
+-rw-r--r-- 1 root root 645 Jan 28  2018 80-container-host0.network
+-rw-r--r-- 1 root root 718 Jan 28  2018 80-container-ve.network
+-rw-r--r-- 1 root root 704 Jan 28  2018 80-container-vz.network
+-rw-r--r-- 1 root root 412 Jan 28  2018 99-default.link
+
+/lib/systemd/system-generators:
+total 192K
+-rwxr-xr-x 1 root root 23K Jul 20  2018 systemd-cryptsetup-generator
+-rwxr-xr-x 1 root root 10K Jul 20  2018 systemd-debug-generator
+-rwxr-xr-x 1 root root 31K Jul 20  2018 systemd-fstab-generator
+-rwxr-xr-x 1 root root 14K Jul 20  2018 systemd-getty-generator
+-rwxr-xr-x 1 root root 22K Jul 20  2018 systemd-gpt-auto-generator
+-rwxr-xr-x 1 root root 10K Jul 20  2018 systemd-hibernate-resume-generator
+-rwxr-xr-x 1 root root 10K Jul 20  2018 systemd-rc-local-generator
+-rwxr-xr-x 1 root root 10K Jul 20  2018 systemd-system-update-generator
+-rwxr-xr-x 1 root root 31K Jul 20  2018 systemd-sysv-generator
+-rwxr-xr-x 1 root root 14K Jul 20  2018 systemd-veritysetup-generator
+lrwxrwxrwx 1 root root  22 Jul  5  2018 netplan -> ../../netplan/generate
+
+/lib/systemd/system-preset:
+total 4.0K
+-rw-r--r-- 1 root root 951 Jan 28  2018 90-systemd.preset
+
+/lib/systemd/system-shutdown:
+total 0
+
+
+[00;33m### SOFTWARE #############################################[00m
+[00;31m[-] Sudo version:[00m
+Sudo version 1.8.21p2
+
+
+[00;31m[-] Apache version:[00m
+Server version: Apache/2.4.29 (Ubuntu)
+Server built:   2018-10-03T14:41:08
+
+
+[00;31m[-] Apache user configuration:[00m
+APACHE_RUN_USER=www-data
+APACHE_RUN_GROUP=www-data
+
+
+[00;31m[-] Installed Apache modules:[00m
+Action '-M' failed.
+The Apache error log may have more information.
+
+
+[00;33m### INTERESTING FILES ####################################[00m
+[00;31m[-] Useful file locations:[00m
+/bin/nc
+/bin/netcat
+/usr/bin/wget
+
+
+[00;31m[-] Can we read/write sensitive files:[00m
+-rw-r--r-- 1 root root 1513 Oct  6 00:34 /etc/passwd
+-rw-r--r-- 1 root root 789 Jan 23 23:47 /etc/group
+-rw-r--r-- 1 root root 581 Apr  9  2018 /etc/profile
+-rw-r----- 1 root shadow 994 Oct 10 02:49 /etc/shadow
+
+
+[00;31m[-] SUID files:[00m
+-rwsr-xr-x 1 root root 30800 Aug 11  2016 /bin/fusermount
+-rwsr-xr-x 1 root root 26696 May 16  2018 /bin/umount
+-rwsr-xr-x 1 root root 43088 May 16  2018 /bin/mount
+-rwsr-xr-x 1 root root 44664 Jan 25  2018 /bin/su
+-rwsr-xr-x 1 root root 146128 Nov 30  2017 /bin/ntfs-3g
+-rwsr-xr-x 1 root root 64424 Mar 10  2017 /bin/ping
+-rwsr-xr-x 1 root root 59640 Jan 25  2018 /usr/bin/passwd
+-rwsr-xr-x 1 root root 18448 Mar 10  2017 /usr/bin/traceroute6.iputils
+-rwsr-xr-x 1 root root 40344 Jan 25  2018 /usr/bin/newgrp
+-rwsr-xr-x 1 root root 149080 Jan 18  2018 /usr/bin/sudo
+-rwsr-xr-x 1 root root 75824 Jan 25  2018 /usr/bin/gpasswd
+-rwsr-xr-x 1 root root 44528 Jan 25  2018 /usr/bin/chsh
+-rwsr-xr-x 1 root root 76496 Jan 25  2018 /usr/bin/chfn
+-rwsr-xr-x 1 root root 1140200 Feb 14  2018 /usr/sbin/exim4
+-rwsr-xr-- 1 root messagebus 42992 Nov 16  2017 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
+-rwsr-xr-x 1 root root 10232 Mar 28  2017 /usr/lib/eject/dmcrypt-get-device
+-rwsr-xr-x 1 root root 436552 Feb 10  2018 /usr/lib/openssh/ssh-keysign
+
+
+[00;31m[-] SGID files:[00m
+-rwxr-sr-x 1 root shadow 34816 Apr  5  2018 /sbin/pam_extrausers_chkpwd
+-rwxr-sr-x 1 root shadow 34816 Apr  5  2018 /sbin/unix_chkpwd
+-rwxr-sr-x 1 root ssh 362640 Feb 10  2018 /usr/bin/ssh-agent
+-rwxr-sr-x 1 root tty 30800 May 16  2018 /usr/bin/wall
+-rwxr-sr-x 1 root shadow 22808 Jan 25  2018 /usr/bin/expiry
+-rwxr-sr-x 1 root mlocate 43088 Mar  1  2018 /usr/bin/mlocate
+-rwxr-sr-x 1 root mail 10952 Nov  7  2017 /usr/bin/dotlock.mailutils
+-rwxr-sr-x 1 root crontab 39352 Nov 16  2017 /usr/bin/crontab
+-rwxr-sr-x 1 root tty 14328 Jan 17  2018 /usr/bin/bsd-write
+-rwxr-sr-x 1 root shadow 71816 Jan 25  2018 /usr/bin/chage
+
+
+[00;31m[+] Files with POSIX capabilities set:[00m
+/usr/bin/mtr-packet = cap_net_raw+ep
+
+
+[-] Can't search *.conf files as no keyword was entered
+
+[-] Can't search *.php files as no keyword was entered
+
+[-] Can't search *.log files as no keyword was entered
+
+[-] Can't search *.ini files as no keyword was entered
+
+[00;31m[-] All *.conf files in /etc (recursive 1 level):[00m
+-rw-r--r-- 1 root root 14867 Oct 13  2016 /etc/ltrace.conf
+-rw-r--r-- 1 root root 4861 Feb 22  2018 /etc/hdparm.conf
+-rw-r--r-- 1 root root 812 Mar 24  2018 /etc/mke2fs.conf
+-rw-r--r-- 1 root root 604 Aug 13  2017 /etc/deluser.conf
+-rw-r--r-- 1 root root 552 Apr  5  2018 /etc/pam.conf
+-rw-r--r-- 1 root root 703 Aug 21  2017 /etc/logrotate.conf
+-rw-r--r-- 1 root root 5898 Oct  5 23:39 /etc/ca-certificates.conf
+-rw-r--r-- 1 root root 1260 Feb 26  2018 /etc/ucf.conf
+-rw-r--r-- 1 root root 1358 Jan 30  2018 /etc/rsyslog.conf
+-rw-r--r-- 1 root root 191 Feb  8  2018 /etc/libaudit.conf
+-rw-r--r-- 1 root root 2969 Feb 28  2018 /etc/debconf.conf
+-rw-r--r-- 1 root root 280 Jun 20  2014 /etc/fuse.conf
+-rw-r--r-- 1 root root 144 Oct  5 23:46 /etc/kernel-img.conf
+-rw-r--r-- 1 root root 2683 Jan 18  2018 /etc/sysctl.conf
+-rw-r--r-- 1 root root 5850 Feb  5  2018 /etc/vsftpd.conf
+-rw-r--r-- 1 root root 3028 Oct  5 23:39 /etc/adduser.conf
+-rw-r--r-- 1 root root 513 Oct  5 23:39 /etc/nsswitch.conf
+-rw-r--r-- 1 root root 403 Mar  1  2018 /etc/updatedb.conf
+-rw-r--r-- 1 root root 92 Apr  9  2018 /etc/host.conf
+-rw-r--r-- 1 root root 2584 Feb  1  2018 /etc/gai.conf
+-rw-r--r-- 1 root root 34 Jan 27  2016 /etc/ld.so.conf
+-rw-r--r-- 1 root root 350 Oct  5 23:44 /etc/popularity-contest.conf
+
+
+[00;31m[-] Location and contents (if accessible) of .bash_history file(s):[00m
+/home/friend/.bash_history
+
+
+[00;31m[-] Any interesting mail in /var/mail:[00m
+total 12
+drwxrwsr-x  2 root   mail 4096 Jan 15 22:25 .
+drwxr-xr-x 12 root   root 4096 Oct  6 02:07 ..
+-rw-rw----  1 friend mail    1 Jan 15 22:14 friend
+
+
+[00;33m### SCAN COMPLETE ####################################[00m

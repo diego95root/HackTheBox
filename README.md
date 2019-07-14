@@ -23,8 +23,13 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Active](https://github.com/diego95root/HackTheBox/tree/master/Active)
 * [Curling](https://github.com/diego95root/HackTheBox/tree/master/Curling)
 * [Chaos](https://github.com/diego95root/HackTheBox/tree/master/Chaos)
-* [Help](https://github.com/diego95root/HackTheBox/tree/master/Help) (Not retired yet)
-* [FriendZone](https://github.com/diego95root/HackTheBox/tree/master/FriendZone) (Not retired yet)
+* [Help](https://github.com/diego95root/HackTheBox/tree/master/Help)
+* [FriendZone](https://github.com/diego95root/HackTheBox/tree/master/FriendZone)
+* [Haystack](https://github.com/diego95root/HackTheBox/tree/master/Haystack) (Not retired yet)
+* [Jarvis](https://github.com/diego95root/HackTheBox/tree/master/Jarvis) (Not retired yet)
+* [Luke](https://github.com/diego95root/HackTheBox/tree/master/Luke) (Not retired yet)
+* [Swagshop](https://github.com/diego95root/HackTheBox/tree/master/Swagshop) (Not retired yet)
+* [Writeup](https://github.com/diego95root/HackTheBox/tree/master/Writeup) (Not retired yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
