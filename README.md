@@ -32,6 +32,9 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Writeup](https://github.com/diego95root/HackTheBox/tree/master/Writeup) (Not retired yet)
 * [Ellingson](https://github.com/diego95root/HackTheBox/tree/master/Ellingson) (Not retired yet)
 * [Craft](https://github.com/diego95root/HackTheBox/tree/master/Craft) (Not retired yet)
+* [Safe](https://github.com/diego95root/HackTheBox/tree/master/Safe) (Not retired yet)
+* [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist) (Not retired yet)
+
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
