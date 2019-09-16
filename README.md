@@ -27,7 +27,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [FriendZone](https://github.com/diego95root/HackTheBox/tree/master/FriendZone)
 * [Haystack](https://github.com/diego95root/HackTheBox/tree/master/Haystack) (Not retired yet)
 * [Jarvis](https://github.com/diego95root/HackTheBox/tree/master/Jarvis) (Not retired yet)
-* [Luke](https://github.com/diego95root/HackTheBox/tree/master/Luke) (Not retired yet)
+* [Luke](https://github.com/diego95root/HackTheBox/tree/master/Luke)
 * [Swagshop](https://github.com/diego95root/HackTheBox/tree/master/Swagshop) (Not retired yet)
 * [Writeup](https://github.com/diego95root/HackTheBox/tree/master/Writeup) (Not retired yet)
 * [Ellingson](https://github.com/diego95root/HackTheBox/tree/master/Ellingson) (Not retired yet)
