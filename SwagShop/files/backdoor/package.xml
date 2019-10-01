@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<package>
+<name>backdoorTest</name>
+<version>1.3.3.7</version>
+<stability>devel</stability>
+<licence>backdoorTest</licence>
+<channel>community</channel>
+<extends/>
+<summary>Backdoor for magento</summary>
+<description>Backdoor for magento</description>
+<notes>backdoorTest</notes>
+<authors>
+    <author>
+        <name>jvoisin</name>
+        <user>jvoisin</user>
+        <email>julien.voisin@dustri.org</email>
+    </author>
+</authors>
+<date>2015-08-17</date>
+<time>13:47:49</time>
+<contents>
+    <target name="mage">
+        <dir>
+            <dir name="errors2">
+                <file name="backdoor.php" hash="75b9491b24d2028c53992a5621b24e07"/>
+            </dir>
+        </dir>
+    </target>
+</contents>
+<compatible/>
+<dependencies>
+    <required>
+        <php>
+            <min>5.2.0</min>
+            <max>6.0.0</max>
+        </php>
+    </required>
+</dependencies>
+</package>

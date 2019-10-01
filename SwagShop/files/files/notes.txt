@@ -1,0 +1,8 @@
+2 	admin 	Firstname 	Lastname 	email@example.com 	Active
+12 	arty 	Firstname 	Lastname 	email@example.com 	Active
+8 	forme 	Firstname 	Lastname 	email@example.com 	Active
+1 	haris 	Haris 	Swagger 	haris@htbswag.net 	Active
+6 	muie 	Firstname 	Lastname 	email@example.com 	Active
+10 	mySecretUser 	Firstname 	Lastname 	email@example.com 	Active
+4 	testuser 	Firstname 	Lastname 	email@example.com 	Active
+14 	ypwqz 	Firstname 	Lastname 	email@example.com 	Active 
