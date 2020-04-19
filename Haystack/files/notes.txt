@@ -1,0 +1,34 @@
+security:spanish.is.key
+
+cat input.conf
+input {
+	file {
+		path => "/opt/kibana/logstash_*"
+		start_position => "beginning"
+		sincedb_path => "/dev/null"
+		stat_interval => "10 second"
+		type => "execute"
+		mode => "read"
+	}
+}
+bash-4.2$ cbash-4.2$ cat filter.conf
+cat filter.conf
+filter {
+	if [type] == "execute" {
+		grok {
+			match => { "message" => "Ejecutar\s*comando\s*:\s+%{GREEDYDATA:comando}" }
+		}
+	}
+}
+cat output.conf
+cat output.conf
+output {
+	if [type] == "execute" {
+		stdout { codec => json }
+		exec {
+			command => "%{comando} &"
+		}
+	}
+}
+
+

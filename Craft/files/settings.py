@@ -1,0 +1,18 @@
+# Flask settings
+FLASK_SERVER_NAME = 'api.craft.htb'
+FLASK_DEBUG = False  # Do not use debug mode in production
+
+# Flask-Restplus settings
+RESTPLUS_SWAGGER_UI_DOC_EXPANSION = 'list'
+RESTPLUS_VALIDATE = True
+RESTPLUS_MASK_SWAGGER = False
+RESTPLUS_ERROR_404_HELP = False
+CRAFT_API_SECRET = 'hz66OCkDtv8G6D'
+
+# database
+MYSQL_DATABASE_USER = 'craft'
+MYSQL_DATABASE_PASSWORD = 'qLGockJ6G2J75O'
+MYSQL_DATABASE_DB = 'craft'
+MYSQL_DATABASE_HOST = 'db'
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+

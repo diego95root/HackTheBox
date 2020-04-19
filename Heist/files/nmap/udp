@@ -1,0 +1,1 @@
+# Nmap 7.70 scan initiated Wed Aug 14 12:18:12 2019 as: nmap -v -sU -sV -sC -oN nmap/udp heist.htb

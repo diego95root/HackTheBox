@@ -25,16 +25,16 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Chaos](https://github.com/diego95root/HackTheBox/tree/master/Chaos)
 * [Help](https://github.com/diego95root/HackTheBox/tree/master/Help)
 * [FriendZone](https://github.com/diego95root/HackTheBox/tree/master/FriendZone)
-* [Haystack](https://github.com/diego95root/HackTheBox/tree/master/Haystack) (Not retired yet)
-* [Jarvis](https://github.com/diego95root/HackTheBox/tree/master/Jarvis) (Not retired yet)
+* [Haystack](https://github.com/diego95root/HackTheBox/tree/master/Haystack)
+* [Jarvis](https://github.com/diego95root/HackTheBox/tree/master/Jarvis)
 * [Luke](https://github.com/diego95root/HackTheBox/tree/master/Luke)
 * [Swagshop](https://github.com/diego95root/HackTheBox/tree/master/Swagshop)
 * [Writeup](https://github.com/diego95root/HackTheBox/tree/master/Writeup)
-* [Ellingson](https://github.com/diego95root/HackTheBox/tree/master/Ellingson) (Not retired yet)
-* [Craft](https://github.com/diego95root/HackTheBox/tree/master/Craft) (Not retired yet)
-* [Safe](https://github.com/diego95root/HackTheBox/tree/master/Safe) (Not retired yet)
-* [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist) (Not retired yet)
-* [Networked](https://github.com/diego95root/HackTheBox/tree/master/Networked) (Not retired yet)
+* [Ellingson](https://github.com/diego95root/HackTheBox/tree/master/Ellingson) (Not written sorry)
+* [Craft](https://github.com/diego95root/HackTheBox/tree/master/Craft)
+* [Safe](https://github.com/diego95root/HackTheBox/tree/master/Safe)
+* [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist)
+* [Networked](https://github.com/diego95root/HackTheBox/tree/master/Networked)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
