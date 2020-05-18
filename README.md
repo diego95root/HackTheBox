@@ -13,7 +13,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Poison](https://github.com/diego95root/HackTheBox/tree/master/Poison)
 * [Nibbles](https://github.com/diego95root/HackTheBox/tree/master/Nibbles)
 * [Valentine](https://github.com/diego95root/HackTheBox/tree/master/Valentine)
-* [Aragog](https://github.com/diego95root/HackTheBox/tree/master/Aragog) (Not written)
+* ~~Aragog~~
 * [DevOps](https://github.com/diego95root/HackTheBox/tree/master/DevOps)
 * [Canape](https://github.com/diego95root/HackTheBox/tree/master/Canape)
 * [Sunday](https://github.com/diego95root/HackTheBox/tree/master/Sunday)
@@ -30,7 +30,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Luke](https://github.com/diego95root/HackTheBox/tree/master/Luke)
 * [Swagshop](https://github.com/diego95root/HackTheBox/tree/master/Swagshop)
 * [Writeup](https://github.com/diego95root/HackTheBox/tree/master/Writeup)
-* [Ellingson](https://github.com/diego95root/HackTheBox/tree/master/Ellingson) (Not written sorry)
+* ~~Ellingson~~
 * [Craft](https://github.com/diego95root/HackTheBox/tree/master/Craft)
 * [Safe](https://github.com/diego95root/HackTheBox/tree/master/Safe)
 * [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist)
