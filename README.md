@@ -35,6 +35,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Safe](https://github.com/diego95root/HackTheBox/tree/master/Safe)
 * [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist)
 * [Networked](https://github.com/diego95root/HackTheBox/tree/master/Networked)
+* [Magic](https://github.com/diego95root/HackTheBox/tree/master/Magic)(Not released yet)
 
 I hope you find them useful. In case of advice, feel free to contact me.
 
