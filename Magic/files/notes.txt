@@ -1,0 +1,8 @@
+/var/www/Magic/db.php5
+
+private static $dbName = 'Magic' ;
+private static $dbHost = 'localhost' ;
+private static $dbUsername = 'theseus';
+private static $dbUserPassword = 'iamkingtheseus';
+
+Array ( [id] => 1 [username] => admin [password] => Th3s3usW4sK1ng ) 
