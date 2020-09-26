@@ -1,0 +1,18 @@
+index.php:
+
+                        $servername = "localhost";
+                        $username = "waldo";
+                        $password = "]F7jLHw:*G>UPrTo}~A"d6b";
+                        $dbname = "admirerdb";
+
+db_admin.php
+
+  $servername = "localhost";
+  $username = "waldo";
+  $password = "Wh3r3_1s_w4ld0?";
+
+https://medium.com/bugbountywriteup/adminer-script-results-to-pwning-server-private-bug-bounty-program-fe6d8a43fe6f
+
+https://websiteforstudents.com/configure-remote-access-mysql-mariadb-databases/
+
+Actual db password and user: waldo:&<h5b~yK3F#{PaPB&dA}{H>

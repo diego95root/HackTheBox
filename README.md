@@ -36,7 +36,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Heist](https://github.com/diego95root/HackTheBox/tree/master/Heist)
 * [Networked](https://github.com/diego95root/HackTheBox/tree/master/Networked)
 * [Magic](https://github.com/diego95root/HackTheBox/tree/master/Magic)
-* [Admirer](https://github.com/diego95root/HackTheBox/tree/master/Admirer)(Not released yet)
+* [Admirer](https://github.com/diego95root/HackTheBox/tree/master/Admirer)
 * [Cache](https://github.com/diego95root/HackTheBox/tree/master/Cache)(Not released yet)
 
 In case you want to read a write-up of a machine that hasn't been released, all write-ups are in my website (some password-protected until they are retired): <https://diego95root.github.io>.
