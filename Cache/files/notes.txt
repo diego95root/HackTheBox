@@ -1,0 +1,14 @@
+ash:H@v3_fun
+
+https://www.open-emr.org/wiki/images/1/11/Openemr_insecurity.pdf:
+
+https://community.open-emr.org/t/security-updates-for-user-password-scheme/6256 -> blowfish + salt
+
+openemr_admin:xxxxxx
+
+stats items
+stats cachedump 1 0
+get user
+get passwd
+
+luffy:0n3_p1ec3

@@ -1,0 +1,10 @@
+# Nmap 7.70 scan initiated Wed Jun 10 15:44:38 2020 as: nmap -v -p- -Pn -oA nmap/all cache.htb
+Nmap scan report for cache.htb (10.10.10.188)
+Host is up (0.072s latency).
+Not shown: 65533 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+
+Read data files from: /usr/bin/../share/nmap
+# Nmap done at Wed Jun 10 15:57:16 2020 -- 1 IP address (1 host up) scanned in 757.71 seconds

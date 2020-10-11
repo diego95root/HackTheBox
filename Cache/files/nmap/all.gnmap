@@ -1,0 +1,5 @@
+# Nmap 7.70 scan initiated Wed Jun 10 15:44:38 2020 as: nmap -v -p- -Pn -oA nmap/all cache.htb
+# Ports scanned: TCP(65535;1-65535) UDP(0;) SCTP(0;) PROTOCOLS(0;)
+Host: 10.10.10.188 (cache.htb)	Status: Up
+Host: 10.10.10.188 (cache.htb)	Ports: 22/open/tcp//ssh///, 80/open/tcp//http///	Ignored State: closed (65533)
+# Nmap done at Wed Jun 10 15:57:16 2020 -- 1 IP address (1 host up) scanned in 757.71 seconds
