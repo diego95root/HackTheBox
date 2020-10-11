@@ -38,10 +38,10 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Magic](https://github.com/diego95root/HackTheBox/tree/master/Magic)
 * [Admirer](https://github.com/diego95root/HackTheBox/tree/master/Admirer)
 * [Cache](https://github.com/diego95root/HackTheBox/tree/master/Cache)
-* [Passage](https://github.com/diego95root/HackTheBox/tree/master/Passage)
-* [Blunder](https://github.com/diego95root/HackTheBox/tree/master/Blunder)
-* [Fuse](https://github.com/diego95root/HackTheBox/tree/master/Fuse)
-* [Sneakymailer](https://github.com/diego95root/HackTheBox/tree/master/SneakyMailer)
+* [Passage](https://github.com/diego95root/HackTheBox/tree/master/Passage) (not retired yet)
+* [Blunder](https://github.com/diego95root/HackTheBox/tree/master/Blunder) (not retired yet)
+* [Fuse](https://github.com/diego95root/HackTheBox/tree/master/Fuse) (not retired yet)
+* [Sneakymailer](https://github.com/diego95root/HackTheBox/tree/master/SneakyMailer) (not retired yet)
 
 In case you want to read a write-up of a machine that hasn't been released, all write-ups are in my website (some password-protected until they are retired): <https://diego95root.github.io>.
 
