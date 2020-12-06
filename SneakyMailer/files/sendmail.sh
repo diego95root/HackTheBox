@@ -1,0 +1,8 @@
+echo "HELO sneakymailer.htb"
+echo "MAIL FROM: test@sneakymailer.htb"
+echo "RCPT TO: $1"
+echo "DATA"
+echo "Subject: Testing one two three"
+echo "Check out http://10.10.15.49:8001/"
+echo "."
+echo "quit"

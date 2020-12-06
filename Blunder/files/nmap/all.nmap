@@ -1,0 +1,13 @@
+# Nmap 7.80 scan initiated Sun Jun 21 23:50:59 2020 as: nmap -p- -sV -sV -v -oA nmap/all blunder.htb
+Increasing send delay for 10.10.10.191 from 0 to 5 due to 90 out of 299 dropped probes since last increase.
+Increasing send delay for 10.10.10.191 from 5 to 10 due to 17 out of 55 dropped probes since last increase.
+Nmap scan report for blunder.htb (10.10.10.191)
+Host is up (0.13s latency).
+Not shown: 65533 filtered ports
+PORT   STATE  SERVICE VERSION
+21/tcp closed ftp
+80/tcp open   http    Apache httpd 2.4.41 ((Ubuntu))
+
+Read data files from: /usr/bin/../share/nmap
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun 22 00:00:43 2020 -- 1 IP address (1 host up) scanned in 584.46 seconds

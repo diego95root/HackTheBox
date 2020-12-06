@@ -1,0 +1,22 @@
+HELO sneakymailer.htb
+MAIL FROM:test@sneakymailer.htb
+RCPT TO:jacksonbradshaw@sneakymailer.htb
+DATA
+Check out http://10.10.15.49:8001/
+
+.
+HELO sneakymailer.htb
+MAIL FROM:test@sneakymailer.htb
+RCPT TO:jacksonbradshaw@sneakymailer.htb
+DATA
+Check out http://10.10.15.49:8001/
+
+.
+HELO sneakymailer.htb
+MAIL FROM:test@sneakymailer.htb
+RCPT TO:jacksonbradshaw@sneakymailer.htb
+DATA
+Check out http://10.10.15.49:8001/
+
+.
+

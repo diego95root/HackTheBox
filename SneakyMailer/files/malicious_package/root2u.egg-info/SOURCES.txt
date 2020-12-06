@@ -1,0 +1,5 @@
+setup.py
+root2u.egg-info/PKG-INFO
+root2u.egg-info/SOURCES.txt
+root2u.egg-info/dependency_links.txt
+root2u.egg-info/top_level.txt

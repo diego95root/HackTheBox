@@ -1,0 +1,10 @@
+# Nmap 7.80 scan initiated Sun Jun 21 23:51:50 2020 as: nmap -sV -sV -oA nmap/initial blunder.htb
+Nmap scan report for blunder.htb (10.10.10.191)
+Host is up (0.080s latency).
+Not shown: 998 filtered ports
+PORT   STATE  SERVICE VERSION
+21/tcp closed ftp
+80/tcp open   http    Apache httpd 2.4.41 ((Ubuntu))
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jun 21 23:52:06 2020 -- 1 IP address (1 host up) scanned in 16.39 seconds
