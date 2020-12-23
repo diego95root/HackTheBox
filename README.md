@@ -43,6 +43,7 @@ Write-ups for different challenges I did in this [platform](https://www.hacktheb
 * [Fuse](https://github.com/diego95root/HackTheBox/tree/master/Fuse)
 * [Sneakymailer](https://github.com/diego95root/HackTheBox/tree/master/SneakyMailer)
 * [Bucket](https://github.com/diego95root/HackTheBox/tree/master/Bucket) (not retired yet)
+* [Academy](https://github.com/diego95root/HackTheBox/tree/master/Academy) (not retired yet)
 
 In case you want to read a write-up of a machine that hasn't been released, all write-ups are in my website (some password-protected until they are retired): <https://diego95root.github.io>.
 
