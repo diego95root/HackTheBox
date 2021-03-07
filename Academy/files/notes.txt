@@ -1,0 +1,11 @@
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=academy
+DB_USERNAME=dev
+DB_PASSWORD=mySup3rP4s5w0rd!!
+
+
+root:GkEWXn4h34g8qx9fZ1 for db from config.php
+
+https://gtfobins.github.io/gtfobins/composer/

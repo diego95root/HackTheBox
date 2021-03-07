@@ -1,0 +1,13 @@
+# Nmap 7.80 scan initiated Sat Dec 12 19:26:28 2020 as: nmap -sV -sC -oA nmap/initial academy.htb
+Nmap scan report for academy.htb (10.10.10.215)
+Host is up (0.018s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Hack The Box Academy
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sat Dec 12 19:26:37 2020 -- 1 IP address (1 host up) scanned in 8.28 seconds

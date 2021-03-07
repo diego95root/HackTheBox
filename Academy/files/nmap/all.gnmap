@@ -1,0 +1,4 @@
+# Nmap 7.80 scan initiated Sat Dec 12 19:29:02 2020 as: nmap -sV -sC -p- -oA nmap/all academy.htb
+Host: 10.10.10.215 (academy.htb)	Status: Up
+Host: 10.10.10.215 (academy.htb)	Ports: 22/open/tcp//ssh//OpenSSH 8.2p1 Ubuntu 4ubuntu0.1 (Ubuntu Linux; protocol 2.0)/, 80/open/tcp//http//Apache httpd 2.4.41 ((Ubuntu))/, 33060/open/tcp//mysqlx?///	Ignored State: closed (65532)
+# Nmap done at Sat Dec 12 19:30:18 2020 -- 1 IP address (1 host up) scanned in 76.39 seconds

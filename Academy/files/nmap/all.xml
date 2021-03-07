@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.80 scan initiated Sat Dec 12 19:29:02 2020 as: nmap -sV -sC -p- -oA nmap/all academy.htb -->
+<nmaprun scanner="nmap" args="nmap -sV -sC -p- -oA nmap/all academy.htb" start="1607797742" startstr="Sat Dec 12 19:29:02 2020" version="7.80" xmloutputversion="1.04">
+<scaninfo type="connect" protocol="tcp" numservices="65535" services="1-65535"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1607797744" endtime="1607797818"><status state="up" reason="syn-ack" reason_ttl="0"/>
+<address addr="10.10.10.215" addrtype="ipv4"/>
+<hostnames>
+<hostname name="academy.htb" type="user"/>
+<hostname name="academy.htb" type="PTR"/>
+</hostnames>
+<ports><extraports state="closed" count="65532">
+<extrareasons reason="conn-refused" count="65532"/>
+</extraports>
+<port protocol="tcp" portid="22"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="ssh" product="OpenSSH" version="8.2p1 Ubuntu 4ubuntu0.1" extrainfo="Ubuntu Linux; protocol 2.0" ostype="Linux" method="probed" conf="10"><cpe>cpe:/a:openbsd:openssh:8.2p1</cpe><cpe>cpe:/o:linux:linux_kernel</cpe></service></port>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="http" product="Apache httpd" version="2.4.41" extrainfo="(Ubuntu)" method="probed" conf="10"><cpe>cpe:/a:apache:http_server:2.4.41</cpe></service><script id="http-server-header" output="Apache/2.4.41 (Ubuntu)"><elem>Apache/2.4.41 (Ubuntu)</elem>
+</script><script id="http-title" output="Hack The Box Academy"><elem key="title">Hack The Box Academy</elem>
+</script></port>
+<port protocol="tcp" portid="33060"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="mysqlx" servicefp="SF-Port33060-TCP:V=7.80%I=7%D=12/12%Time=5FD50C29%P=x86_64-pc-linux-gnu%r(NULL,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(GenericLines,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(GetRequest,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(HTTPOptions,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(RTSPRequest,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(RPCCheck,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(DNSVersionBindReqTCP,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(DNSStatusRequestTCP,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(Help,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(SSLSessionReq,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(TerminalServerCookie,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(TLSSessionReq,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(Kerberos,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(SMBProgNeg,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(X11Probe,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(FourOhFourRequest,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(LPDString,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(LDAPSearchReq,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(LDAPBindReq,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(SIPOptions,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(LANDesk-RC,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(TerminalServer,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(NCP,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(NotesRPC,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(JavaRMI,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(WMSRequest,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(oracle-tns,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(ms-sql-s,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;)%r(afp,2B,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0\x1e\0\0\0\x01\x08\x01\x10\x88&apos;\x1a\x0fInvalid\x20message\&quot;\x05HY000&quot;)%r(giop,9,&quot;\x05\0\0\0\x0b\x08\x05\x1a\0&quot;);" method="table" conf="3"/><script id="fingerprint-strings" output="&#xa;  DNSStatusRequestTCP, LDAPSearchReq, NotesRPC, SSLSessionReq, TLSSessionReq, X11Probe, afp: &#xa;    Invalid message&quot;&#xa;    HY000"><elem key="DNSStatusRequestTCP, LDAPSearchReq, NotesRPC, SSLSessionReq, TLSSessionReq, X11Probe, afp">&#xa;    Invalid message&quot;&#xa;    HY000</elem>
+</script></port>
+</ports>
+<times srtt="21536" rttvar="1691" to="100000"/>
+</host>
+<runstats><finished time="1607797818" timestr="Sat Dec 12 19:30:18 2020" elapsed="76.39" summary="Nmap done at Sat Dec 12 19:30:18 2020; 1 IP address (1 host up) scanned in 76.39 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

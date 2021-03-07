@@ -1,0 +1,1 @@
+# Nmap 7.80 scan initiated Sun Sep 20 21:15:23 2020 as: nmap -vvv -p- -oA nmap/all 10.10.10.206
